@@ -4,7 +4,7 @@ Theme URI: https://n2npay.freedev.app/themes/
 Author: n2npay
 Author URI: https://n2npay.freedev.app/
 Description: J Shop is a clean, fast storefront theme for WooCommerce shops, designed around Thai typography (Prompt and Noto Sans Thai). The home page combines a banner slider, a trust strip and a product category grid, all set up in the Customizer without code. Shoppers get a slide-out mini cart with live quantity and total updates, a free-shipping progress bar, coupons and a two-column checkout, while a shop sidebar keeps product filters close at hand. Supports HPOS and the WooCommerce Cart and Checkout blocks.
-Version: 3.0.4
+Version: 3.0.5
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -82,9 +82,6 @@ a.trust-box:hover{box-shadow:0 6px 18px rgba(20,86,200,.14);transform:translateY
 
 /* Sections */
 .section{padding:44px 0}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
-.section-head h2{font-size:clamp(24px,3vw,34px);margin:0}
-.view-all{font-weight:600;color:var(--brand);border-bottom:2px solid currentColor}
 
 /* Product grid / card */
 .p-grid,.woocommerce ul.products{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -111,15 +108,10 @@ a.trust-box:hover{box-shadow:0 6px 18px rgba(20,86,200,.14);transform:translateY
 .ft-top{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.14)}
 .ft-block{display:flex;gap:20px;align-items:flex-start}
 .ft-icon{flex:none;color:#5bbfae;width:40px;height:40px}
-.ft-bottom{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:40px;padding-top:36px}
-.ft-news-title{font-size:clamp(26px,3.2vw,40px);line-height:1.3;margin:0 0 .5em}
-.ft-about .ft-menu-title{font-size:24px;margin-bottom:1em}
 .btn.ft-btn{background:#fff;color:var(--ink);border:2px solid #5bbfae;padding:10px 48px;font-size:17px}
 .btn.ft-btn:hover{background:#5bbfae;color:#fff;text-decoration:none}
 .ft-contact-btn{margin-top:18px!important}
-.news-form{display:flex;gap:14px;margin:22px 0 18px;max-width:600px}
-.news-form input{flex:1;min-width:0;padding:13px 26px;border-radius:999px;border:0;background:rgba(255,255,255,.1);color:#fff;font:inherit}
-.news-form input::placeholder{color:rgba(255,255,255,.6)}
+.site-footer .ft-legal{margin:24px 0 0}
 .ft-legal a{color:#fff}
 .copy{border-top:1px solid rgba(255,255,255,.14);margin-top:32px;padding-top:18px;font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
@@ -164,9 +156,8 @@ a.trust-box:hover{box-shadow:0 6px 18px rgba(20,86,200,.14);transform:translateY
   .trust{grid-template-columns:1fr 1fr}
   .hero-slide img{aspect-ratio:4/3}
   .post-grid{grid-template-columns:1fr}
-  .ft-top,.ft-bottom{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr}
   .ft-block{gap:14px}.ft-icon{width:32px;height:32px}
-  .news-form{flex-direction:column}
   .section{padding:30px 0}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -184,7 +175,7 @@ a.trust-box:hover{box-shadow:0 6px 18px rgba(20,86,200,.14);transform:translateY
 
 /* Footer details */
 .site-footer p{margin:.35em 0}
-.site-footer p:empty,.site-footer h3:empty,.site-footer h4:empty,.site-footer .ft-news-form:empty,.site-footer .ft-credit:empty{display:none}
+.site-footer p:empty,.site-footer h4:empty,.site-footer .ft-credit:empty{display:none}
 .site-footer .ft-widgets{margin-top:14px}
 .site-footer .widget{margin-bottom:16px}
 .site-footer .widget-title{font-size:17px}

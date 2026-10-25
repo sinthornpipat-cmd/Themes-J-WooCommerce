@@ -3,7 +3,7 @@ Contributors: sinthornpipat
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.0.4
+Stable tag: 3.0.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ J Shop is a clean, fast storefront theme for WooCommerce shops, designed around 
 * Slide-out mini cart with quantity buttons, live line and total updates, coupons and a free-shipping progress bar.
 * Two-column checkout with an order summary, product thumbnails and an inline coupon field. Works with the classic checkout and the Cart and Checkout blocks.
 * Shop sidebar for product filters, sale badges, sticky add-to-cart bar on product pages.
-* Footer with contact and address blocks, a newsletter area with a terms link, an "About us" menu, four widget areas and click-to-edit text in the Customizer preview.
+* Footer with contact and address blocks, a terms link, two widget areas and click-to-edit text in the Customizer preview.
 * Compatible with WooCommerce HPOS. Translation ready, with a Thai translation included.
 
 The theme also works without WooCommerce as a simple blog theme.
@@ -28,7 +28,7 @@ The theme also works without WooCommerce as a simple blog theme.
 2. Search for "J Shop", then click Install and Activate.
 3. Install and activate WooCommerce.
 4. Go to Appearance > Customize > J Shop to set up the banners, footer and colors.
-5. Go to Appearance > Menus and assign menus to "Primary menu" and "Footer menu".
+5. Go to Appearance > Menus and assign a menu to "Primary menu".
 
 == Frequently Asked Questions ==
 
@@ -40,15 +40,15 @@ The grid shows top-level product categories that have products. Add products to 
 
 Set the amount in Appearance > Customize > J Shop > Shop settings, and set up a matching Free shipping method in WooCommerce. Set it to 0 to hide the bar.
 
-= How do I add a newsletter sign-up form to the footer? =
-
-J Shop does not store email addresses. Either enter the form URL of your mailing service in Appearance > Customize > J Shop > Footer: newsletter, or add the form of a newsletter plugin to the "Footer: newsletter" widget area, which replaces the built-in form.
-
 == Privacy ==
 
 J Shop does not collect, store or send any personal data. The theme loads the Prompt and Noto Sans Thai fonts from Google Fonts, so visitors' browsers connect to fonts.googleapis.com and fonts.gstatic.com.
 
 == Changelog ==
+
+= 3.0.5 =
+* Removed the footer newsletter block and the "About us" footer menu, with their Customizer sections, widget areas and the "Footer menu" location. The terms link setting moved to "Footer: copyright, credit & terms link".
+* Removed the "Shop by category" heading and "View all products" link above the home page category grid.
 
 = 3.0.4 =
 * Trust strip: each box now shows one full-size image with an optional link. The title and caption fields are removed.
@@ -72,7 +72,7 @@ J Shop does not collect, store or send any personal data. The theme loads the Pr
 
 == Upgrade Notice ==
 
-= 3.0.4 =
+= 3.0.5 =
 First release on WordPress.org.
 
 == Resources ==

@@ -53,7 +53,7 @@ msgstr[0] "%s ความคิดเห็น"
 msgid "Comments are closed."
 msgstr "ปิดการแสดงความคิดเห็นแล้ว"
 
-#: functions.php:155
+#: functions.php:154
 msgid "Home"
 msgstr "หน้าแรก"
 
@@ -61,32 +61,32 @@ msgstr "หน้าแรก"
 msgid "Cart"
 msgstr "ตะกร้า"
 
-#: footer.php:74 inc/customizer.php:159
+#: footer.php:50 inc/customizer.php:159
 #: woocommerce/checkout/review-order.php:50
 msgid "Discount code"
 msgstr "โค้ดส่วนลด"
 
-#: footer.php:76 template-parts/mini-cart.php:13
+#: footer.php:52 template-parts/mini-cart.php:13
 msgid "Close"
 msgstr "ปิด"
 
-#: footer.php:82 inc/customizer.php:157
+#: footer.php:58 inc/customizer.php:157
 msgid "Get a special discount"
 msgstr "รับส่วนลดพิเศษ"
 
-#: footer.php:83 inc/customizer.php:158
+#: footer.php:59 inc/customizer.php:158
 msgid "Edit this text and the conditions in the Customizer."
 msgstr "แก้ข้อความและเงื่อนไขได้ใน Customizer"
 
-#: footer.php:84
+#: footer.php:60
 msgid "Offer ends in"
 msgstr "ตัดสินใจช้อปภายใน"
 
-#: footer.php:86 functions.php:81
+#: footer.php:62 functions.php:80
 msgid "Copy code"
 msgstr "คัดลอกโค้ด"
 
-#: footer.php:87
+#: footer.php:63
 msgid "Use the code at checkout."
 msgstr "นำโค้ดไปใช้ตอน Checkout ได้เลย"
 
@@ -98,22 +98,14 @@ msgstr "แบนเนอร์โปรโมชัน"
 msgid "Shop now"
 msgstr "ดูสินค้า"
 
-#: front-page.php:97
-msgid "Shop by category"
-msgstr "หมวดหมู่สินค้า"
-
-#: front-page.php:98
-msgid "View all products"
-msgstr "ดูสินค้าทั้งหมด"
-
 #. translators: %d: number of products.
-#: front-page.php:111
+#: front-page.php:109
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
 msgstr[0] "%d รายการ"
 
-#: front-page.php:123
+#: front-page.php:121
 msgid "Install and activate the WooCommerce plugin to show products here."
 msgstr "กรุณาติดตั้งและเปิดใช้งานปลั๊กอิน WooCommerce เพื่อแสดงสินค้า"
 
@@ -121,21 +113,17 @@ msgstr "กรุณาติดตั้งและเปิดใช้งา
 msgid "Primary menu"
 msgstr "เมนูหลัก"
 
-#: functions.php:47
-msgid "Footer menu"
-msgstr "เมนูส่วนท้าย"
-
-#: functions.php:80
+#: functions.php:79
 msgid "Copied"
 msgstr "คัดลอกแล้ว"
 
 #. translators: %d: slide number.
-#: functions.php:83
+#: functions.php:82
 #, php-format
 msgid "Slide %d"
 msgstr "สไลด์ %d"
 
-#: functions.php:157
+#: functions.php:156
 msgid "All products"
 msgstr "สินค้าทั้งหมด"
 
@@ -219,8 +207,7 @@ msgstr "ข้อความปุ่มบนแบนเนอร์ (แส�
 msgid "Trust strip (4 boxes)"
 msgstr "แถบจุดขาย 4 ช่อง"
 
-#: inc/customizer.php:157 inc/footer.php:261 inc/footer.php:267
-#: inc/footer.php:271 inc/footer.php:280
+#: inc/customizer.php:157 inc/footer.php:236 inc/footer.php:242
 msgid "Heading"
 msgstr "หัวข้อ"
 
@@ -244,79 +231,51 @@ msgstr "นับถอยหลัง (นาที)"
 msgid "Image (transparent PNG)"
 msgstr "รูปประกอบ (PNG โปร่งใส)"
 
-#: inc/footer.php:38
-msgid "Get news and offers from us. Enter your email."
-msgstr "รับข่าวสารและโปรโมชันจากเรา กรอกอีเมลของคุณ"
-
 #. translators: %s: WordPress link.
-#: inc/footer.php:47
+#: inc/footer.php:41
 #, php-format
 msgid "Powered by %s"
 msgstr "ขับเคลื่อนโดย %s"
 
-#: inc/footer.php:114
-msgid "Email"
-msgstr "อีเมล"
-
-#: inc/footer.php:210
+#: inc/footer.php:185
 msgid ""
 "In the preview, click the pencil icon next to a text to jump to its field."
 msgstr ""
 "ในหน้าตัวอย่างด้านขวา คลิกไอคอนดินสอข้างข้อความ เพื่อกระโดดมาที่ช่องแก้ไขนี้"
 
-#: inc/footer.php:35 inc/footer.php:268
+#: inc/footer.php:35 inc/footer.php:243
 msgid "Address"
 msgstr "ที่อยู่"
 
-#: inc/footer.php:279
-msgid "Edit the menu items in Appearance → Menus (location “Footer menu”)."
-msgstr "รายการเมนูแก้ที่ Appearance → Menus (ตำแหน่ง “เมนูส่วนท้าย”)"
-
-#: inc/footer.php:272
-msgid "Invitation text"
-msgstr "ข้อความเชิญชวน"
-
-#: inc/footer.php:273
-msgid "Newsletter form URL (empty = hide the form)"
-msgstr "URL รับฟอร์มอีเมล (เว้นว่าง = ซ่อนฟอร์ม)"
-
-#: inc/footer.php:274
-msgid "Email field placeholder"
-msgstr "ข้อความในช่องกรอกอีเมล"
-
-#: inc/footer.php:282
-msgid "Footer: copyright & credit"
-msgstr "ส่วนท้าย: ลิขสิทธิ์ & เครดิต"
-
-#: inc/footer.php:282
+#: inc/footer.php:245
 msgid "Use {year} for the current year and {site} for the site name."
 msgstr "ใช้ {year} แทนปีปัจจุบัน และ {site} แทนชื่อเว็บไซต์ได้"
 
-#: inc/footer.php:283
+#: inc/footer.php:246
 msgid "Copyright text"
 msgstr "ข้อความลิขสิทธิ์"
 
-#: inc/footer.php:284
+#: inc/footer.php:247
 msgid "Show the credit text on the right"
 msgstr "แสดงข้อความเครดิตด้านขวา"
 
-#: inc/footer.php:285
+#: inc/footer.php:248
 msgid "Credit text (HTML links allowed)"
 msgstr "ข้อความเครดิต (ใส่ลิงก์ HTML ได้)"
 
-#: inc/footer.php:287
+#: inc/footer.php:252
 msgid "Footer: colors"
 msgstr "ส่วนท้าย: สี"
 
-#: inc/footer.php:287
+#: inc/footer.php:252
 msgid "Leave empty to use the theme colors."
 msgstr "เว้นว่างเพื่อใช้สีเริ่มต้นของธีม"
 
-#: inc/footer.php:288
+#: inc/footer.php:253
 msgid "Background color"
 msgstr "สีพื้นหลัง"
 
-#: inc/footer.php:289
+#: inc/footer.php:254
 msgid "Text color"
 msgstr "สีตัวอักษร"
 
@@ -562,93 +521,45 @@ msgid "Get in Touch"
 msgstr "ติดต่อเรา"
 
 #: inc/footer.php:37
-msgid "Contact us or get the latest news"
-msgstr "ติดต่อเราหรือรับข่าวสารเพิ่มเติม"
-
-#: inc/footer.php:40
-msgid "Sign Up"
-msgstr "สมัคร"
-
-#: inc/footer.php:41
-msgid "Enter your email"
-msgstr "กรอกอีเมลของคุณ"
-
-#: inc/footer.php:42
 msgid "Terms of Use & Privacy Policy"
 msgstr "ข้อกำหนดการใช้งานและนโยบายความเป็นส่วนตัว"
 
-#: inc/footer.php:44
-msgid "About us"
-msgstr "เกี่ยวกับเรา"
-
-#: inc/footer.php:158 inc/footer.php:260
+#: inc/footer.php:135 inc/footer.php:235
 msgid "Footer: get in touch"
 msgstr "ส่วนท้าย: ติดต่อเรา"
 
-#: inc/footer.php:158
+#: inc/footer.php:135
 msgid "Widgets added here appear below the contact text."
 msgstr "วิดเจ็ตที่เพิ่มที่นี่จะแสดงใต้ข้อความติดต่อ"
 
-#: inc/footer.php:159 inc/footer.php:266
+#: inc/footer.php:136 inc/footer.php:241
 msgid "Footer: address"
 msgstr "ส่วนท้าย: ที่อยู่"
 
-#: inc/footer.php:159
+#: inc/footer.php:136
 msgid "Widgets added here appear below the address."
 msgstr "วิดเจ็ตที่เพิ่มที่นี่จะแสดงใต้ที่อยู่"
 
-#: inc/footer.php:160 inc/footer.php:270
-msgid "Footer: newsletter"
-msgstr "ส่วนท้าย: รับข่าวสาร"
-
-#: inc/footer.php:160
-msgid ""
-"Add the sign-up form of a newsletter plugin here, for example with a "
-"Shortcode block. It replaces the built-in form."
-msgstr ""
-"ใส่ฟอร์มสมัครรับข่าวสารจากปลั๊กอินที่นี่ เช่น ผ่านบล็อก Shortcode "
-"ฟอร์มนี้จะแสดงแทนฟอร์มของธีม"
-
-#: inc/footer.php:161
-msgid "Footer: about us"
-msgstr "ส่วนท้าย: เกี่ยวกับเรา"
-
-#: inc/footer.php:161
-msgid "Widgets added here appear below the About us menu."
-msgstr "วิดเจ็ตที่เพิ่มที่นี่จะแสดงใต้เมนูเกี่ยวกับเรา"
-
-#: inc/footer.php:262
+#: inc/footer.php:237
 msgid "Contact text"
 msgstr "ข้อความติดต่อ"
 
-#: inc/footer.php:263
+#: inc/footer.php:238
 msgid "Button text (empty = hide)"
 msgstr "ข้อความบนปุ่ม (ว่าง = ซ่อน)"
 
-#: inc/footer.php:264
+#: inc/footer.php:239
 msgid "Button link"
 msgstr "ลิงก์ของปุ่ม"
 
-#: inc/footer.php:270
-msgid ""
-"To use a newsletter plugin instead, add its form to the “Footer: newsletter”"
-" widget area."
-msgstr ""
-"ถ้าต้องการใช้ปลั๊กอินรับข่าวสารแทน ให้ใส่ฟอร์มของปลั๊กอินในพื้นที่วิดเจ็ต "
-"“ส่วนท้าย: รับข่าวสาร”"
-
-#: inc/footer.php:275
-msgid "Sign-up button text"
-msgstr "ข้อความปุ่มสมัคร"
-
-#: inc/footer.php:276
+#: inc/footer.php:249
 msgid "Terms link text (empty = hide)"
 msgstr "ข้อความลิงก์ข้อกำหนด (ว่าง = ซ่อน)"
 
-#: inc/footer.php:277
+#: inc/footer.php:250
 msgid "Terms link (empty = privacy policy page)"
 msgstr "ลิงก์ข้อกำหนด (ว่าง = หน้านโยบายความเป็นส่วนตัว)"
 
-#: inc/footer.php:279
-msgid "Footer: about us menu"
-msgstr "ส่วนท้าย: เมนูเกี่ยวกับเรา"
+#: inc/footer.php:245
+msgid "Footer: copyright, credit & terms link"
+msgstr "ส่วนท้าย: ลิขสิทธิ์ เครดิต และลิงก์ข้อกำหนด"

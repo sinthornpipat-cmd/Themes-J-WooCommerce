@@ -37,31 +37,7 @@ $jshop_addr    = $jshop_preview || jshop_ft( 'jshop_address' ) || is_active_side
 		</div>
 		<?php endif; ?>
 
-		<div class="ft-bottom">
-			<div class="ft-news">
-				<h3 class="ft-news-title"><?php jshop_ft_output( 'news_title' ); ?></h3>
-				<p class="ft-news-text"><?php jshop_ft_output( 'news_text' ); ?></p>
-				<?php if ( is_active_sidebar( 'footer-3' ) ) : ?>
-					<?php jshop_ft_widgets( 3 ); ?>
-				<?php else : ?>
-					<div class="ft-news-form"><?php jshop_ft_output( 'news_form' ); ?></div>
-				<?php endif; ?>
-				<p class="ft-legal"><?php jshop_ft_output( 'legal' ); ?></p>
-			</div>
-			<div class="ft-about">
-				<h4 class="ft-menu-title"><?php jshop_ft_output( 'menu_title' ); ?></h4>
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'footer',
-						'container'      => false,
-						'fallback_cb'    => 'jshop_fallback_menu',
-					)
-				);
-				?>
-				<?php jshop_ft_widgets( 4 ); ?>
-			</div>
-		</div>
+		<p class="ft-legal"><?php jshop_ft_output( 'legal' ); ?></p>
 
 		<div class="copy">
 			<span class="ft-copy"><?php jshop_ft_output( 'copy' ); ?></span>

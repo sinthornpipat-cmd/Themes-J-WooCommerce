@@ -44,7 +44,6 @@ add_action(
 		register_nav_menus(
 			array(
 				'primary' => __( 'Primary menu', 'j-shop' ),
-				'footer'  => __( 'Footer menu', 'j-shop' ),
 			)
 		);
 	}
