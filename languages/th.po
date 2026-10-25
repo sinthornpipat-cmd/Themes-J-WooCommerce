@@ -61,7 +61,7 @@ msgstr "หน้าแรก"
 msgid "Cart"
 msgstr "ตะกร้า"
 
-#: footer.php:50 inc/customizer.php:159
+#: footer.php:50 inc/customizer.php:169
 #: woocommerce/checkout/review-order.php:50
 msgid "Discount code"
 msgstr "โค้ดส่วนลด"
@@ -70,11 +70,11 @@ msgstr "โค้ดส่วนลด"
 msgid "Close"
 msgstr "ปิด"
 
-#: footer.php:58 inc/customizer.php:157
+#: footer.php:58 inc/customizer.php:167
 msgid "Get a special discount"
 msgstr "รับส่วนลดพิเศษ"
 
-#: footer.php:59 inc/customizer.php:158
+#: footer.php:59 inc/customizer.php:168
 msgid "Edit this text and the conditions in the Customizer."
 msgstr "แก้ข้อความและเงื่อนไขได้ใน Customizer"
 
@@ -99,13 +99,13 @@ msgid "Shop now"
 msgstr "ดูสินค้า"
 
 #. translators: %d: number of products.
-#: front-page.php:109
+#: front-page.php:113
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
 msgstr[0] "%d รายการ"
 
-#: front-page.php:121
+#: front-page.php:125
 msgid "Install and activate the WooCommerce plugin to show products here."
 msgstr "กรุณาติดตั้งและเปิดใช้งานปลั๊กอิน WooCommerce เพื่อแสดงสินค้า"
 
@@ -207,27 +207,27 @@ msgstr "ข้อความปุ่มบนแบนเนอร์ (แส�
 msgid "Trust strip (4 boxes)"
 msgstr "แถบจุดขาย 4 ช่อง"
 
-#: inc/customizer.php:157 inc/footer.php:236 inc/footer.php:242
+#: inc/customizer.php:167 inc/footer.php:236 inc/footer.php:242
 msgid "Heading"
 msgstr "หัวข้อ"
 
-#: inc/customizer.php:138
+#: inc/customizer.php:148
 msgid "Discount code popup"
 msgstr "ป๊อปอัปโค้ดส่วนลด"
 
-#: inc/customizer.php:152
+#: inc/customizer.php:162
 msgid "Enable"
 msgstr "เปิดใช้งาน"
 
-#: inc/customizer.php:158
+#: inc/customizer.php:168
 msgid "Conditions"
 msgstr "เงื่อนไข"
 
-#: inc/customizer.php:160
+#: inc/customizer.php:170
 msgid "Countdown (minutes)"
 msgstr "นับถอยหลัง (นาที)"
 
-#: inc/customizer.php:161
+#: inc/customizer.php:171
 msgid "Image (transparent PNG)"
 msgstr "รูปประกอบ (PNG โปร่งใส)"
 
@@ -563,3 +563,15 @@ msgstr "ลิงก์ข้อกำหนด (ว่าง = หน้าน�
 #: inc/footer.php:245
 msgid "Footer: copyright, credit & terms link"
 msgstr "ส่วนท้าย: ลิขสิทธิ์ เครดิต และลิงก์ข้อกำหนด"
+
+#: front-page.php:97 inc/customizer.php:142
+msgid "Shop by category"
+msgstr "หมวดหมู่สินค้า"
+
+#: inc/customizer.php:138
+msgid "Category grid"
+msgstr "ตารางหมวดหมู่สินค้า"
+
+#: inc/customizer.php:142
+msgid "Heading above the category grid (empty = hide)"
+msgstr "หัวข้อเหนือตารางหมวดหมู่ (ว่าง = ซ่อน)"

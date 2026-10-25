@@ -94,6 +94,10 @@ if ( jshop_has_wc() ) :
 	if ( ! is_wp_error( $jshop_cats ) && $jshop_cats ) :
 		?>
 	<section class="section"><div class="wrap">
+		<?php $jshop_cats_title = jshop_mod( 'jshop_cats_title', __( 'Shop by category', 'j-shop' ) ); ?>
+		<?php if ( $jshop_cats_title ) : ?>
+			<h2 class="cats-title"><?php echo esc_html( $jshop_cats_title ); ?></h2>
+		<?php endif; ?>
 		<div class="cat-grid">
 		<?php
 		foreach ( $jshop_cats as $jshop_c ) :

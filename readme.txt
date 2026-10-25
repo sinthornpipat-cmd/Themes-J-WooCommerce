@@ -3,7 +3,7 @@ Contributors: sinthornpipat
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.0.5
+Stable tag: 3.0.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,9 @@ J Shop does not collect, store or send any personal data. The theme loads the Pr
 
 == Changelog ==
 
+= 3.0.6 =
+* Added an editable heading above the home page category grid (Customizer > J Shop > Category grid).
+
 = 3.0.5 =
 * Removed the footer newsletter block and the "About us" footer menu, with their Customizer sections, widget areas and the "Footer menu" location. The terms link setting moved to "Footer: copyright, credit & terms link".
 * Removed the "Shop by category" heading and "View all products" link above the home page category grid.
@@ -72,7 +75,7 @@ J Shop does not collect, store or send any personal data. The theme loads the Pr
 
 == Upgrade Notice ==
 
-= 3.0.5 =
+= 3.0.6 =
 First release on WordPress.org.
 
 == Resources ==

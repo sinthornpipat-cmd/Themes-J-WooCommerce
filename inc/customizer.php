@@ -131,6 +131,16 @@ add_action(
 			$text( "jshop_trust_url_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d link (optional)', 'j-shop' ), $n ), '', 'jshop_trust', 'url' );
 		}
 
+		// Category grid.
+		$wp->add_section(
+			'jshop_cats',
+			array(
+				'title' => __( 'Category grid', 'j-shop' ),
+				'panel' => 'jshop',
+			)
+		);
+		$text( 'jshop_cats_title', __( 'Heading above the category grid (empty = hide)', 'j-shop' ), __( 'Shop by category', 'j-shop' ), 'jshop_cats' );
+
 		// Popup.
 		$wp->add_section(
 			'jshop_popup',
