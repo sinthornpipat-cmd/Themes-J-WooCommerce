@@ -81,16 +81,32 @@ if ( $jshop_boxes ) :
 <?php
 /* Category tiles */
 if ( jshop_has_wc() ) :
-	$jshop_cats = get_terms(
-		array(
-			'taxonomy'   => 'product_cat',
-			'parent'     => 0,
-			'hide_empty' => true,
-			'exclude'    => array( (int) get_option( 'default_product_cat' ) ),
-			'number'     => 8,
-			'orderby'    => 'name',
-		)
-	);
+	$jshop_picks = array();
+	for ( $jshop_i = 1; $jshop_i <= 5; $jshop_i++ ) {
+		$jshop_picks[] = absint( jshop_mod( "jshop_cats_pick_$jshop_i", 0 ) );
+	}
+	$jshop_picks = array_values( array_unique( array_filter( $jshop_picks ) ) );
+	if ( $jshop_picks ) {
+		$jshop_cats = get_terms(
+			array(
+				'taxonomy'   => 'product_cat',
+				'include'    => $jshop_picks,
+				'hide_empty' => false,
+				'orderby'    => 'include',
+			)
+		);
+	} else {
+		$jshop_cats = get_terms(
+			array(
+				'taxonomy'   => 'product_cat',
+				'parent'     => 0,
+				'hide_empty' => true,
+				'exclude'    => array( (int) get_option( 'default_product_cat' ) ),
+				'number'     => 8,
+				'orderby'    => 'name',
+			)
+		);
+	}
 	if ( ! is_wp_error( $jshop_cats ) && $jshop_cats ) :
 		?>
 	<section class="section"><div class="wrap">
@@ -98,7 +114,7 @@ if ( jshop_has_wc() ) :
 		<?php if ( $jshop_cats_title ) : ?>
 			<h2 class="cats-title"><?php echo esc_html( $jshop_cats_title ); ?></h2>
 		<?php endif; ?>
-		<div class="cat-grid">
+		<div class="cat-grid<?php echo 5 === count( $jshop_cats ) ? ' cat-grid-5' : ''; ?>">
 		<?php
 		foreach ( $jshop_cats as $jshop_c ) :
 			$jshop_tid = (int) get_term_meta( $jshop_c->term_id, 'thumbnail_id', true );

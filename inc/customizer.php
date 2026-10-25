@@ -140,6 +140,40 @@ add_action(
 			)
 		);
 		$text( 'jshop_cats_title', __( 'Heading above the category grid (empty = hide)', 'j-shop' ), __( 'Shop by category', 'j-shop' ), 'jshop_cats' );
+		$jshop_cat_choices = array( 0 => __( '— None —', 'j-shop' ) );
+		if ( taxonomy_exists( 'product_cat' ) ) {
+			$jshop_terms = get_terms(
+				array(
+					'taxonomy'   => 'product_cat',
+					'hide_empty' => false,
+					'orderby'    => 'name',
+				)
+			);
+			if ( ! is_wp_error( $jshop_terms ) ) {
+				foreach ( $jshop_terms as $jshop_term ) {
+					$jshop_cat_choices[ $jshop_term->term_id ] = wp_specialchars_decode( $jshop_term->name );
+				}
+			}
+		}
+		for ( $n = 1; $n <= 5; $n++ ) {
+			$wp->add_setting(
+				"jshop_cats_pick_$n",
+				array(
+					'default'           => 0,
+					'sanitize_callback' => 'absint',
+				)
+			);
+			$wp->add_control(
+				"jshop_cats_pick_$n",
+				array(
+					'label'       => sprintf( /* translators: %d: position in the grid, 1-5. */ __( 'Category %d', 'j-shop' ), $n ),
+					'description' => 1 === $n ? __( 'Pick up to 5 categories to show, in this order. If none are picked, the grid shows up to 8 top-level categories that have products.', 'j-shop' ) : '',
+					'section'     => 'jshop_cats',
+					'type'        => 'select',
+					'choices'     => $jshop_cat_choices,
+				)
+			);
+		}
 
 		// Popup.
 		$wp->add_section(
