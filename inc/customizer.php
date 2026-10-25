@@ -143,6 +143,8 @@ add_action(
 			$n = $k + 1;
 			$text( "jshop_trust_t_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d title', 'j-shop' ), $n ), $d[0], 'jshop_trust' );
 			$text( "jshop_trust_s_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d caption', 'j-shop' ), $n ), $d[1], 'jshop_trust' );
+			$img( "jshop_trust_img_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d image (optional, recommended 96×96)', 'j-shop' ), $n ), 'jshop_trust' );
+			$text( "jshop_trust_url_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d link (optional)', 'j-shop' ), $n ), '', 'jshop_trust', 'url' );
 		}
 
 		// Popup.

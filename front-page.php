@@ -63,11 +63,22 @@ if ( $jshop_slides ) :
 	for ( $jshop_i = 1; $jshop_i <= 4; $jshop_i++ ) :
 		$jshop_trust_title = jshop_mod( "jshop_trust_t_$jshop_i", $jshop_td[ $jshop_i - 1 ][0] );
 		$jshop_trust_sub   = jshop_mod( "jshop_trust_s_$jshop_i", $jshop_td[ $jshop_i - 1 ][1] );
-		if ( ! $jshop_trust_title ) {
+		$jshop_trust_img   = jshop_mod( "jshop_trust_img_$jshop_i" );
+		$jshop_trust_url   = jshop_mod( "jshop_trust_url_$jshop_i" );
+		if ( ! $jshop_trust_title && ! $jshop_trust_img ) {
 			continue;
 		}
 		?>
-		<div><strong><?php echo esc_html( $jshop_trust_title ); ?></strong><?php echo esc_html( $jshop_trust_sub ); ?></div>
+		<?php if ( $jshop_trust_url ) : ?>
+			<a class="trust-box" href="<?php echo esc_url( $jshop_trust_url ); ?>">
+		<?php else : ?>
+			<div class="trust-box">
+		<?php endif; ?>
+			<?php if ( $jshop_trust_img ) : ?>
+				<img src="<?php echo esc_url( $jshop_trust_img ); ?>" alt="" width="48" height="48" loading="lazy" decoding="async">
+			<?php endif; ?>
+			<strong><?php echo esc_html( $jshop_trust_title ); ?></strong><?php echo esc_html( $jshop_trust_sub ); ?>
+		<?php echo $jshop_trust_url ? '</a>' : '</div>'; ?>
 	<?php endfor; ?>
 </div></div>
 

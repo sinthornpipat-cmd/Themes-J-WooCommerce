@@ -3,7 +3,7 @@ Contributors: sinthornpipat
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,9 @@ J Shop does not collect, store or send any personal data. The theme loads the Pr
 
 == Changelog ==
 
+= 3.0.3 =
+* Trust strip: each box can now have an image and a link, set in the Customizer.
+
 = 3.0.2 =
 * Removed the five home page product sections and the "Home page blocks" Customizer section, along with the reviews, FAQ and home ideas blocks.
 
@@ -59,7 +62,7 @@ J Shop does not collect, store or send any personal data. The theme loads the Pr
 
 == Upgrade Notice ==
 
-= 3.0.2 =
+= 3.0.3 =
 First release on WordPress.org.
 
 == Resources ==
