@@ -49,7 +49,7 @@ J Shop does not collect, store or send any personal data. The theme loads the Pr
 == Changelog ==
 
 = 3.0.1 =
-* Removed Theme URI from style.css (it duplicated the Author URI).
+* Theme URI now points to https://n2npay.freedev.app/themes/ so it no longer duplicates the Author URI.
 
 = 3.0.0 =
 * First release on WordPress.org.
