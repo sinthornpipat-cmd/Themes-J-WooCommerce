@@ -1,5 +1,5 @@
 === J Shop ===
-Contributors: WPORG_USERNAME
+Contributors: sinthornpipat
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -61,7 +61,8 @@ First release on WordPress.org.
 == Resources ==
 
 * Prompt and Noto Sans Thai fonts, loaded from Google Fonts. License: SIL Open Font License 1.1, https://openfontlicense.org
-* Images in assets/img (hero-1.jpg to hero-3.jpg, banner-2.jpg to banner-5.jpg, popup.png, placeholder.jpg) and screenshot.png. IMAGE_SOURCE_PENDING
+* Images in assets/img (hero-1.jpg to hero-3.jpg, banner-2.jpg to banner-5.jpg, popup.png, placeholder.jpg) and screenshot.png.
+  Source: generated with AI by the theme author (n2npay) for this theme. Released under CC0 1.0 Universal, https://creativecommons.org/publicdomain/zero/1.0/
 
 == Copyright ==
 
