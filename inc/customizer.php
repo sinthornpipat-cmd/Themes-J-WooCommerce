@@ -2,7 +2,7 @@
 /**
  * Customizer settings for the theme.
  *
- * @package petchsiam-shop
+ * @package themes-j-woocommerce
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -26,7 +26,7 @@ add_action( 'customize_register', function ( $wp ) {
 		$wp->add_control( new WP_Customize_Color_Control( $wp, $id, [ 'label' => $label, 'section' => 'dps_style' ] ) );
 	};
 
-	$wp->add_panel( 'dps', [ 'title' => 'Petchsiam Shop', 'priority' => 30 ] );
+	$wp->add_panel( 'dps', [ 'title' => 'Themes J WooCommerce', 'priority' => 30 ] );
 
 	// Style
 	$wp->add_section( 'dps_style', [ 'title' => 'สีธีม', 'panel' => 'dps' ] );

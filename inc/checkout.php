@@ -2,7 +2,7 @@
 /**
  * Checkout page tweaks (Shopify-style two-column layout).
  *
- * @package petchsiam-shop
+ * @package themes-j-woocommerce
  */
 
 defined( 'ABSPATH' ) || exit;

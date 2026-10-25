@@ -1,14 +1,18 @@
-Petchsiam Shop — WordPress + WooCommerce theme (v2.0)
+Themes J WooCommerce — WordPress + WooCommerce theme (v2.0)
 =====================================================
 ธีมร้านค้าของใช้พลาสติกในบ้าน (กล่องเก็บของ ตู้ลิ้นชัก ตะกร้าผ้า ถัง ชั้นวาง Heavy Duty ฯลฯ)
 
 ติดตั้ง
 1. ติดตั้งและเปิดใช้ปลั๊กอิน WooCommerce
-2. Appearance → Themes → Add New → Upload Theme → petchsiam-shop.zip → Activate
+2. Appearance → Themes → Add New → Upload Theme → themes-j-woocommerce.zip → Activate
 3. Appearance → ข้อมูลตัวอย่าง (Demo) → "สร้างข้อมูลตัวอย่าง" (8 หมวดสินค้า, สินค้า, ไอเดียจัดบ้าน, รีวิว พร้อมรูป)
-4. Appearance → Customize → "Petchsiam Shop": แบนเนอร์, เซกชันสินค้า (ใส่ slug หมวดหมู่), แถบประกาศ, ติดต่อ, สี
+4. Appearance → Customize → "Themes J WooCommerce": แบนเนอร์, เซกชันสินค้า (ใส่ slug หมวดหมู่), แถบประกาศ, ติดต่อ, สี
 5. Appearance → Menus → กำหนดตำแหน่ง "เมนูหลัก" / "เมนูส่วนท้าย"
 6. ก่อนเปิดเว็บจริง: กด "ลบข้อมูลตัวอย่างทั้งหมด" แล้วใส่สินค้า/รูปจริง
+
+หมายเหตุ: โฟลเดอร์ธีมต้องชื่อ themes-j-woocommerce ให้ตรงกับ Text Domain
+ถ้าเคยใช้ธีมนี้ในชื่อเดิม (petchsiam-shop) ค่าใน Customizer จะไม่ย้ายตามอัตโนมัติ
+ย้ายได้โดยใช้ Appearance → Customize → Export/Import (ปลั๊กอิน Customizer Export/Import) หรือคัดลอก option theme_mods_petchsiam-shop ไปเป็น theme_mods_themes-j-woocommerce
 
 หน้าแรก: สไลด์แบนเนอร์ → แถบจุดขาย 4 ช่อง → ตารางหมวดหมู่ → เซกชันสินค้า 5 หมวด → ไอเดียจัดบ้าน → รีวิว → FAQ
 Slug หมวดเริ่มต้น: storage-box, drawers-cabinet, laundry, kitchen, heavy-duty (แก้ได้ใน Customizer)
@@ -31,7 +35,7 @@ WooCommerce
 
 ส่วนท้าย (Footer) — แก้ไขได้ทุกจุด (v2.1)
 -----------------------------------------
-- Appearance → Customize → Petchsiam Shop → "ส่วนท้าย: ..." (6 หมวด: คอลัมน์ 1-4, ลิขสิทธิ์ & เครดิต, สี)
+- Appearance → Customize → Themes J WooCommerce → "ส่วนท้าย: ..." (6 หมวด: คอลัมน์ 1-4, ลิขสิทธิ์ & เครดิต, สี)
 - ในหน้าตัวอย่างของ Customizer ให้เลื่อนลงไปที่ส่วนท้าย แล้วคลิกไอคอนดินสอข้างข้อความ จะกระโดดไปช่องแก้ไขของจุดนั้น
 - แก้ได้: ชื่อบริษัท, ที่อยู่, โทร/แฟกซ์/อีเมล (รวมป้ายกำกับ), หัวข้อทุกคอลัมน์, ลิงก์ Shopee, ข้อความเชิญชวน+ฟอร์มอีเมล, โซเชียล 5 ช่อง,
   ข้อความลิขสิทธิ์ ({year} {site}), เครดิตมุมขวา (ปิดได้), สีพื้น/สีตัวอักษร, เปิด-ปิดแต่ละคอลัมน์
@@ -82,7 +86,7 @@ v2.6.0 — หน้า Checkout สไตล์ 2 คอลัมน์
 - ไฟล์ใหม่: inc/checkout.php
 
 v2.6.1 — แก้ข้อความหน้า Checkout ได้
-- Customizer > Petchsiam > "ข้อความหน้า Checkout": แก้ชื่อช่อง (ชื่อ, นามสกุล, ที่อยู่, จังหวัด, รหัสไปรษณีย์, เบอร์โทร ฯลฯ), หมายเหตุคำสั่งซื้อ และหัวข้อ 3 จุด เว้นว่าง = ค่าเดิม
+- Customizer > Themes J WooCommerce > "ข้อความหน้า Checkout": แก้ชื่อช่อง (ชื่อ, นามสกุล, ที่อยู่, จังหวัด, รหัสไปรษณีย์, เบอร์โทร ฯลฯ), หมายเหตุคำสั่งซื้อ และหัวข้อ 3 จุด เว้นว่าง = ค่าเดิม
 - ใช้กับ Checkout แบบคลาสสิก (Checkout Block แก้ในตัวแก้ไขบล็อกของหน้า Checkout)
 
 v2.7.0 — Checkout + ความเร็ว

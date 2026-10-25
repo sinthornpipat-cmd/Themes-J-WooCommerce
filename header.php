@@ -2,7 +2,7 @@
 /**
  * Site header: announcement bar, logo, menu, search and cart.
  *
- * @package petchsiam-shop
+ * @package themes-j-woocommerce
  */
 ?>
 <!doctype html>

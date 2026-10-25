@@ -2,7 +2,7 @@
 /**
  * Home page template: hero, trust strip, categories, products, ideas, reviews, FAQ.
  *
- * @package petchsiam-shop
+ * @package themes-j-woocommerce
  */
 ?>
 <?php get_header(); ?>

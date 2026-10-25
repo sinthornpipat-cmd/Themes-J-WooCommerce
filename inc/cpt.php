@@ -2,7 +2,7 @@
 /**
  * Custom post types (reviews, FAQ, home ideas) and their meta boxes.
  *
- * @package petchsiam-shop
+ * @package themes-j-woocommerce
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

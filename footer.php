@@ -2,7 +2,7 @@
 /**
  * Site footer, mobile bottom nav and promo popup.
  *
- * @package petchsiam-shop
+ * @package themes-j-woocommerce
  */
 
 $shop   = dps_has_wc() ? wc_get_page_permalink( 'shop' ) : home_url( '/' );
