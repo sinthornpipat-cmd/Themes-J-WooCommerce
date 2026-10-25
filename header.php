@@ -18,8 +18,8 @@
 <a class="skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
 
 <?php
-$dps_a  = dps_mod( 'dps_announce', '🛒 สั่งซื้อออนไลน์ได้ที่ Shopee: petchsiam_official_store' );
-$dps_au = dps_mod( 'dps_announce_url', 'https://shopee.co.th/petchsiam_official_store' );
+$dps_a  = dps_mod( 'dps_announce', '🛒 สั่งซื้อออนไลน์ได้ที่ Shopee' );
+$dps_au = dps_mod( 'dps_announce_url', 'https://shopee.co.th/' );
 if ( $dps_a ) :
 	?>
 	<div class="announce"><?php echo $dps_au ? '<a href="' . esc_url( $dps_au ) . '">' . esc_html( $dps_a ) . '</a>' : esc_html( $dps_a ); ?></div>
