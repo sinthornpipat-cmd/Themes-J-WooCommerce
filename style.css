@@ -1,14 +1,19 @@
 /*
 Theme Name: Themes J WooCommerce
 Theme URI: https://petchsiamthai.com/
-Author: Custom
-Description: ธีม WordPress + WooCommerce สำหรับร้านของใช้พลาสติกในบ้าน (กล่องเก็บของ ตู้ลิ้นชัก ตะกร้าผ้า ถัง ชั้นวาง ฯลฯ) ออกแบบให้เข้ากับสินค้า Petchsiam — สไลด์แบนเนอร์, ตารางหมวดหมู่สินค้า, เซกชันสินค้าตามหมวด, ไอเดียจัดบ้าน, รีวิว, FAQ, มินิคาร์ท, และปรับแต่งได้ทั้งหมดผ่าน Customizer
-Version: 2.7.2
+Author: n2npay
+Author URI: https://n2npay.freedev.app/
+Description: Themes J WooCommerce is a clean, fast storefront theme built for Thai home-goods and household-product shops. The home page brings together a banner slider, a trust strip, a product category grid, up to five product sections by category, a home-ideas feed, customer reviews and an FAQ, all set up from the Customizer with no code. Shoppers get a slide-out mini cart with live quantity and total updates, a free-shipping progress bar, coupons, and a two-column checkout, while a shop sidebar keeps product filters close at hand. It supports HPOS and the Cart and Checkout blocks, ships with one-click demo content, and is tuned for speed with Thai typography from Prompt and Noto Sans Thai.
+Version: 2.8.0
 Requires at least: 6.0
+Tested up to: 6.8
 Requires PHP: 7.4
-License: GPL-2.0-or-later
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: themes-j-woocommerce
+Tags: e-commerce, grid-layout, left-sidebar, custom-logo, custom-menu, custom-colors, featured-images, footer-widgets, theme-options
 WC requires at least: 7.0
+WC tested up to: 10.2
 */
 
 :root{

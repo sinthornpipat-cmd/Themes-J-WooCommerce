@@ -111,3 +111,7 @@ v2.7.2 — เซกชันสินค้าหน้าแรกแสดง
 - เดิมต้องกด Publish ใน Customizer หนึ่งครั้งก่อน เซกชันสินค้า 5 หมวดจึงจะแสดง ตอนนี้ใช้ค่าเริ่มต้น (หัวข้อ, slug หมวด, จำนวน, คำโปรย) ได้เลย
 - ค่าเริ่มต้นอยู่ที่ dps_section_defaults() ใน inc/customizer.php ใช้ร่วมกันทั้ง Customizer และหน้าเว็บ
 - ถ้าลบ slug หมวดใน Customizer แล้วบันทึก เซกชันนั้นยังซ่อนตามเดิม
+
+v2.8.0 — หน้ารายละเอียดธีม (Appearance → Themes → Theme Details)
+- เขียน Description ใหม่, ผู้สร้าง n2npay ลิงก์ไป https://n2npay.freedev.app/, เพิ่ม Tags, Tested up to, License URI
+- เพิ่ม screenshot.png (1200x900) ภาพหน้าแรกของธีม
