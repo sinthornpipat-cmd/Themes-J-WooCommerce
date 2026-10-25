@@ -10,6 +10,8 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- WooCommerce template override: core hook names and template-scoped variables.
 ?>
 <div class="woocommerce-checkout-review-order-table dps-co-summary">
 	<ul class="dps-co-items">
@@ -30,7 +32,7 @@ defined( 'ABSPATH' ) || exit;
 				</span>
 				<span class="dps-co-name">
 					<?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) ); ?>
-					<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<?php echo wp_kses_post( wc_get_formatted_cart_item_data( $cart_item ) ); ?>
 				</span>
 				<span class="dps-co-price">
 					<?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ) ); ?>
@@ -79,10 +81,10 @@ defined( 'ABSPATH' ) || exit;
 
 			<?php if ( wc_tax_enabled() && ! WC()->cart->display_prices_including_tax() ) : ?>
 				<?php if ( 'itemized' === get_option( 'woocommerce_tax_total_display' ) ) : ?>
-					<?php foreach ( WC()->cart->get_tax_totals() as $code => $tax ) : ?>
+					<?php foreach ( WC()->cart->get_tax_totals() as $code => $tax_total ) : ?>
 						<tr class="tax-rate tax-rate-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
-							<th><?php echo esc_html( $tax->label ); ?></th>
-							<td><?php echo wp_kses_post( $tax->formatted_amount ); ?></td>
+							<th><?php echo esc_html( $tax_total->label ); ?></th>
+							<td><?php echo wp_kses_post( $tax_total->formatted_amount ); ?></td>
 						</tr>
 					<?php endforeach; ?>
 				<?php else : ?>
