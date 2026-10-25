@@ -116,7 +116,7 @@ add_action( 'woocommerce_after_main_content', function () {
  */
 add_filter( 'woocommerce_sale_flash', function ( $html, $post, $product ) {
 	if ( $product->is_type( 'variable' ) || ! $product->get_regular_price() || ! (float) $product->get_regular_price() ) {
-		return '<span class="onsale">' . esc_html__( 'ลดราคา', 'petchsiam-shop' ) . '</span>';
+		return '<span class="onsale">' . esc_html__( 'ลดราคา', 'themes-j-woocommerce' ) . '</span>';
 	}
 	$pct = round( ( 1 - (float) $product->get_price() / (float) $product->get_regular_price() ) * 100 );
 	return '<span class="onsale">-' . (int) $pct . '%</span>';
@@ -191,7 +191,7 @@ add_action( 'wp_footer', function () {
 	<div class="sticky-atc" aria-hidden="true">
 		<div class="wrap">
 			<div class="sa-info"><strong><?php echo esc_html( $product->get_name() ); ?></strong><span><?php echo wp_kses_post( $product->get_price_html() ); ?></span></div>
-			<button type="button" class="btn sa-btn"><?php echo esc_html( $product->is_type( 'simple' ) ? __( 'หยิบใส่ตะกร้า', 'petchsiam-shop' ) : __( 'เลือกตัวเลือก', 'petchsiam-shop' ) ); ?></button>
+			<button type="button" class="btn sa-btn"><?php echo esc_html( $product->is_type( 'simple' ) ? __( 'หยิบใส่ตะกร้า', 'themes-j-woocommerce' ) : __( 'เลือกตัวเลือก', 'themes-j-woocommerce' ) ); ?></button>
 		</div>
 	</div>
 	<?php

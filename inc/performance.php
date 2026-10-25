@@ -2,7 +2,7 @@
 /**
  * Performance tweaks: non-blocking fonts, deferred scripts, fewer requests.
  *
- * @package petchsiam-shop
+ * @package themes-j-woocommerce
  */
 
 defined( 'ABSPATH' ) || exit;

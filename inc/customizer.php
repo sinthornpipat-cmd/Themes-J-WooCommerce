@@ -2,7 +2,7 @@
 /**
  * Customizer settings for the theme.
  *
- * @package petchsiam-shop
+ * @package themes-j-woocommerce
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

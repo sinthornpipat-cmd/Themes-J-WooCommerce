@@ -2,7 +2,7 @@
 /**
  * Single post template.
  *
- * @package petchsiam-shop
+ * @package themes-j-woocommerce
  */
 ?>
 <?php get_header(); ?>

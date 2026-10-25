@@ -10,7 +10,7 @@ define( 'DPS_VER', wp_get_theme()->get( 'Version' ) );
  * Register theme supports (title, thumbnails, logo, WooCommerce) and nav menus.
  */
 add_action( 'after_setup_theme', function () {
-	load_theme_textdomain( 'petchsiam-shop', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'themes-j-woocommerce', get_template_directory() . '/languages' );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'custom-logo', [ 'height' => 80, 'width' => 260, 'flex-width' => true, 'flex-height' => true ] );
@@ -22,8 +22,8 @@ add_action( 'after_setup_theme', function () {
 	add_theme_support( 'wc-product-gallery-slider' );
 	add_image_size( 'dps-card', 600, 600, true );
 	register_nav_menus( [
-		'primary' => __( 'เมนูหลัก', 'petchsiam-shop' ),
-		'footer'  => __( 'เมนูส่วนท้าย (About us)', 'petchsiam-shop' ),
+		'primary' => __( 'เมนูหลัก', 'themes-j-woocommerce' ),
+		'footer'  => __( 'เมนูส่วนท้าย (About us)', 'themes-j-woocommerce' ),
 	] );
 } );
 
@@ -43,8 +43,8 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_localize_script( 'dps-main', 'DPS', [
 		'popupMinutes' => (int) get_theme_mod( 'dps_popup_minutes', 5 ),
 		'popupEnabled' => (bool) get_theme_mod( 'dps_popup_on', false ),
-		'copied'       => __( 'คัดลอกแล้ว', 'petchsiam-shop' ),
-		'copy'         => __( 'คัดลอกโค้ด', 'petchsiam-shop' ),
+		'copied'       => __( 'คัดลอกแล้ว', 'themes-j-woocommerce' ),
+		'copy'         => __( 'คัดลอกโค้ด', 'themes-j-woocommerce' ),
 	] );
 } );
 

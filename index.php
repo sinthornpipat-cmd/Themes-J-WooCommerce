@@ -2,7 +2,7 @@
 /**
  * Fallback template for blog/archive/search.
  *
- * @package petchsiam-shop
+ * @package themes-j-woocommerce
  */
 ?>
 <?php get_header(); ?>

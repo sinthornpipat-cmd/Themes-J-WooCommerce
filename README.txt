@@ -4,11 +4,15 @@ Themes J WooCommerce — WordPress + WooCommerce theme (v2.0)
 
 ติดตั้ง
 1. ติดตั้งและเปิดใช้ปลั๊กอิน WooCommerce
-2. Appearance → Themes → Add New → Upload Theme → petchsiam-shop.zip → Activate
+2. Appearance → Themes → Add New → Upload Theme → themes-j-woocommerce.zip → Activate
 3. Appearance → ข้อมูลตัวอย่าง (Demo) → "สร้างข้อมูลตัวอย่าง" (8 หมวดสินค้า, สินค้า, ไอเดียจัดบ้าน, รีวิว พร้อมรูป)
 4. Appearance → Customize → "Themes J WooCommerce": แบนเนอร์, เซกชันสินค้า (ใส่ slug หมวดหมู่), แถบประกาศ, ติดต่อ, สี
 5. Appearance → Menus → กำหนดตำแหน่ง "เมนูหลัก" / "เมนูส่วนท้าย"
 6. ก่อนเปิดเว็บจริง: กด "ลบข้อมูลตัวอย่างทั้งหมด" แล้วใส่สินค้า/รูปจริง
+
+หมายเหตุ: โฟลเดอร์ธีมต้องชื่อ themes-j-woocommerce ให้ตรงกับ Text Domain
+ถ้าเคยใช้ธีมนี้ในชื่อเดิม (petchsiam-shop) ค่าใน Customizer จะไม่ย้ายตามอัตโนมัติ
+ย้ายได้โดยใช้ Appearance → Customize → Export/Import (ปลั๊กอิน Customizer Export/Import) หรือคัดลอก option theme_mods_petchsiam-shop ไปเป็น theme_mods_themes-j-woocommerce
 
 หน้าแรก: สไลด์แบนเนอร์ → แถบจุดขาย 4 ช่อง → ตารางหมวดหมู่ → เซกชันสินค้า 5 หมวด → ไอเดียจัดบ้าน → รีวิว → FAQ
 Slug หมวดเริ่มต้น: storage-box, drawers-cabinet, laundry, kitchen, heavy-duty (แก้ได้ใน Customizer)

@@ -2,7 +2,7 @@
 /**
  * Slide-out mini cart drawer. WooCommerce cart fragments refresh .widget_shopping_cart_content.
  *
- * @package petchsiam-shop
+ * @package themes-j-woocommerce
  */
 
 ?>

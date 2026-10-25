@@ -5,7 +5,7 @@
  * Overrides woocommerce/checkout/review-order.php. Shows a thumbnail with a
  * quantity badge for each line, an inline coupon field, then the totals.
  *
- * @package petchsiam-shop
+ * @package themes-j-woocommerce
  * @version 5.2.0
  */
 
@@ -45,15 +45,15 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php if ( wc_coupons_enabled() ) : ?>
 		<div class="dps-co-coupon">
-			<input type="text" id="dps-co-coupon-code" class="input-text" placeholder="<?php esc_attr_e( 'รหัสส่วนลด', 'petchsiam-shop' ); ?>" autocomplete="off" />
-			<button type="button" class="dps-co-coupon-btn"><?php esc_html_e( 'นำไปใช้', 'petchsiam-shop' ); ?></button>
+			<input type="text" id="dps-co-coupon-code" class="input-text" placeholder="<?php esc_attr_e( 'รหัสส่วนลด', 'themes-j-woocommerce' ); ?>" autocomplete="off" />
+			<button type="button" class="dps-co-coupon-btn"><?php esc_html_e( 'นำไปใช้', 'themes-j-woocommerce' ); ?></button>
 		</div>
 	<?php endif; ?>
 
 	<table class="dps-co-totals">
 		<tbody>
 			<tr class="cart-subtotal">
-				<th><?php esc_html_e( 'ยอดรวมย่อย', 'petchsiam-shop' ); ?></th>
+				<th><?php esc_html_e( 'ยอดรวมย่อย', 'themes-j-woocommerce' ); ?></th>
 				<td><?php wc_cart_totals_subtotal_html(); ?></td>
 			</tr>
 
@@ -96,7 +96,7 @@ defined( 'ABSPATH' ) || exit;
 			<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
 			<tr class="order-total">
-				<th><?php esc_html_e( 'ยอดรวม', 'petchsiam-shop' ); ?></th>
+				<th><?php esc_html_e( 'ยอดรวม', 'themes-j-woocommerce' ); ?></th>
 				<td><?php wc_cart_totals_order_total_html(); ?></td>
 			</tr>
 
