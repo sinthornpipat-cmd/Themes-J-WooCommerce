@@ -22,7 +22,7 @@
 
   // Header cart icon opens drawer (except on cart / checkout)
   $(document).on('click', '.cart-toggle', function (e) {
-    if (window.DPSW && DPSW.isCart) return;
+    if (window.jshopWoo && jshopWoo.isCart) return;
     if (!drawer) return;
     e.preventDefault(); open();
   });
@@ -31,7 +31,7 @@
 
   // Open after ajax add-to-cart
   $(document.body).on('added_to_cart', function () {
-    if (window.DPSW && DPSW.openOnAdd) open();
+    if (window.jshopWoo && jshopWoo.openOnAdd) open();
   });
 
   // Quantity +/- buttons
@@ -50,7 +50,7 @@
   var timers = {};
 
   function money(n) {
-    var c = (window.DPSW && DPSW.cur) || { sym: '฿', dec: 2, dsep: '.', tsep: ',', fmt: '%1$s%2$s' };
+    var c = (window.jshopWoo && jshopWoo.cur) || { sym: '฿', dec: 2, dsep: '.', tsep: ',', fmt: '%1$s%2$s' };
     var neg = n < 0; n = Math.abs(n);
     var parts = n.toFixed(c.dec).split('.');
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, c.tsep);
@@ -70,8 +70,8 @@
 
   // Prefer the light ?wc-ajax= endpoint; fall back to admin-ajax.php.
   function post(action, data) {
-    var url = DPSW.wcBase ? DPSW.wcBase.replace('%%endpoint%%', action) : DPSW.ajax;
-    return $.post(url, $.extend({ action: action, nonce: DPSW.nonce }, data));
+    var url = jshopWoo.wcBase ? jshopWoo.wcBase.replace('%%endpoint%%', action) : jshopWoo.ajax;
+    return $.post(url, $.extend({ action: action, nonce: jshopWoo.nonce }, data));
   }
 
   function applyFragments(res) {
@@ -84,11 +84,11 @@
   function sendQty($item, qty) {
     var key = $item.data('key');
     $item.addClass('is-loading'); $(drawer).addClass('mc-busy');
-    post('dps_cart_qty', { key: key, qty: qty }).done(function (res) {
+    post('jshop_cart_qty', { key: key, qty: qty }).done(function (res) {
       if (applyFragments(res)) {
-        if (res.data && res.data.capped) toast(DPSW.i18n.max);
-      } else { toast((res && res.data && res.data.message) || DPSW.i18n.err); $item.removeClass('is-loading'); }
-    }).fail(function () { toast(DPSW.i18n.err); $item.removeClass('is-loading'); })
+        if (res.data && res.data.capped) toast(jshopWoo.i18n.max);
+      } else { toast((res && res.data && res.data.message) || jshopWoo.i18n.err); $item.removeClass('is-loading'); }
+    }).fail(function () { toast(jshopWoo.i18n.err); $item.removeClass('is-loading'); })
       .always(function () { $(drawer).removeClass('mc-busy'); });
   }
 
@@ -108,7 +108,7 @@
   function setQty($item, qty) {
     var $in = $item.find('.mc-qty-input'), max = parseInt($in.attr('max'), 10);
     qty = parseInt(qty, 10); if (isNaN(qty) || qty < 1) qty = 1;
-    if (!isNaN(max) && max > 0 && qty > max) { qty = max; toast(DPSW.i18n.max); }
+    if (!isNaN(max) && max > 0 && qty > max) { qty = max; toast(jshopWoo.i18n.max); }
     $in.val(qty);
     var cur = parseInt($item.data('qty'), 10);
     if (isNaN(cur)) cur = qty;
@@ -130,7 +130,7 @@
   $(document).on('keydown', '.mc-qty-input', function (e) { if (e.key === 'Enter') { e.preventDefault(); $(this).trigger('change'); } });
 
   $(document).on('click', '.mc-remove', function (e) {
-    if (!DPSW.ajax) return;
+    if (!jshopWoo.ajax) return;
     e.preventDefault();
     sendQty($(this).closest('.mc-item'), 0);
   });
@@ -146,15 +146,15 @@
     var $f = $(this), code = $.trim($f.find('input').val());
     if (!code) return;
     $f.addClass('is-loading');
-    post('dps_cart_coupon', { code: code, op: 'apply' }).done(function (res) {
-      if (applyFragments(res)) toast(DPSW.i18n.coupon);
-      else { toast((res && res.data && res.data.message) || DPSW.i18n.err); $f.removeClass('is-loading'); }
-    }).fail(function () { toast(DPSW.i18n.err); $f.removeClass('is-loading'); });
+    post('jshop_cart_coupon', { code: code, op: 'apply' }).done(function (res) {
+      if (applyFragments(res)) toast(jshopWoo.i18n.coupon);
+      else { toast((res && res.data && res.data.message) || jshopWoo.i18n.err); $f.removeClass('is-loading'); }
+    }).fail(function () { toast(jshopWoo.i18n.err); $f.removeClass('is-loading'); });
   });
   $(document).on('click', '.mc-chip-x', function () {
     var $c = $(this).closest('.mc-chip').addClass('is-loading');
-    post('dps_cart_coupon', { code: $(this).data('coupon'), op: 'remove' }).done(applyFragments)
-      .fail(function () { toast(DPSW.i18n.err); $c.removeClass('is-loading'); });
+    post('jshop_cart_coupon', { code: $(this).data('coupon'), op: 'remove' }).done(applyFragments)
+      .fail(function () { toast(jshopWoo.i18n.err); $c.removeClass('is-loading'); });
   });
 
   /* ===== Cart page: auto-update on quantity change ===== */
@@ -176,7 +176,7 @@
   function addToCart(data, fallbackUrl, done) {
     open();
     setLoading(true);
-    fetch(DPSW.wcAjax, { method: 'POST', body: data, credentials: 'same-origin', headers: { 'Accept': 'application/json' } })
+    fetch(jshopWoo.wcAjax, { method: 'POST', body: data, credentials: 'same-origin', headers: { 'Accept': 'application/json' } })
       .then(function (r) { return r.json(); })
       .then(function (res) {
         if (res && res.success) {
@@ -185,7 +185,7 @@
         } else {
           setLoading(false);
           var d = (res && res.data) || {};
-          toast(d.message || DPSW.i18n.err);
+          toast(d.message || jshopWoo.i18n.err);
           if (d.product_url) { setTimeout(function () { window.location.href = d.product_url; }, 1200); }
         }
       })
@@ -196,7 +196,7 @@
   // Shop / home loops
   document.addEventListener('click', function (e) {
     var a = e.target.closest ? e.target.closest('a.add_to_cart_button') : null;
-    if (!a || !drawer || !window.fetch || !window.DPSW || !DPSW.wcAjax) return;
+    if (!a || !drawer || !window.fetch || !window.jshopWoo || !jshopWoo.wcAjax) return;
     if (!/product_type_simple/.test(a.className) || a.classList.contains('disabled')) return; // variable/external → normal link
     var pid = a.getAttribute('data-product_id');
     if (!pid) return;
@@ -213,7 +213,7 @@
   // Single product page (simple + variable)
   $(document).on('submit', 'form.cart', function (e) {
     var form = this, $form = $(form);
-    if ($form.hasClass('grouped_form') || !window.fetch || !drawer || !window.DPSW || !DPSW.wcAjax) return;
+    if ($form.hasClass('grouped_form') || !window.fetch || !drawer || !window.jshopWoo || !jshopWoo.wcAjax) return;
     var $btn = $form.find('.single_add_to_cart_button');
     if ($btn.is('.disabled, :disabled') || $btn.hasClass('wc-variation-selection-needed')) return;
     e.preventDefault();
@@ -247,10 +247,10 @@
     var $in = $('#dps-co-coupon-code'), code = $.trim($in.val()), $b = $('.dps-co-coupon-btn');
     if (!code || $b.prop('disabled')) return;
     $b.prop('disabled', true);
-    post('dps_cart_coupon', { code: code, op: 'apply' }).done(function (res) {
-      if (res && res.success) { $in.val(''); toast(DPSW.i18n.coupon); $(document.body).trigger('update_checkout'); }
-      else { toast((res && res.data && res.data.message) || DPSW.i18n.err); }
-    }).fail(function () { toast(DPSW.i18n.err); }).always(function () { $b.prop('disabled', false); });
+    post('jshop_cart_coupon', { code: code, op: 'apply' }).done(function (res) {
+      if (res && res.success) { $in.val(''); toast(jshopWoo.i18n.coupon); $(document.body).trigger('update_checkout'); }
+      else { toast((res && res.data && res.data.message) || jshopWoo.i18n.err); }
+    }).fail(function () { toast(jshopWoo.i18n.err); }).always(function () { $b.prop('disabled', false); });
   }
   $(document).on('click', '.dps-co-coupon-btn', applyCheckoutCoupon);
   $(document).on('keydown', '#dps-co-coupon-code', function (e) {

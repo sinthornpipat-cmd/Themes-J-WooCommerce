@@ -2,7 +2,7 @@
 /**
  * Custom post types (reviews, FAQ, home ideas) and their meta boxes.
  *
- * @package themes-j-woocommerce
+ * @package dps-store-extras
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

@@ -2,7 +2,7 @@
 /**
  * WooCommerce integration.
  *
- * @package themes-j-woocommerce
+ * @package j-shop
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -33,18 +33,18 @@ add_action(
 add_action(
 	'wp_enqueue_scripts',
 	function () {
-		wp_enqueue_style( 'dps-woo', get_template_directory_uri() . '/assets/css/woocommerce.css', array( 'dps-style' ), DPS_VER );
-		wp_enqueue_script( 'dps-woo', get_template_directory_uri() . '/assets/js/woo.js', array( 'jquery' ), DPS_VER, true );
+		wp_enqueue_style( 'jshop-woo', get_template_directory_uri() . '/assets/css/woocommerce.css', array( 'jshop-style' ), JSHOP_VER );
+		wp_enqueue_script( 'jshop-woo', get_template_directory_uri() . '/assets/js/woo.js', array( 'jquery' ), JSHOP_VER, true );
 		wp_localize_script(
-			'dps-woo',
-			'DPSW',
+			'jshop-woo',
+			'jshopWoo',
 			array(
-				'openOnAdd' => (bool) get_theme_mod( 'dps_open_mini_cart', true ),
+				'openOnAdd' => (bool) get_theme_mod( 'jshop_open_mini_cart', true ),
 				'isCart'    => is_cart() || is_checkout(),
 				'ajax'      => admin_url( 'admin-ajax.php' ),
-				'wcAjax'    => class_exists( 'WC_AJAX' ) ? WC_AJAX::get_endpoint( 'dps_add_to_cart' ) : '',
+				'wcAjax'    => class_exists( 'WC_AJAX' ) ? WC_AJAX::get_endpoint( 'jshop_add_to_cart' ) : '',
 				'wcBase'    => class_exists( 'WC_AJAX' ) ? WC_AJAX::get_endpoint( '%%endpoint%%' ) : '',
-				'nonce'     => wp_create_nonce( 'dps_cart' ),
+				'nonce'     => wp_create_nonce( 'jshop_cart' ),
 				'cur'       => array(
 					'sym'  => html_entity_decode( get_woocommerce_currency_symbol(), ENT_QUOTES, 'UTF-8' ),
 					'dec'  => wc_get_price_decimals(),
@@ -53,9 +53,9 @@ add_action(
 					'fmt'  => get_woocommerce_price_format(),
 				),
 				'i18n'      => array(
-					'max'    => 'สินค้าคงเหลือไม่พอ ปรับเป็นจำนวนสูงสุดที่สั่งได้แล้ว',
-					'err'    => 'เกิดข้อผิดพลาด กรุณาลองใหม่',
-					'coupon' => 'ใช้คูปองสำเร็จ',
+					'max'    => __( 'Not enough stock. The quantity was set to the maximum available.', 'j-shop' ),
+					'err'    => __( 'Something went wrong. Please try again.', 'j-shop' ),
+					'coupon' => __( 'Coupon applied.', 'j-shop' ),
 				),
 			)
 		);
@@ -65,21 +65,12 @@ add_action(
 
 /* ---- Shop behaviour ---- */
 /**
- * Force AJAX add-to-cart on shop loops.
- */
-add_filter(
-	'pre_option_woocommerce_enable_ajax_add_to_cart',
-	function () {
-		return 'yes';
-	}
-);
-/**
  * Set products per page on shop archives.
  */
 add_filter(
 	'loop_shop_per_page',
 	function () {
-		return (int) get_theme_mod( 'dps_per_page', 12 );
+		return (int) get_theme_mod( 'jshop_per_page', 12 );
 	}
 );
 /**
@@ -135,9 +126,9 @@ add_action(
 	function () {
 		register_sidebar(
 			array(
-				'name'          => 'ตัวกรองสินค้า (Shop)',
+				'name'          => __( 'Shop filters', 'j-shop' ),
 				'id'            => 'shop-sidebar',
-				'description'   => 'แสดงในหน้าร้านค้า/หมวดหมู่สินค้า เช่น Filter by price, Product categories',
+				'description'   => __( 'Shown on the shop and product category pages, e.g. Filter by price or Product categories.', 'j-shop' ),
 				'before_widget' => '<section class="widget %2$s">',
 				'after_widget'  => '</section>',
 				'before_title'  => '<h3 class="widget-title">',
@@ -151,7 +142,7 @@ add_action(
  *
  * @return bool
  */
-function dps_shop_has_sidebar() {
+function jshop_shop_has_sidebar() {
 	return ( is_shop() || is_product_taxonomy() ) && is_active_sidebar( 'shop-sidebar' );
 }
 /**
@@ -160,10 +151,10 @@ function dps_shop_has_sidebar() {
 add_action(
 	'woocommerce_before_main_content',
 	function () {
-		if ( ! dps_shop_has_sidebar() ) {
+		if ( ! jshop_shop_has_sidebar() ) {
 			return;
 		}
-		echo '<div class="shop-layout"><aside class="shop-side" aria-label="ตัวกรองสินค้า">';
+		echo '<div class="shop-layout"><aside class="shop-side" aria-label="' . esc_attr__( 'Product filters', 'j-shop' ) . '">';
 		dynamic_sidebar( 'shop-sidebar' );
 		echo '</aside><div class="shop-main">';
 	},
@@ -175,7 +166,7 @@ add_action(
 add_action(
 	'woocommerce_after_main_content',
 	function () {
-		if ( dps_shop_has_sidebar() ) {
+		if ( jshop_shop_has_sidebar() ) {
 			echo '</div></div>';
 		}
 	},
@@ -190,7 +181,7 @@ add_filter(
 	'woocommerce_sale_flash',
 	function ( $html, $post, $product ) {
 		if ( $product->is_type( 'variable' ) || ! $product->get_regular_price() || ! (float) $product->get_regular_price() ) {
-			return '<span class="onsale">' . esc_html__( 'ลดราคา', 'themes-j-woocommerce' ) . '</span>';
+			return '<span class="onsale">' . esc_html__( 'Sale', 'j-shop' ) . '</span>';
 		}
 		$pct = round( ( 1 - (float) $product->get_price() / (float) $product->get_regular_price() ) * 100 );
 		return '<span class="onsale">-' . (int) $pct . '%</span>';
@@ -206,7 +197,7 @@ add_filter(
 add_action(
 	'woocommerce_before_quantity_input_field',
 	function () {
-		echo '<button type="button" class="qty-btn" data-d="-1" aria-label="ลดจำนวน">−</button>';
+		echo '<button type="button" class="qty-btn" data-d="-1" aria-label="' . esc_attr__( 'Decrease quantity', 'j-shop' ) . '">−</button>';
 	}
 );
 /**
@@ -215,7 +206,7 @@ add_action(
 add_action(
 	'woocommerce_after_quantity_input_field',
 	function () {
-		echo '<button type="button" class="qty-btn" data-d="1" aria-label="เพิ่มจำนวน">+</button>';
+		echo '<button type="button" class="qty-btn" data-d="1" aria-label="' . esc_attr__( 'Increase quantity', 'j-shop' ) . '">+</button>';
 	}
 );
 
@@ -225,24 +216,24 @@ add_action(
  *
  * @return float 0 disables the bar.
  */
-function dps_free_ship_threshold() {
-	return (float) get_theme_mod( 'dps_free_ship', 0 );
+function jshop_free_ship_threshold() {
+	return (float) get_theme_mod( 'jshop_free_ship', 0 );
 }
 /**
  * Build the free-shipping progress bar markup.
  *
  * @return string HTML.
  */
-function dps_ship_bar_html() {
-	$t = dps_free_ship_threshold();
+function jshop_ship_bar_html() {
+	$t = jshop_free_ship_threshold();
 	if ( $t <= 0 || ! WC()->cart ) {
 		return '<div class="dps-ship-bar"></div>';
 	}
 	$sub  = (float) WC()->cart->get_displayed_subtotal();
 	$left = max( 0, $t - $sub );
 	$pct  = min( 100, $t ? ( $sub / $t ) * 100 : 100 );
-	$msg  = $sub <= 0 ? sprintf( 'ซื้อครบ %s ส่งฟรี', wc_price( $t ) )
-		: ( $left > 0 ? sprintf( 'ซื้อเพิ่มอีก %s เพื่อรับส่งฟรี', wc_price( $left ) ) : '🎉 คุณได้รับสิทธิ์ส่งฟรีแล้ว' );
+	$msg  = $sub <= 0 ? sprintf( /* translators: %s: free-shipping threshold. */ __( 'Free shipping on orders over %s', 'j-shop' ), wc_price( $t ) )
+		: ( $left > 0 ? sprintf( /* translators: %s: amount left to spend. */ __( 'Spend %s more for free shipping', 'j-shop' ), wc_price( $left ) ) : __( '🎉 You get free shipping!', 'j-shop' ) );
 	return '<div class="dps-ship-bar"><p>' . wp_kses_post( $msg ) . '</p><div class="bar"><span style="width:' . esc_attr( round( $pct ) ) . '%"></span></div></div>';
 }
 /**
@@ -251,7 +242,7 @@ function dps_ship_bar_html() {
 add_filter(
 	'woocommerce_add_to_cart_fragments',
 	function ( $f ) {
-		$f['div.dps-ship-bar'] = dps_ship_bar_html();
+		$f['div.dps-ship-bar'] = jshop_ship_bar_html();
 		return $f;
 	}
 );
@@ -262,7 +253,7 @@ add_filter(
 add_action(
 	'woocommerce_before_cart_table',
 	function () {
-		echo wp_kses_post( dps_ship_bar_html() );
+		echo wp_kses_post( jshop_ship_bar_html() );
 	}
 );
 
@@ -284,7 +275,7 @@ add_action(
 	<div class="sticky-atc" aria-hidden="true">
 		<div class="wrap">
 			<div class="sa-info"><strong><?php echo esc_html( $product->get_name() ); ?></strong><span><?php echo wp_kses_post( $product->get_price_html() ); ?></span></div>
-			<button type="button" class="btn sa-btn"><?php echo esc_html( $product->is_type( 'simple' ) ? __( 'หยิบใส่ตะกร้า', 'themes-j-woocommerce' ) : __( 'เลือกตัวเลือก', 'themes-j-woocommerce' ) ); ?></button>
+			<button type="button" class="btn sa-btn"><?php echo esc_html( $product->is_type( 'simple' ) ? __( 'Add to cart', 'j-shop' ) : __( 'Select options', 'j-shop' ) ); ?></button>
 		</div>
 	</div>
 		<?php
@@ -314,54 +305,54 @@ add_action(
 	'customize_register',
 	function ( $wp ) {
 		$wp->add_section(
-			'dps_woo',
+			'jshop_woo',
 			array(
-				'title' => 'WooCommerce (ร้านค้า)',
-				'panel' => 'dps',
+				'title' => __( 'Shop settings', 'j-shop' ),
+				'panel' => 'jshop',
 			)
 		);
 		$wp->add_setting(
-			'dps_free_ship',
+			'jshop_free_ship',
 			array(
 				'default'           => 0,
 				'sanitize_callback' => 'absint',
 			)
 		);
 		$wp->add_control(
-			'dps_free_ship',
+			'jshop_free_ship',
 			array(
-				'label'   => 'ยอดขั้นต่ำส่งฟรี (บาท) สำหรับแถบความคืบหน้า — 0 = ซ่อน',
-				'section' => 'dps_woo',
+				'label'   => __( 'Free-shipping amount for the progress bar (0 = hide)', 'j-shop' ),
+				'section' => 'jshop_woo',
 				'type'    => 'number',
 			)
 		);
 		$wp->add_setting(
-			'dps_per_page',
+			'jshop_per_page',
 			array(
 				'default'           => 12,
 				'sanitize_callback' => 'absint',
 			)
 		);
 		$wp->add_control(
-			'dps_per_page',
+			'jshop_per_page',
 			array(
-				'label'   => 'จำนวนสินค้าต่อหน้า (หน้าร้านค้า)',
-				'section' => 'dps_woo',
+				'label'   => __( 'Products per page (shop)', 'j-shop' ),
+				'section' => 'jshop_woo',
 				'type'    => 'number',
 			)
 		);
 		$wp->add_setting(
-			'dps_open_mini_cart',
+			'jshop_open_mini_cart',
 			array(
 				'default'           => true,
 				'sanitize_callback' => 'wp_validate_boolean',
 			)
 		);
 		$wp->add_control(
-			'dps_open_mini_cart',
+			'jshop_open_mini_cart',
 			array(
-				'label'   => 'เปิดมินิคาร์ททันทีเมื่อเพิ่มสินค้า',
-				'section' => 'dps_woo',
+				'label'   => __( 'Open the mini cart when a product is added', 'j-shop' ),
+				'section' => 'jshop_woo',
 				'type'    => 'checkbox',
 			)
 		);
@@ -387,9 +378,9 @@ add_filter(
  *
  * @return void
  */
-function dps_ajax_guard() {
-	if ( ! check_ajax_referer( 'dps_cart', 'nonce', false ) ) {
-		wp_send_json_error( array( 'message' => 'หมดเวลา กรุณารีเฟรชหน้าแล้วลองใหม่' ) );
+function jshop_ajax_guard() {
+	if ( ! check_ajax_referer( 'jshop_cart', 'nonce', false ) ) {
+		wp_send_json_error( array( 'message' => __( 'Your session expired. Please refresh the page and try again.', 'j-shop' ) ) );
 	}
 	if ( ! WC()->cart ) {
 		wc_load_cart();
@@ -401,7 +392,7 @@ function dps_ajax_guard() {
  * @param array $extra Extra data to merge into the response.
  * @return void
  */
-function dps_ajax_cart_response( $extra = array() ) {
+function jshop_ajax_cart_response( $extra = array() ) {
 	WC()->cart->calculate_totals();
 	ob_start();
 	woocommerce_mini_cart();
@@ -423,23 +414,23 @@ function dps_ajax_cart_response( $extra = array() ) {
 	);
 }
 
-add_action( 'wp_ajax_dps_cart_qty', 'dps_ajax_cart_qty' );
-add_action( 'wp_ajax_nopriv_dps_cart_qty', 'dps_ajax_cart_qty' );
-add_action( 'wc_ajax_dps_cart_qty', 'dps_ajax_cart_qty' ); // Lighter than admin-ajax.php.
+add_action( 'wp_ajax_jshop_cart_qty', 'jshop_ajax_cart_qty' );
+add_action( 'wp_ajax_nopriv_jshop_cart_qty', 'jshop_ajax_cart_qty' );
+add_action( 'wc_ajax_jshop_cart_qty', 'jshop_ajax_cart_qty' ); // Lighter than admin-ajax.php.
 /**
  * AJAX: set or remove a cart item quantity.
  *
  * @return void
  */
-function dps_ajax_cart_qty() {
-	dps_ajax_guard();
-	// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce checked in dps_ajax_guard().
+function jshop_ajax_cart_qty() {
+	jshop_ajax_guard();
+	// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce checked in jshop_ajax_guard().
 	$key = isset( $_POST['key'] ) ? sanitize_text_field( wp_unslash( $_POST['key'] ) ) : '';
 	$qty = isset( $_POST['qty'] ) ? wc_stock_amount( sanitize_text_field( wp_unslash( $_POST['qty'] ) ) ) : 0;
 	// phpcs:enable WordPress.Security.NonceVerification.Missing
 	$item = WC()->cart->get_cart_item( $key );
 	if ( ! $item ) {
-		dps_ajax_cart_response();
+		jshop_ajax_cart_response();
 	}
 	$extra = array();
 	if ( $qty <= 0 ) {
@@ -452,35 +443,35 @@ function dps_ajax_cart_qty() {
 		}
 		WC()->cart->set_quantity( $key, $qty, true );
 	}
-	dps_ajax_cart_response( $extra );
+	jshop_ajax_cart_response( $extra );
 }
 
-add_action( 'wp_ajax_dps_cart_coupon', 'dps_ajax_cart_coupon' );
-add_action( 'wp_ajax_nopriv_dps_cart_coupon', 'dps_ajax_cart_coupon' );
-add_action( 'wc_ajax_dps_cart_coupon', 'dps_ajax_cart_coupon' ); // Lighter than admin-ajax.php.
+add_action( 'wp_ajax_jshop_cart_coupon', 'jshop_ajax_cart_coupon' );
+add_action( 'wp_ajax_nopriv_jshop_cart_coupon', 'jshop_ajax_cart_coupon' );
+add_action( 'wc_ajax_jshop_cart_coupon', 'jshop_ajax_cart_coupon' ); // Lighter than admin-ajax.php.
 /**
  * AJAX: apply or remove a coupon in the mini-cart.
  *
  * @return void
  */
-function dps_ajax_cart_coupon() {
-	dps_ajax_guard();
-	// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce checked in dps_ajax_guard().
+function jshop_ajax_cart_coupon() {
+	jshop_ajax_guard();
+	// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce checked in jshop_ajax_guard().
 	$code = isset( $_POST['code'] ) ? wc_format_coupon_code( sanitize_text_field( wp_unslash( $_POST['code'] ) ) ) : '';
 	$op   = isset( $_POST['op'] ) ? sanitize_key( wp_unslash( $_POST['op'] ) ) : 'apply';
 	// phpcs:enable WordPress.Security.NonceVerification.Missing
 	if ( '' === $code ) {
-		wp_send_json_error( array( 'message' => 'กรุณากรอกรหัสคูปอง' ) );
+		wp_send_json_error( array( 'message' => __( 'Please enter a coupon code.', 'j-shop' ) ) );
 	}
 	if ( 'remove' === $op ) {
 		WC()->cart->remove_coupon( $code );
 		wc_clear_notices();
-		dps_ajax_cart_response();
+		jshop_ajax_cart_response();
 	}
 	wc_clear_notices();
 	if ( WC()->cart->apply_coupon( $code ) ) {
 		wc_clear_notices();
-		dps_ajax_cart_response( array( 'applied' => true ) );
+		jshop_ajax_cart_response( array( 'applied' => true ) );
 	}
 	$errors = array_map(
 		function ( $n ) {
@@ -489,7 +480,7 @@ function dps_ajax_cart_coupon() {
 		wc_get_notices( 'error' )
 	);
 	wc_clear_notices();
-	wp_send_json_error( array( 'message' => $errors ? implode( ' ', $errors ) : 'ไม่สามารถใช้คูปองนี้ได้' ) );
+	wp_send_json_error( array( 'message' => $errors ? implode( ' ', $errors ) : __( 'This coupon cannot be used.', 'j-shop' ) ) );
 }
 
 
@@ -525,7 +516,7 @@ add_action(
  *
  * @return void
  */
-function dps_wc_ajax_add_to_cart() {
+function jshop_wc_ajax_add_to_cart() {
 	// phpcs:disable WordPress.Security.NonceVerification.Missing
 	if ( ! WC()->cart ) {
 		wc_load_cart();
@@ -545,7 +536,7 @@ function dps_wc_ajax_add_to_cart() {
 
 	$product = $product_id ? wc_get_product( $product_id ) : false;
 	if ( ! $product ) {
-		wp_send_json_error( array( 'message' => 'ไม่พบสินค้า' ) );
+		wp_send_json_error( array( 'message' => __( 'Product not found.', 'j-shop' ) ) );
 	}
 
 	wc_clear_notices();
@@ -560,12 +551,12 @@ function dps_wc_ajax_add_to_cart() {
 		wc_clear_notices();
 		wp_send_json_error(
 			array(
-				'message'     => $errors ? implode( ' ', $errors ) : 'ไม่สามารถเพิ่มสินค้าได้',
+				'message'     => $errors ? implode( ' ', $errors ) : __( 'The product could not be added.', 'j-shop' ),
 				'product_url' => get_permalink( $product_id ),
 			)
 		);
 	}
 	wc_clear_notices();
-	dps_ajax_cart_response( array( 'added' => true ) );
+	jshop_ajax_cart_response( array( 'added' => true ) );
 }
-add_action( 'wc_ajax_dps_add_to_cart', 'dps_wc_ajax_add_to_cart' );
+add_action( 'wc_ajax_jshop_add_to_cart', 'jshop_wc_ajax_add_to_cart' );

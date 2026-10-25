@@ -5,7 +5,7 @@
  * The <main> element is printed here (not via WooCommerce hooks) so that every
  * WooCommerce view gets the same centred container and side gutters.
  *
- * @package themes-j-woocommerce
+ * @package j-shop
  */
 
 get_header();

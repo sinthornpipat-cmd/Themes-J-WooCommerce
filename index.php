@@ -2,7 +2,7 @@
 /**
  * Fallback template for blog/archive/search.
  *
- * @package themes-j-woocommerce
+ * @package j-shop
  */
 
 get_header();
@@ -13,7 +13,7 @@ get_header();
 			<?php
 			if ( is_search() ) {
 				/* translators: %s: search query. */
-				printf( esc_html__( 'ผลการค้นหา: %s', 'themes-j-woocommerce' ), esc_html( get_search_query() ) );
+				printf( esc_html__( 'Search results for: %s', 'j-shop' ), esc_html( get_search_query() ) );
 			} elseif ( is_archive() ) {
 				the_archive_title();
 			} else {
@@ -42,7 +42,7 @@ get_header();
 		</div>
 		<?php the_posts_pagination( array( 'mid_size' => 1 ) ); ?>
 	<?php else : ?>
-		<p>ไม่พบเนื้อหา</p>
+		<p><?php esc_html_e( 'Nothing found.', 'j-shop' ); ?></p>
 	<?php endif; ?>
 </main>
 <?php get_footer(); ?>
