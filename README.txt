@@ -106,3 +106,8 @@ v2.7.1 — ผ่าน WordPress Coding Standards (PHPCS: WordPress + PHPCompat
 - เพิ่ม comments.php (เดิม WordPress แจ้ง deprecated เมื่อเปิดหน้าโพสต์)
 - เพิ่ม phpcs.xml.dist สำหรับตรวจโค้ด: composer global require wp-coding-standards/wpcs phpcompatibility/phpcompatibility-wp แล้วรัน phpcs ในโฟลเดอร์ธีม
 - หน้าเว็บแสดงผลเหมือนเดิมทุกหน้า (ทดสอบเทียบ HTML ก่อน/หลังบน WordPress 6.8 + WooCommerce 10.2)
+
+v2.7.2 — เซกชันสินค้าหน้าแรกแสดงทันทีหลังติดตั้ง
+- เดิมต้องกด Publish ใน Customizer หนึ่งครั้งก่อน เซกชันสินค้า 5 หมวดจึงจะแสดง ตอนนี้ใช้ค่าเริ่มต้น (หัวข้อ, slug หมวด, จำนวน, คำโปรย) ได้เลย
+- ค่าเริ่มต้นอยู่ที่ dps_section_defaults() ใน inc/customizer.php ใช้ร่วมกันทั้ง Customizer และหน้าเว็บ
+- ถ้าลบ slug หมวดใน Customizer แล้วบันทึก เซกชันนั้นยังซ่อนตามเดิม

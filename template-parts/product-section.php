@@ -7,9 +7,16 @@
  * @package themes-j-woocommerce
  */
 
-$dps_n   = (int) $args['n'];
-$dps_key = "dps_sec_$dps_n";
-$dps_cat = dps_mod( "{$dps_key}_cat" );
+$dps_n        = (int) $args['n'];
+$dps_key      = "dps_sec_$dps_n";
+$dps_defaults = dps_section_defaults();
+$dps_def      = isset( $dps_defaults[ $dps_n ] ) ? $dps_defaults[ $dps_n ] : array(
+	'title' => '',
+	'cat'   => '',
+	'count' => '8',
+	'sub'   => '',
+);
+$dps_cat      = dps_mod( "{$dps_key}_cat", $dps_def['cat'] );
 if ( ! $dps_cat || ! dps_has_wc() ) {
 	return;
 }
@@ -17,13 +24,13 @@ if ( ! $dps_cat || ! dps_has_wc() ) {
 $dps_ids    = wc_get_products(
 	array(
 		'status'   => 'publish',
-		'limit'    => max( 1, (int) dps_mod( "{$dps_key}_count", 8 ) ),
+		'limit'    => max( 1, (int) dps_mod( "{$dps_key}_count", $dps_def['count'] ) ),
 		'category' => array( $dps_cat ),
 		'return'   => 'ids',
 	)
 );
-$dps_title  = dps_mod( "{$dps_key}_title" );
-$dps_sub    = dps_mod( "{$dps_key}_sub" );
+$dps_title  = dps_mod( "{$dps_key}_title", $dps_def['title'] );
+$dps_sub    = dps_mod( "{$dps_key}_sub", $dps_def['sub'] );
 $dps_banner = dps_mod( "{$dps_key}_banner" );
 $dps_link   = get_term_link( $dps_cat, 'product_cat' );
 

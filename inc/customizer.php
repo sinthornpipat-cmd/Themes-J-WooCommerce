@@ -10,6 +10,49 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Default values for the five home page product sections.
+ *
+ * Shared by the Customizer and the front end, so the sections show on a fresh
+ * install before the Customizer has ever been saved.
+ *
+ * @return array<int,array<string,string>> Section number => title, cat, count, sub.
+ */
+function dps_section_defaults() {
+	return array(
+		1 => array(
+			'title' => 'กล่องเก็บของ',
+			'cat'   => 'storage-box',
+			'count' => '8',
+			'sub'   => 'กล่องเก็บของหลายแบบ หลายขนาด เลือกใช้ได้ตามต้องการ',
+		),
+		2 => array(
+			'title' => 'ตู้ลิ้นชัก & ชั้นวาง',
+			'cat'   => 'drawers-cabinet',
+			'count' => '4',
+			'sub'   => 'ใช้ได้ทั้งบ้านและออฟฟิศ จัดเก็บง่าย สะดวก',
+		),
+		3 => array(
+			'title' => 'ตะกร้าผ้า & ซักรีด',
+			'cat'   => 'laundry',
+			'count' => '4',
+			'sub'   => 'หลายแบบ หลายขนาด สำหรับใช้งานในชีวิตประจำวัน',
+		),
+		4 => array(
+			'title' => 'ครัว',
+			'cat'   => 'kitchen',
+			'count' => '4',
+			'sub'   => 'จัดเก็บของใช้ในบ้านให้หยิบใช้ง่ายและสะดวก',
+		),
+		5 => array(
+			'title' => 'Heavy Duty',
+			'cat'   => 'heavy-duty',
+			'count' => '4',
+			'sub'   => 'สินค้าสำหรับงานหนัก แข็งแรง ทนทาน',
+		),
+	);
+}
+
+/**
  * Register all Customizer panels, sections and controls for the theme.
  */
 add_action(
@@ -138,14 +181,7 @@ add_action(
 		}
 
 		// Product sections.
-		$defs = array(
-			1 => array( 'กล่องเก็บของ', 'storage-box', 8, 'กล่องเก็บของหลายแบบ หลายขนาด เลือกใช้ได้ตามต้องการ' ),
-			2 => array( 'ตู้ลิ้นชัก & ชั้นวาง', 'drawers-cabinet', 4, 'ใช้ได้ทั้งบ้านและออฟฟิศ จัดเก็บง่าย สะดวก' ),
-			3 => array( 'ตะกร้าผ้า & ซักรีด', 'laundry', 4, 'หลายแบบ หลายขนาด สำหรับใช้งานในชีวิตประจำวัน' ),
-			4 => array( 'ครัว', 'kitchen', 4, 'จัดเก็บของใช้ในบ้านให้หยิบใช้ง่ายและสะดวก' ),
-			5 => array( 'Heavy Duty', 'heavy-duty', 4, 'สินค้าสำหรับงานหนัก แข็งแรง ทนทาน' ),
-		);
-		foreach ( $defs as $n => $d ) {
+		foreach ( dps_section_defaults() as $n => $d ) {
 			$sec = "dps_sec_$n";
 			$wp->add_section(
 				$sec,
@@ -155,10 +191,10 @@ add_action(
 					'description' => 'ใส่ slug ของหมวดหมู่สินค้า WooCommerce (Products → Categories) เว้นว่างเพื่อซ่อนเซกชัน',
 				)
 			);
-			$text( "{$sec}_title", 'หัวข้อ', $d[0], $sec );
-			$text( "{$sec}_sub", 'คำโปรย (ไม่บังคับ)', $d[3], $sec );
-			$text( "{$sec}_cat", 'Slug หมวดหมู่สินค้า', $d[1], $sec );
-			$text( "{$sec}_count", 'จำนวนสินค้าที่แสดง', (string) $d[2], $sec );
+			$text( "{$sec}_title", 'หัวข้อ', $d['title'], $sec );
+			$text( "{$sec}_sub", 'คำโปรย (ไม่บังคับ)', $d['sub'], $sec );
+			$text( "{$sec}_cat", 'Slug หมวดหมู่สินค้า', $d['cat'], $sec );
+			$text( "{$sec}_count", 'จำนวนสินค้าที่แสดง', $d['count'], $sec );
 			$img( "{$sec}_banner", 'รูปแบนเนอร์เหนือสินค้า (ไม่บังคับ)', $sec );
 		}
 
