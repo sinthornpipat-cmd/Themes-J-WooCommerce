@@ -32,14 +32,10 @@ function jshop_default_img( $key ) {
 	static $map = null;
 	if ( null === $map ) {
 		$map = array(
-			'jshop_hero_1'       => 'hero-1.jpg',
-			'jshop_hero_2'       => 'hero-2.jpg',
-			'jshop_hero_3'       => 'hero-3.jpg',
-			'jshop_sec_2_banner' => 'banner-2.jpg',
-			'jshop_sec_3_banner' => 'banner-3.jpg',
-			'jshop_sec_4_banner' => 'banner-4.jpg',
-			'jshop_sec_5_banner' => 'banner-5.jpg',
-			'jshop_popup_img'    => 'popup.png',
+			'jshop_hero_1'    => 'hero-1.jpg',
+			'jshop_hero_2'    => 'hero-2.jpg',
+			'jshop_hero_3'    => 'hero-3.jpg',
+			'jshop_popup_img' => 'popup.png',
 		);
 	}
 	return isset( $map[ $key ] ) ? jshop_img_url( $map[ $key ] ) : '';

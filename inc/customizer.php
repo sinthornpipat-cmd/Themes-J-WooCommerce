@@ -24,49 +24,6 @@ function jshop_trust_defaults() {
 }
 
 /**
- * Default values for the five home page product sections.
- *
- * Shared by the Customizer and the front end, so the sections show on a fresh
- * install before the Customizer has ever been saved.
- *
- * @return array<int,array<string,string>> Section number => title, cat, count, sub.
- */
-function jshop_section_defaults() {
-	return array(
-		1 => array(
-			'title' => __( 'Storage boxes', 'j-shop' ),
-			'cat'   => 'storage-box',
-			'count' => '8',
-			'sub'   => __( 'Boxes in many styles and sizes for every need', 'j-shop' ),
-		),
-		2 => array(
-			'title' => __( 'Drawers & shelves', 'j-shop' ),
-			'cat'   => 'drawers-cabinet',
-			'count' => '4',
-			'sub'   => __( 'For home and office, easy to organise', 'j-shop' ),
-		),
-		3 => array(
-			'title' => __( 'Laundry', 'j-shop' ),
-			'cat'   => 'laundry',
-			'count' => '4',
-			'sub'   => __( 'Many styles and sizes for everyday use', 'j-shop' ),
-		),
-		4 => array(
-			'title' => __( 'Kitchen', 'j-shop' ),
-			'cat'   => 'kitchen',
-			'count' => '4',
-			'sub'   => __( 'Keep household items easy to reach', 'j-shop' ),
-		),
-		5 => array(
-			'title' => __( 'Heavy duty', 'j-shop' ),
-			'cat'   => 'heavy-duty',
-			'count' => '4',
-			'sub'   => __( 'Strong, durable products for heavy use', 'j-shop' ),
-		),
-	);
-}
-
-/**
  * Register all Customizer panels, sections and controls for the theme.
  */
 add_action(
@@ -187,60 +144,6 @@ add_action(
 			$text( "jshop_trust_t_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d title', 'j-shop' ), $n ), $d[0], 'jshop_trust' );
 			$text( "jshop_trust_s_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d caption', 'j-shop' ), $n ), $d[1], 'jshop_trust' );
 		}
-
-		// Product sections.
-		foreach ( jshop_section_defaults() as $n => $d ) {
-			$sec = "jshop_sec_$n";
-			$wp->add_section(
-				$sec,
-				array(
-					'title'       => sprintf( /* translators: %d: section number. */ __( 'Product section %d', 'j-shop' ), $n ),
-					'panel'       => 'jshop',
-					'description' => __( 'Enter a WooCommerce product category slug (Products → Categories). Leave empty to hide the section.', 'j-shop' ),
-				)
-			);
-			$text( "{$sec}_title", __( 'Heading', 'j-shop' ), $d['title'], $sec );
-			$text( "{$sec}_sub", __( 'Subtitle (optional)', 'j-shop' ), $d['sub'], $sec );
-			$text( "{$sec}_cat", __( 'Product category slug', 'j-shop' ), $d['cat'], $sec );
-			$text( "{$sec}_count", __( 'Number of products', 'j-shop' ), $d['count'], $sec );
-			$img( "{$sec}_banner", __( 'Banner above the products (optional)', 'j-shop' ), $sec );
-		}
-
-		// Sections toggle.
-		$wp->add_section(
-			'jshop_blocks',
-			array(
-				'title' => __( 'Home page blocks', 'j-shop' ),
-				'panel' => 'jshop',
-			)
-		);
-		foreach ( array(
-			'trust'   => __( 'Trust strip', 'j-shop' ),
-			'cats'    => __( 'Category grid', 'j-shop' ),
-			'feed'    => __( 'Home ideas', 'j-shop' ),
-			'reviews' => __( 'Customer reviews', 'j-shop' ),
-			'faq'     => 'FAQ',
-		) as $k => $l ) {
-			$wp->add_setting(
-				"jshop_show_$k",
-				array(
-					'default'           => true,
-					'sanitize_callback' => 'wp_validate_boolean',
-				)
-			);
-			$wp->add_control(
-				"jshop_show_$k",
-				array(
-					'label'   => sprintf( /* translators: %s: home page block name. */ __( 'Show: %s', 'j-shop' ), $l ),
-					'section' => 'jshop_blocks',
-					'type'    => 'checkbox',
-				)
-			);
-		}
-		$text( 'jshop_cats_title', __( 'Category grid heading', 'j-shop' ), __( 'Shop by category', 'j-shop' ), 'jshop_blocks' );
-		$text( 'jshop_reviews_title', __( 'Reviews heading', 'j-shop' ), __( 'What our customers say', 'j-shop' ), 'jshop_blocks' );
-		$text( 'jshop_feed_title', __( 'Home ideas heading', 'j-shop' ), __( 'Home ideas', 'j-shop' ), 'jshop_blocks' );
-		$text( 'jshop_faq_title', __( 'FAQ heading', 'j-shop' ), __( 'Frequently asked questions', 'j-shop' ), 'jshop_blocks' );
 
 		// Popup.
 		$wp->add_section(

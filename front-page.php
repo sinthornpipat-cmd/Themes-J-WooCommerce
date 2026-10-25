@@ -1,6 +1,6 @@
 <?php
 /**
- * Home page template: hero, trust strip, categories, products, ideas, reviews, FAQ.
+ * Home page template: hero, trust strip and category grid.
  *
  * @package j-shop
  */
@@ -57,7 +57,6 @@ if ( $jshop_slides ) :
 <?php endif; ?>
 </section>
 
-<?php if ( jshop_mod( 'jshop_show_trust', true ) ) : ?>
 <div class="wrap"><div class="trust">
 	<?php
 	$jshop_td = jshop_trust_defaults();
@@ -71,11 +70,10 @@ if ( $jshop_slides ) :
 		<div><strong><?php echo esc_html( $jshop_trust_title ); ?></strong><?php echo esc_html( $jshop_trust_sub ); ?></div>
 	<?php endfor; ?>
 </div></div>
-<?php endif; ?>
 
 <?php
 /* Category tiles */
-if ( jshop_has_wc() && jshop_mod( 'jshop_show_cats', true ) ) :
+if ( jshop_has_wc() ) :
 	$jshop_cats = get_terms(
 		array(
 			'taxonomy'   => 'product_cat',
@@ -89,7 +87,7 @@ if ( jshop_has_wc() && jshop_mod( 'jshop_show_cats', true ) ) :
 	if ( ! is_wp_error( $jshop_cats ) && $jshop_cats ) :
 		?>
 	<section class="section"><div class="wrap">
-		<div class="section-head"><h2><?php echo esc_html( jshop_mod( 'jshop_cats_title', __( 'Shop by category', 'j-shop' ) ) ); ?></h2>
+		<div class="section-head"><h2><?php esc_html_e( 'Shop by category', 'j-shop' ); ?></h2>
 			<a class="view-all" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"><?php esc_html_e( 'View all products', 'j-shop' ); ?></a></div>
 		<div class="cat-grid">
 		<?php
@@ -116,141 +114,7 @@ endif;
 <?php
 if ( ! jshop_has_wc() ) {
 	echo '<div class="wrap section"><p>' . esc_html__( 'Install and activate the WooCommerce plugin to show products here.', 'j-shop' ) . '</p></div>';
-} else {
-	for ( $jshop_n = 1; $jshop_n <= 5; $jshop_n++ ) {
-		get_template_part( 'template-parts/product-section', null, array( 'n' => $jshop_n ) );
-	}
 }
-
-/* Home ideas feed */
-if ( jshop_mod( 'jshop_show_feed', true ) ) :
-	$jshop_feed = new WP_Query(
-		array(
-			'post_type'              => 'dps_feed',
-			'no_found_rows'          => true,
-			'update_post_term_cache' => false,
-			'posts_per_page'         => 6,
-			'orderby'                => 'menu_order date',
-			'order'                  => 'ASC',
-		)
-	);
-	if ( $jshop_feed->have_posts() ) :
-		?>
-	<section class="section"><div class="wrap">
-		<div class="section-head"><h2><?php echo esc_html( jshop_mod( 'jshop_feed_title', __( 'Home ideas', 'j-shop' ) ) ); ?></h2></div>
-		<div class="feed">
-		<?php
-		while ( $jshop_feed->have_posts() ) :
-			$jshop_feed->the_post();
-			$jshop_pid = (int) get_post_meta( get_the_ID(), '_dps_product', true );
-			$jshop_url = $jshop_pid ? get_permalink( $jshop_pid ) : '#';
-			$jshop_h   = get_post_meta( get_the_ID(), '_dps_handle', true );
-			?>
-			<a class="feed-item" href="<?php echo esc_url( $jshop_url ); ?>">
-				<?php the_post_thumbnail( 'large', array( 'loading' => 'lazy' ) ); ?>
-				<div class="feed-meta">
-				<?php
-				if ( $jshop_h ) {
-					echo '<b>' . esc_html( $jshop_h ) . '</b>';}
-				?>
-				<?php
-				if ( $jshop_pid ) {
-					echo esc_html( get_the_title( $jshop_pid ) );}
-				?>
-</div>
-			</a>
-			<?php
-		endwhile;
-		wp_reset_postdata();
-		?>
-		</div>
-	</div></section>
-		<?php
-endif;
-endif;
-
-/* Reviews */
-if ( jshop_mod( 'jshop_show_reviews', true ) ) :
-	$jshop_rev = new WP_Query(
-		array(
-			'post_type'              => 'dps_review',
-			'no_found_rows'          => true,
-			'update_post_term_cache' => false,
-			'posts_per_page'         => 8,
-			'orderby'                => 'menu_order date',
-			'order'                  => 'ASC',
-		)
-	);
-	if ( $jshop_rev->have_posts() ) :
-		?>
-	<section class="section reviews"><div class="wrap">
-		<div class="section-head"><h2><?php echo esc_html( jshop_mod( 'jshop_reviews_title', __( 'What our customers say', 'j-shop' ) ) ); ?></h2></div>
-		<div class="review-track">
-		<?php
-		while ( $jshop_rev->have_posts() ) :
-			$jshop_rev->the_post();
-			$jshop_pid   = (int) get_post_meta( get_the_ID(), '_dps_product', true );
-			$jshop_stars = max( 1, min( 5, (int) ( get_post_meta( get_the_ID(), '_dps_stars', true ) ? get_post_meta( get_the_ID(), '_dps_stars', true ) : 5 ) ) );
-			?>
-			<article class="review">
-				<div class="review-who">
-					<?php
-					if ( has_post_thumbnail() ) {
-						the_post_thumbnail( 'thumbnail' );
-					} else {
-						echo '<span class="ph">' . esc_html( mb_substr( get_the_title(), 0, 1 ) ) . '</span>';
-					}
-					?>
-					<div><strong><?php the_title(); ?></strong><small>Verified Buyer</small></div>
-				</div>
-				<div class="stars" aria-label="<?php echo esc_attr( sprintf( /* translators: %d: star rating 1-5. */ _n( '%d star', '%d stars', $jshop_stars, 'j-shop' ), $jshop_stars ) ); ?>"><?php echo esc_html( str_repeat( '★', $jshop_stars ) . str_repeat( '☆', 5 - $jshop_stars ) ); ?></div>
-				<p><?php echo esc_html( wp_strip_all_tags( get_the_content() ) ); ?></p>
-				<?php
-				if ( $jshop_pid ) :
-					?>
-					<a class="review-prod" href="<?php echo esc_url( get_permalink( $jshop_pid ) ); ?>"><?php echo esc_html( get_the_title( $jshop_pid ) ); ?></a><?php endif; ?>
-			</article>
-			<?php
-		endwhile;
-		wp_reset_postdata();
-		?>
-		</div>
-	</div></section>
-		<?php
-endif;
-endif;
-
-/* FAQ */
-if ( jshop_mod( 'jshop_show_faq', true ) ) :
-	$jshop_faq = new WP_Query(
-		array(
-			'post_type'              => 'dps_faq',
-			'no_found_rows'          => true,
-			'update_post_term_cache' => false,
-			'posts_per_page'         => 12,
-			'orderby'                => 'menu_order date',
-			'order'                  => 'ASC',
-		)
-	);
-	if ( $jshop_faq->have_posts() ) :
-		?>
-	<section class="section"><div class="wrap">
-		<div class="section-head" style="justify-content:center"><h2><?php echo esc_html( jshop_mod( 'jshop_faq_title', __( 'Frequently asked questions', 'j-shop' ) ) ); ?></h2></div>
-		<div class="faq">
-		<?php
-		while ( $jshop_faq->have_posts() ) :
-			$jshop_faq->the_post();
-			?>
-			<details><summary><?php the_title(); ?></summary><div class="ans"><?php the_content(); ?></div></details>
-			<?php
-		endwhile;
-		wp_reset_postdata();
-		?>
-		</div>
-	</div></section>
-		<?php
-endif;
-endif;
 ?>
 
 </main>
