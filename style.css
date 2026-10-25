@@ -4,7 +4,7 @@ Theme URI: https://n2npay.freedev.app/themes/
 Author: n2npay
 Author URI: https://n2npay.freedev.app/
 Description: J Shop is a clean, fast storefront theme for WooCommerce shops, designed around Thai typography (Prompt and Noto Sans Thai). The home page combines a banner slider, a trust strip and a product category grid, all set up in the Customizer without code. Shoppers get a slide-out mini cart with live quantity and total updates, a free-shipping progress bar, coupons and a two-column checkout, while a shop sidebar keeps product filters close at hand. Supports HPOS and the WooCommerce Cart and Checkout blocks.
-Version: 3.0.5
+Version: 3.0.6
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -82,6 +82,7 @@ a.trust-box:hover{box-shadow:0 6px 18px rgba(20,86,200,.14);transform:translateY
 
 /* Sections */
 .section{padding:44px 0}
+.cats-title{font-size:clamp(24px,3vw,34px);margin:0 0 22px}
 
 /* Product grid / card */
 .p-grid,.woocommerce ul.products{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
