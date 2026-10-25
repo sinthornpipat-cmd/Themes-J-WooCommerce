@@ -2,7 +2,7 @@
 /**
  * WooCommerce integration.
  *
- * @package themes-j-woocommerce
+ * @package j-shop
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -33,18 +33,18 @@ add_action(
 add_action(
 	'wp_enqueue_scripts',
 	function () {
-		wp_enqueue_style( 'dps-woo', get_template_directory_uri() . '/assets/css/woocommerce.css', array( 'dps-style' ), DPS_VER );
-		wp_enqueue_script( 'dps-woo', get_template_directory_uri() . '/assets/js/woo.js', array( 'jquery' ), DPS_VER, true );
+		wp_enqueue_style( 'jshop-woo', get_template_directory_uri() . '/assets/css/woocommerce.css', array( 'jshop-style' ), JSHOP_VER );
+		wp_enqueue_script( 'jshop-woo', get_template_directory_uri() . '/assets/js/woo.js', array( 'jquery' ), JSHOP_VER, true );
 		wp_localize_script(
-			'dps-woo',
-			'DPSW',
+			'jshop-woo',
+			'jshopWoo',
 			array(
-				'openOnAdd' => (bool) get_theme_mod( 'dps_open_mini_cart', true ),
+				'openOnAdd' => (bool) get_theme_mod( 'jshop_open_mini_cart', true ),
 				'isCart'    => is_cart() || is_checkout(),
 				'ajax'      => admin_url( 'admin-ajax.php' ),
-				'wcAjax'    => class_exists( 'WC_AJAX' ) ? WC_AJAX::get_endpoint( 'dps_add_to_cart' ) : '',
+				'wcAjax'    => class_exists( 'WC_AJAX' ) ? WC_AJAX::get_endpoint( 'jshop_add_to_cart' ) : '',
 				'wcBase'    => class_exists( 'WC_AJAX' ) ? WC_AJAX::get_endpoint( '%%endpoint%%' ) : '',
-				'nonce'     => wp_create_nonce( 'dps_cart' ),
+				'nonce'     => wp_create_nonce( 'jshop_cart' ),
 				'cur'       => array(
 					'sym'  => html_entity_decode( get_woocommerce_currency_symbol(), ENT_QUOTES, 'UTF-8' ),
 					'dec'  => wc_get_price_decimals(),
@@ -65,21 +65,12 @@ add_action(
 
 /* ---- Shop behaviour ---- */
 /**
- * Force AJAX add-to-cart on shop loops.
- */
-add_filter(
-	'pre_option_woocommerce_enable_ajax_add_to_cart',
-	function () {
-		return 'yes';
-	}
-);
-/**
  * Set products per page on shop archives.
  */
 add_filter(
 	'loop_shop_per_page',
 	function () {
-		return (int) get_theme_mod( 'dps_per_page', 12 );
+		return (int) get_theme_mod( 'jshop_per_page', 12 );
 	}
 );
 /**
@@ -151,7 +142,7 @@ add_action(
  *
  * @return bool
  */
-function dps_shop_has_sidebar() {
+function jshop_shop_has_sidebar() {
 	return ( is_shop() || is_product_taxonomy() ) && is_active_sidebar( 'shop-sidebar' );
 }
 /**
@@ -160,7 +151,7 @@ function dps_shop_has_sidebar() {
 add_action(
 	'woocommerce_before_main_content',
 	function () {
-		if ( ! dps_shop_has_sidebar() ) {
+		if ( ! jshop_shop_has_sidebar() ) {
 			return;
 		}
 		echo '<div class="shop-layout"><aside class="shop-side" aria-label="ตัวกรองสินค้า">';
@@ -175,7 +166,7 @@ add_action(
 add_action(
 	'woocommerce_after_main_content',
 	function () {
-		if ( dps_shop_has_sidebar() ) {
+		if ( jshop_shop_has_sidebar() ) {
 			echo '</div></div>';
 		}
 	},
@@ -190,7 +181,7 @@ add_filter(
 	'woocommerce_sale_flash',
 	function ( $html, $post, $product ) {
 		if ( $product->is_type( 'variable' ) || ! $product->get_regular_price() || ! (float) $product->get_regular_price() ) {
-			return '<span class="onsale">' . esc_html__( 'ลดราคา', 'themes-j-woocommerce' ) . '</span>';
+			return '<span class="onsale">' . esc_html__( 'ลดราคา', 'j-shop' ) . '</span>';
 		}
 		$pct = round( ( 1 - (float) $product->get_price() / (float) $product->get_regular_price() ) * 100 );
 		return '<span class="onsale">-' . (int) $pct . '%</span>';
@@ -225,16 +216,16 @@ add_action(
  *
  * @return float 0 disables the bar.
  */
-function dps_free_ship_threshold() {
-	return (float) get_theme_mod( 'dps_free_ship', 0 );
+function jshop_free_ship_threshold() {
+	return (float) get_theme_mod( 'jshop_free_ship', 0 );
 }
 /**
  * Build the free-shipping progress bar markup.
  *
  * @return string HTML.
  */
-function dps_ship_bar_html() {
-	$t = dps_free_ship_threshold();
+function jshop_ship_bar_html() {
+	$t = jshop_free_ship_threshold();
 	if ( $t <= 0 || ! WC()->cart ) {
 		return '<div class="dps-ship-bar"></div>';
 	}
@@ -251,7 +242,7 @@ function dps_ship_bar_html() {
 add_filter(
 	'woocommerce_add_to_cart_fragments',
 	function ( $f ) {
-		$f['div.dps-ship-bar'] = dps_ship_bar_html();
+		$f['div.dps-ship-bar'] = jshop_ship_bar_html();
 		return $f;
 	}
 );
@@ -262,7 +253,7 @@ add_filter(
 add_action(
 	'woocommerce_before_cart_table',
 	function () {
-		echo wp_kses_post( dps_ship_bar_html() );
+		echo wp_kses_post( jshop_ship_bar_html() );
 	}
 );
 
@@ -284,7 +275,7 @@ add_action(
 	<div class="sticky-atc" aria-hidden="true">
 		<div class="wrap">
 			<div class="sa-info"><strong><?php echo esc_html( $product->get_name() ); ?></strong><span><?php echo wp_kses_post( $product->get_price_html() ); ?></span></div>
-			<button type="button" class="btn sa-btn"><?php echo esc_html( $product->is_type( 'simple' ) ? __( 'หยิบใส่ตะกร้า', 'themes-j-woocommerce' ) : __( 'เลือกตัวเลือก', 'themes-j-woocommerce' ) ); ?></button>
+			<button type="button" class="btn sa-btn"><?php echo esc_html( $product->is_type( 'simple' ) ? __( 'หยิบใส่ตะกร้า', 'j-shop' ) : __( 'เลือกตัวเลือก', 'j-shop' ) ); ?></button>
 		</div>
 	</div>
 		<?php
@@ -314,54 +305,54 @@ add_action(
 	'customize_register',
 	function ( $wp ) {
 		$wp->add_section(
-			'dps_woo',
+			'jshop_woo',
 			array(
 				'title' => 'WooCommerce (ร้านค้า)',
-				'panel' => 'dps',
+				'panel' => 'jshop',
 			)
 		);
 		$wp->add_setting(
-			'dps_free_ship',
+			'jshop_free_ship',
 			array(
 				'default'           => 0,
 				'sanitize_callback' => 'absint',
 			)
 		);
 		$wp->add_control(
-			'dps_free_ship',
+			'jshop_free_ship',
 			array(
 				'label'   => 'ยอดขั้นต่ำส่งฟรี (บาท) สำหรับแถบความคืบหน้า — 0 = ซ่อน',
-				'section' => 'dps_woo',
+				'section' => 'jshop_woo',
 				'type'    => 'number',
 			)
 		);
 		$wp->add_setting(
-			'dps_per_page',
+			'jshop_per_page',
 			array(
 				'default'           => 12,
 				'sanitize_callback' => 'absint',
 			)
 		);
 		$wp->add_control(
-			'dps_per_page',
+			'jshop_per_page',
 			array(
 				'label'   => 'จำนวนสินค้าต่อหน้า (หน้าร้านค้า)',
-				'section' => 'dps_woo',
+				'section' => 'jshop_woo',
 				'type'    => 'number',
 			)
 		);
 		$wp->add_setting(
-			'dps_open_mini_cart',
+			'jshop_open_mini_cart',
 			array(
 				'default'           => true,
 				'sanitize_callback' => 'wp_validate_boolean',
 			)
 		);
 		$wp->add_control(
-			'dps_open_mini_cart',
+			'jshop_open_mini_cart',
 			array(
 				'label'   => 'เปิดมินิคาร์ททันทีเมื่อเพิ่มสินค้า',
-				'section' => 'dps_woo',
+				'section' => 'jshop_woo',
 				'type'    => 'checkbox',
 			)
 		);
@@ -387,8 +378,8 @@ add_filter(
  *
  * @return void
  */
-function dps_ajax_guard() {
-	if ( ! check_ajax_referer( 'dps_cart', 'nonce', false ) ) {
+function jshop_ajax_guard() {
+	if ( ! check_ajax_referer( 'jshop_cart', 'nonce', false ) ) {
 		wp_send_json_error( array( 'message' => 'หมดเวลา กรุณารีเฟรชหน้าแล้วลองใหม่' ) );
 	}
 	if ( ! WC()->cart ) {
@@ -401,7 +392,7 @@ function dps_ajax_guard() {
  * @param array $extra Extra data to merge into the response.
  * @return void
  */
-function dps_ajax_cart_response( $extra = array() ) {
+function jshop_ajax_cart_response( $extra = array() ) {
 	WC()->cart->calculate_totals();
 	ob_start();
 	woocommerce_mini_cart();
@@ -423,23 +414,23 @@ function dps_ajax_cart_response( $extra = array() ) {
 	);
 }
 
-add_action( 'wp_ajax_dps_cart_qty', 'dps_ajax_cart_qty' );
-add_action( 'wp_ajax_nopriv_dps_cart_qty', 'dps_ajax_cart_qty' );
-add_action( 'wc_ajax_dps_cart_qty', 'dps_ajax_cart_qty' ); // Lighter than admin-ajax.php.
+add_action( 'wp_ajax_jshop_cart_qty', 'jshop_ajax_cart_qty' );
+add_action( 'wp_ajax_nopriv_jshop_cart_qty', 'jshop_ajax_cart_qty' );
+add_action( 'wc_ajax_jshop_cart_qty', 'jshop_ajax_cart_qty' ); // Lighter than admin-ajax.php.
 /**
  * AJAX: set or remove a cart item quantity.
  *
  * @return void
  */
-function dps_ajax_cart_qty() {
-	dps_ajax_guard();
-	// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce checked in dps_ajax_guard().
+function jshop_ajax_cart_qty() {
+	jshop_ajax_guard();
+	// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce checked in jshop_ajax_guard().
 	$key = isset( $_POST['key'] ) ? sanitize_text_field( wp_unslash( $_POST['key'] ) ) : '';
 	$qty = isset( $_POST['qty'] ) ? wc_stock_amount( sanitize_text_field( wp_unslash( $_POST['qty'] ) ) ) : 0;
 	// phpcs:enable WordPress.Security.NonceVerification.Missing
 	$item = WC()->cart->get_cart_item( $key );
 	if ( ! $item ) {
-		dps_ajax_cart_response();
+		jshop_ajax_cart_response();
 	}
 	$extra = array();
 	if ( $qty <= 0 ) {
@@ -452,20 +443,20 @@ function dps_ajax_cart_qty() {
 		}
 		WC()->cart->set_quantity( $key, $qty, true );
 	}
-	dps_ajax_cart_response( $extra );
+	jshop_ajax_cart_response( $extra );
 }
 
-add_action( 'wp_ajax_dps_cart_coupon', 'dps_ajax_cart_coupon' );
-add_action( 'wp_ajax_nopriv_dps_cart_coupon', 'dps_ajax_cart_coupon' );
-add_action( 'wc_ajax_dps_cart_coupon', 'dps_ajax_cart_coupon' ); // Lighter than admin-ajax.php.
+add_action( 'wp_ajax_jshop_cart_coupon', 'jshop_ajax_cart_coupon' );
+add_action( 'wp_ajax_nopriv_jshop_cart_coupon', 'jshop_ajax_cart_coupon' );
+add_action( 'wc_ajax_jshop_cart_coupon', 'jshop_ajax_cart_coupon' ); // Lighter than admin-ajax.php.
 /**
  * AJAX: apply or remove a coupon in the mini-cart.
  *
  * @return void
  */
-function dps_ajax_cart_coupon() {
-	dps_ajax_guard();
-	// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce checked in dps_ajax_guard().
+function jshop_ajax_cart_coupon() {
+	jshop_ajax_guard();
+	// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce checked in jshop_ajax_guard().
 	$code = isset( $_POST['code'] ) ? wc_format_coupon_code( sanitize_text_field( wp_unslash( $_POST['code'] ) ) ) : '';
 	$op   = isset( $_POST['op'] ) ? sanitize_key( wp_unslash( $_POST['op'] ) ) : 'apply';
 	// phpcs:enable WordPress.Security.NonceVerification.Missing
@@ -475,12 +466,12 @@ function dps_ajax_cart_coupon() {
 	if ( 'remove' === $op ) {
 		WC()->cart->remove_coupon( $code );
 		wc_clear_notices();
-		dps_ajax_cart_response();
+		jshop_ajax_cart_response();
 	}
 	wc_clear_notices();
 	if ( WC()->cart->apply_coupon( $code ) ) {
 		wc_clear_notices();
-		dps_ajax_cart_response( array( 'applied' => true ) );
+		jshop_ajax_cart_response( array( 'applied' => true ) );
 	}
 	$errors = array_map(
 		function ( $n ) {
@@ -525,7 +516,7 @@ add_action(
  *
  * @return void
  */
-function dps_wc_ajax_add_to_cart() {
+function jshop_wc_ajax_add_to_cart() {
 	// phpcs:disable WordPress.Security.NonceVerification.Missing
 	if ( ! WC()->cart ) {
 		wc_load_cart();
@@ -566,6 +557,6 @@ function dps_wc_ajax_add_to_cart() {
 		);
 	}
 	wc_clear_notices();
-	dps_ajax_cart_response( array( 'added' => true ) );
+	jshop_ajax_cart_response( array( 'added' => true ) );
 }
-add_action( 'wc_ajax_dps_add_to_cart', 'dps_wc_ajax_add_to_cart' );
+add_action( 'wc_ajax_jshop_add_to_cart', 'jshop_wc_ajax_add_to_cart' );

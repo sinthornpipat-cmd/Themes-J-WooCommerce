@@ -3,7 +3,7 @@
  * Mini-cart (drawer) — overrides woocommerce/cart/mini-cart.php
  * Card layout, +/- quantity, per-line totals, coupon, estimated total.
  *
- * @package themes-j-woocommerce
+ * @package j-shop
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -109,7 +109,7 @@ if ( ! WC()->cart->is_empty() ) :
 <?php else : ?>
 	<div class="mc-empty">
 		<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
-		<p><?php esc_html_e( 'ตะกร้าของคุณยังว่างอยู่', 'themes-j-woocommerce' ); ?></p>
+		<p><?php esc_html_e( 'ตะกร้าของคุณยังว่างอยู่', 'j-shop' ); ?></p>
 		<a class="btn" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">เลือกซื้อสินค้า</a>
 	</div>
 <?php endif; ?>

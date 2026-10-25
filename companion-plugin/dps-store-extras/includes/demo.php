@@ -1,59 +1,14 @@
 <?php
 /**
- * Sample images + one-click demo content.
- * - Bundled images are used as Customizer defaults (they disappear once you set / clear your own).
- * - Appearance → ข้อมูลตัวอย่าง (Demo): import / remove sample products, feed items and reviews.
+ * One-click demo content: Appearance → ข้อมูลตัวอย่าง (Demo) imports or removes
+ * sample products, home-ideas items and reviews, with bundled images.
  *
- * @package themes-j-woocommerce
+ * @package dps-store-extras
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
-/* ---------- Bundled image defaults ---------- */
-/**
- * Get a URL to a bundled image.
- *
- * @param string $file File name inside assets/img.
- * @return string
- */
-function dps_img_url( $file ) {
-	return get_template_directory_uri() . '/assets/img/' . $file;
-}
-/**
- * Get the bundled sample image URL for an image setting key.
- *
- * @param string $key Customizer setting ID.
- * @return string URL or empty string.
- */
-function dps_default_img( $key ) {
-	static $map = null;
-	if ( null === $map ) {
-		$map = array(
-			'dps_hero_1'       => 'hero-1.jpg',
-			'dps_hero_2'       => 'hero-2.jpg',
-			'dps_hero_3'       => 'hero-3.jpg',
-			'dps_sec_2_banner' => 'banner-2.jpg',
-			'dps_sec_3_banner' => 'banner-3.jpg',
-			'dps_sec_4_banner' => 'banner-4.jpg',
-			'dps_sec_5_banner' => 'banner-5.jpg',
-			'dps_popup_img'    => 'popup.png',
-		);
-	}
-	return isset( $map[ $key ] ) ? dps_img_url( $map[ $key ] ) : '';
-}
-
-// Product without a photo → themed placeholder.
-/**
- * Use the themed placeholder for products without an image.
- */
-add_filter(
-	'woocommerce_placeholder_img_src',
-	function () {
-		return dps_img_url( 'placeholder.jpg' );
-	}
-);
 
 /* ---------- Admin page ---------- */
 /**
@@ -63,15 +18,6 @@ add_action(
 	'admin_menu',
 	function () {
 		add_theme_page( 'ข้อมูลตัวอย่าง', 'ข้อมูลตัวอย่าง (Demo)', 'manage_options', 'dps-demo', 'dps_demo_page' );
-	}
-);
-/**
- * Flag that the demo-data notice should be shown after activation.
- */
-add_action(
-	'after_switch_theme',
-	function () {
-		set_transient( 'dps_demo_notice', 1, DAY_IN_SECONDS );
 	}
 );
 /**
@@ -86,7 +32,7 @@ add_action(
 		if ( get_option( 'dps_demo_imported' ) ) {
 			delete_transient( 'dps_demo_notice' );
 			return; }
-		echo '<div class="notice notice-info is-dismissible"><p><strong>Themes J WooCommerce:</strong> ต้องการสินค้า/รีวิว/ไอเดียจัดบ้านตัวอย่างหรือไม่? ไปที่ <a href="' . esc_url( admin_url( 'themes.php?page=dps-demo' ) ) . '">Appearance → ข้อมูลตัวอย่าง (Demo)</a> (รูปแบนเนอร์ตัวอย่างแสดงให้อัตโนมัติแล้ว)</p></div>';
+		echo '<div class="notice notice-info is-dismissible"><p><strong>DPS Store Extras:</strong> ต้องการสินค้า/รีวิว/ไอเดียจัดบ้านตัวอย่างหรือไม่? ไปที่ <a href="' . esc_url( admin_url( 'themes.php?page=dps-demo' ) ) . '">Appearance → ข้อมูลตัวอย่าง (Demo)</a> (รูปแบนเนอร์ตัวอย่างแสดงให้อัตโนมัติแล้ว)</p></div>';
 	}
 );
 
@@ -159,7 +105,7 @@ function dps_demo_sideload( $file ) {
 	require_once ABSPATH . 'wp-admin/includes/file.php';
 	require_once ABSPATH . 'wp-admin/includes/media.php';
 	require_once ABSPATH . 'wp-admin/includes/image.php';
-	$src = get_template_directory() . '/assets/img/' . $file;
+	$src = DPS_SE_DIR . 'assets/img/' . $file;
 	if ( ! file_exists( $src ) ) {
 		return 0;
 	}

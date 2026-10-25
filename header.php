@@ -2,7 +2,7 @@
 /**
  * Site header: announcement bar, logo, menu, search and cart.
  *
- * @package themes-j-woocommerce
+ * @package j-shop
  */
 
 ?>
@@ -18,16 +18,16 @@
 <a class="skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
 
 <?php
-$dps_a  = dps_mod( 'dps_announce', '🛒 สั่งซื้อออนไลน์ได้ที่ Shopee' );
-$dps_au = dps_mod( 'dps_announce_url', 'https://shopee.co.th/' );
-if ( $dps_a ) :
+$jshop_a  = jshop_mod( 'jshop_announce', 'ยินดีต้อนรับสู่ร้านของเรา แก้ข้อความนี้ได้ใน Customizer' );
+$jshop_au = jshop_mod( 'jshop_announce_url', '' );
+if ( $jshop_a ) :
 	?>
-	<div class="announce"><?php echo $dps_au ? '<a href="' . esc_url( $dps_au ) . '">' . esc_html( $dps_a ) . '</a>' : esc_html( $dps_a ); ?></div>
+	<div class="announce"><?php echo $jshop_au ? '<a href="' . esc_url( $jshop_au ) . '">' . esc_html( $jshop_a ) . '</a>' : esc_html( $jshop_a ); ?></div>
 <?php endif; ?>
 
 <header class="site-header">
 	<div class="wrap header-in">
-		<button class="icon-btn menu-toggle" aria-expanded="false" aria-label="เมนู"><?php dps_the_icon( 'menu' ); ?></button>
+		<button class="icon-btn menu-toggle" aria-expanded="false" aria-label="เมนู"><?php jshop_the_icon( 'menu' ); ?></button>
 		<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php bloginfo( 'name' ); ?>">
 			<?php
 			if ( has_custom_logo() ) {
@@ -42,17 +42,17 @@ if ( $dps_a ) :
 				array(
 					'theme_location' => 'primary',
 					'container'      => false,
-					'fallback_cb'    => 'dps_fallback_menu',
+					'fallback_cb'    => 'jshop_fallback_menu',
 				)
 			);
 			?>
 		</nav>
 		<div class="header-tools">
-			<button class="icon-btn search-toggle" aria-expanded="false" aria-label="ค้นหา"><?php dps_the_icon( 'search' ); ?></button>
-			<?php if ( dps_has_wc() ) : ?>
-				<a class="icon-btn" href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" aria-label="บัญชี"><?php dps_the_icon( 'user' ); ?></a>
+			<button class="icon-btn search-toggle" aria-expanded="false" aria-label="ค้นหา"><?php jshop_the_icon( 'search' ); ?></button>
+			<?php if ( jshop_has_wc() ) : ?>
+				<a class="icon-btn" href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" aria-label="บัญชี"><?php jshop_the_icon( 'user' ); ?></a>
 				<a class="icon-btn cart-toggle" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-label="ตะกร้า" aria-controls="mini-cart">
-					<?php dps_the_icon( 'cart' ); ?><span class="cart-count"><?php echo (int) WC()->cart->get_cart_contents_count(); ?></span>
+					<?php jshop_the_icon( 'cart' ); ?><span class="cart-count"><?php echo (int) WC()->cart->get_cart_contents_count(); ?></span>
 				</a>
 			<?php endif; ?>
 		</div>
@@ -62,7 +62,7 @@ if ( $dps_a ) :
 			<label class="screen-reader-text" for="s">ค้นหา</label>
 			<input type="search" id="s" name="s" placeholder="ค้นหาสินค้า…" value="<?php echo esc_attr( get_search_query() ); ?>">
 			<?php
-			if ( dps_has_wc() ) :
+			if ( jshop_has_wc() ) :
 				?>
 				<input type="hidden" name="post_type" value="product"><?php endif; ?>
 			<button type="submit">ค้นหา</button>

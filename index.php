@@ -2,7 +2,7 @@
 /**
  * Fallback template for blog/archive/search.
  *
- * @package themes-j-woocommerce
+ * @package j-shop
  */
 
 get_header();
@@ -13,7 +13,7 @@ get_header();
 			<?php
 			if ( is_search() ) {
 				/* translators: %s: search query. */
-				printf( esc_html__( 'ผลการค้นหา: %s', 'themes-j-woocommerce' ), esc_html( get_search_query() ) );
+				printf( esc_html__( 'ผลการค้นหา: %s', 'j-shop' ), esc_html( get_search_query() ) );
 			} elseif ( is_archive() ) {
 				the_archive_title();
 			} else {

@@ -47,8 +47,8 @@
 
   // Promo popup (shows once per session)
   var promo = $('.promo');
-  if (promo && window.DPS && DPS.popupEnabled && !sessionStorage.getItem('dps_promo')) {
-    var left = Math.max(1, DPS.popupMinutes) * 60, clock = $('.promo-time', promo);
+  if (promo && window.jshopData && jshopData.popupEnabled && !sessionStorage.getItem('jshop_promo')) {
+    var left = Math.max(1, jshopData.popupMinutes) * 60, clock = $('.promo-time', promo);
     var fmt = function (s) { return ('0' + Math.floor(s / 60)).slice(-2) + ':' + ('0' + (s % 60)).slice(-2); };
     setTimeout(function () {
       promo.classList.add('show'); clock.textContent = fmt(left);
@@ -57,14 +57,14 @@
         if (left <= 0) { clearInterval(t); promo.classList.remove('show'); }
       }, 1000);
     }, 4000);
-    var close = function () { promo.classList.remove('show'); sessionStorage.setItem('dps_promo', '1'); };
+    var close = function () { promo.classList.remove('show'); sessionStorage.setItem('jshop_promo', '1'); };
     $('.promo-close', promo).addEventListener('click', close);
     promo.addEventListener('click', function (e) { if (e.target === promo) close(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
     var cb = $('.promo-code button', promo);
     cb.addEventListener('click', function () {
       var code = $('.promo-code span', promo).textContent.trim();
-      var done = function () { cb.textContent = DPS.copied; setTimeout(function () { cb.textContent = DPS.copy; }, 1800); };
+      var done = function () { cb.textContent = jshopData.copied; setTimeout(function () { cb.textContent = jshopData.copy; }, 1800); };
       if (navigator.clipboard) navigator.clipboard.writeText(code).then(done);
       else { var r = document.createRange(); r.selectNode($('.promo-code span', promo)); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand('copy'); done(); }
     });

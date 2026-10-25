@@ -2,11 +2,25 @@
 /**
  * Customizer settings for the theme.
  *
- * @package themes-j-woocommerce
+ * @package j-shop
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+/**
+ * Default title and caption for the four trust-strip boxes on the home page.
+ *
+ * @return array<int,array<int,string>> List of [ title, caption ].
+ */
+function jshop_trust_defaults() {
+	return array(
+		array( 'จัดส่งรวดเร็ว', 'ส่งทั่วประเทศ' ),
+		array( 'ชำระเงินปลอดภัย', 'รองรับหลายช่องทาง' ),
+		array( 'สินค้าคุณภาพ', 'คัดสรรมาอย่างดี' ),
+		array( 'ติดต่อง่าย', 'ทีมงานพร้อมช่วยเหลือ' ),
+	);
 }
 
 /**
@@ -17,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return array<int,array<string,string>> Section number => title, cat, count, sub.
  */
-function dps_section_defaults() {
+function jshop_section_defaults() {
 	return array(
 		1 => array(
 			'title' => 'กล่องเก็บของ',
@@ -79,7 +93,7 @@ add_action(
 			$wp->add_setting(
 				$id,
 				array(
-					'default'           => dps_default_img( $id ),
+					'default'           => jshop_default_img( $id ),
 					'sanitize_callback' => 'esc_url_raw',
 				)
 			);
@@ -108,86 +122,80 @@ add_action(
 					$id,
 					array(
 						'label'   => $label,
-						'section' => 'dps_style',
+						'section' => 'jshop_style',
 					)
 				)
 			);
 		};
 
 		$wp->add_panel(
-			'dps',
+			'jshop',
 			array(
-				'title'    => 'Themes J WooCommerce',
+				'title'    => 'J Shop',
 				'priority' => 30,
 			)
 		);
 
 		// Style.
 		$wp->add_section(
-			'dps_style',
+			'jshop_style',
 			array(
 				'title' => 'สีธีม',
-				'panel' => 'dps',
+				'panel' => 'jshop',
 			)
 		);
-		$color( 'dps_brand', 'สีหลัก (Brand)', '#1456c8' );
-		$color( 'dps_accent', 'สีเน้น (ป้าย/ราคาลดราคา)', '#d9480f' );
-		$color( 'dps_ink', 'สีตัวอักษร/ส่วนท้าย', '#14213d' );
+		$color( 'jshop_brand', 'สีหลัก (Brand)', '#1456c8' );
+		$color( 'jshop_accent', 'สีเน้น (ป้าย/ราคาลดราคา)', '#d9480f' );
+		$color( 'jshop_ink', 'สีตัวอักษร/ส่วนท้าย', '#14213d' );
 
 		// Announcement + badge.
 		$wp->add_section(
-			'dps_top',
+			'jshop_top',
 			array(
 				'title' => 'แถบประกาศ & ป้ายสินค้า',
-				'panel' => 'dps',
+				'panel' => 'jshop',
 			)
 		);
-		$text( 'dps_announce', 'ข้อความแถบประกาศ', '🛒 สั่งซื้อออนไลน์ได้ที่ Shopee', 'dps_top' );
-		$text( 'dps_announce_url', 'ลิงก์แถบประกาศ', 'https://shopee.co.th/', 'dps_top', 'url' );
-		$text( 'dps_badge', 'ข้อความป้ายบนการ์ดสินค้า เช่น “ลดสูงสุด 50%” (เว้นว่าง = ไม่แสดง)', '', 'dps_top' );
+		$text( 'jshop_announce', 'ข้อความแถบประกาศ', 'ยินดีต้อนรับสู่ร้านของเรา แก้ข้อความนี้ได้ใน Customizer', 'jshop_top' );
+		$text( 'jshop_announce_url', 'ลิงก์แถบประกาศ (ไม่บังคับ)', '', 'jshop_top', 'url' );
+		$text( 'jshop_badge', 'ข้อความป้ายบนการ์ดสินค้า เช่น “ลดสูงสุด 50%” (เว้นว่าง = ไม่แสดง)', '', 'jshop_top' );
 
 		// Hero.
 		$wp->add_section(
-			'dps_hero',
+			'jshop_hero',
 			array(
 				'title' => 'สไลด์แบนเนอร์หน้าแรก',
-				'panel' => 'dps',
+				'panel' => 'jshop',
 			)
 		);
 		for ( $i = 1; $i <= 5; $i++ ) {
-			$img( "dps_hero_$i", "แบนเนอร์ $i (แนะนำ 1920×700)", 'dps_hero' );
-			$text( "dps_hero_url_$i", "ลิงก์แบนเนอร์ $i", '', 'dps_hero', 'url' );
+			$img( "jshop_hero_$i", "แบนเนอร์ $i (แนะนำ 1920×700)", 'jshop_hero' );
+			$text( "jshop_hero_url_$i", "ลิงก์แบนเนอร์ $i", '', 'jshop_hero', 'url' );
 		}
-		$text( 'dps_hero_cta', 'ข้อความปุ่มบนแบนเนอร์ (แสดงเมื่อใช้รูปของคุณเอง)', 'ดูสินค้า', 'dps_hero' );
+		$text( 'jshop_hero_cta', 'ข้อความปุ่มบนแบนเนอร์ (แสดงเมื่อใช้รูปของคุณเอง)', 'ดูสินค้า', 'jshop_hero' );
 
 		// Trust strip.
 		$wp->add_section(
-			'dps_trust',
+			'jshop_trust',
 			array(
 				'title' => 'แถบจุดขาย 4 ช่อง',
-				'panel' => 'dps',
+				'panel' => 'jshop',
 			)
 		);
-		$default_values = array(
-			array( 'ผู้ผลิตของใช้พลาสติกในบ้าน', 'รายใหญ่ของประเทศไทย' ),
-			array( 'Thailand Trust Mark', 'รางวัลประจำปี 2566' ),
-			array( 'สินค้ากว่า 240 รายการ', '10 หมวดหมู่ ครอบคลุมทุกการใช้งาน' ),
-			array( 'สั่งซื้อผ่าน Shopee', 'สะดวก รวดเร็ว ปลอดภัย' ),
-		);
-		foreach ( $default_values as $k => $d ) {
+		foreach ( jshop_trust_defaults() as $k => $d ) {
 			$n = $k + 1;
-			$text( "dps_trust_t_$n", "ช่อง $n หัวข้อ", $d[0], 'dps_trust' );
-			$text( "dps_trust_s_$n", "ช่อง $n คำอธิบาย", $d[1], 'dps_trust' );
+			$text( "jshop_trust_t_$n", "ช่อง $n หัวข้อ", $d[0], 'jshop_trust' );
+			$text( "jshop_trust_s_$n", "ช่อง $n คำอธิบาย", $d[1], 'jshop_trust' );
 		}
 
 		// Product sections.
-		foreach ( dps_section_defaults() as $n => $d ) {
-			$sec = "dps_sec_$n";
+		foreach ( jshop_section_defaults() as $n => $d ) {
+			$sec = "jshop_sec_$n";
 			$wp->add_section(
 				$sec,
 				array(
 					'title'       => "เซกชันสินค้า $n",
-					'panel'       => 'dps',
+					'panel'       => 'jshop',
 					'description' => 'ใส่ slug ของหมวดหมู่สินค้า WooCommerce (Products → Categories) เว้นว่างเพื่อซ่อนเซกชัน',
 				)
 			);
@@ -200,10 +208,10 @@ add_action(
 
 		// Sections toggle.
 		$wp->add_section(
-			'dps_blocks',
+			'jshop_blocks',
 			array(
 				'title' => 'เปิด/ปิดบล็อกหน้าแรก',
-				'panel' => 'dps',
+				'panel' => 'jshop',
 			)
 		);
 		foreach ( array(
@@ -214,66 +222,66 @@ add_action(
 			'faq'     => 'FAQ',
 		) as $k => $l ) {
 			$wp->add_setting(
-				"dps_show_$k",
+				"jshop_show_$k",
 				array(
 					'default'           => true,
 					'sanitize_callback' => 'wp_validate_boolean',
 				)
 			);
 			$wp->add_control(
-				"dps_show_$k",
+				"jshop_show_$k",
 				array(
 					'label'   => "แสดง: $l",
-					'section' => 'dps_blocks',
+					'section' => 'jshop_blocks',
 					'type'    => 'checkbox',
 				)
 			);
 		}
-		$text( 'dps_cats_title', 'หัวข้อหมวดหมู่สินค้า', 'หมวดหมู่สินค้า', 'dps_blocks' );
-		$text( 'dps_reviews_title', 'หัวข้อรีวิว', 'เสียงจากลูกค้า', 'dps_blocks' );
-		$text( 'dps_feed_title', 'หัวข้อไอเดียจัดบ้าน', 'ไอเดียจัดบ้าน', 'dps_blocks' );
-		$text( 'dps_faq_title', 'หัวข้อ FAQ', 'คำถามที่พบบ่อย', 'dps_blocks' );
+		$text( 'jshop_cats_title', 'หัวข้อหมวดหมู่สินค้า', 'หมวดหมู่สินค้า', 'jshop_blocks' );
+		$text( 'dps_reviews_title', 'หัวข้อรีวิว', 'เสียงจากลูกค้า', 'jshop_blocks' );
+		$text( 'dps_feed_title', 'หัวข้อไอเดียจัดบ้าน', 'ไอเดียจัดบ้าน', 'jshop_blocks' );
+		$text( 'dps_faq_title', 'หัวข้อ FAQ', 'คำถามที่พบบ่อย', 'jshop_blocks' );
 
 		// Popup.
 		$wp->add_section(
-			'dps_popup',
+			'jshop_popup',
 			array(
 				'title' => 'ป๊อปอัปโค้ดส่วนลด',
-				'panel' => 'dps',
+				'panel' => 'jshop',
 			)
 		);
 		$wp->add_setting(
-			'dps_popup_on',
+			'jshop_popup_on',
 			array(
 				'default'           => false,
 				'sanitize_callback' => 'wp_validate_boolean',
 			)
 		);
 		$wp->add_control(
-			'dps_popup_on',
+			'jshop_popup_on',
 			array(
 				'label'   => 'เปิดใช้งาน',
-				'section' => 'dps_popup',
+				'section' => 'jshop_popup',
 				'type'    => 'checkbox',
 			)
 		);
-		$text( 'dps_popup_title', 'หัวข้อ', 'รับส่วนลดพิเศษ', 'dps_popup' );
-		$text( 'dps_popup_sub', 'เงื่อนไข', 'แก้ข้อความและเงื่อนไขได้ใน Customizer', 'dps_popup' );
-		$text( 'dps_popup_code', 'โค้ดส่วนลด', 'SAMPLE10', 'dps_popup' );
-		$text( 'dps_popup_minutes', 'นับถอยหลัง (นาที)', '5', 'dps_popup' );
-		$img( 'dps_popup_img', 'รูปประกอบ (PNG โปร่งใส)', 'dps_popup' );
+		$text( 'jshop_popup_title', 'หัวข้อ', 'รับส่วนลดพิเศษ', 'jshop_popup' );
+		$text( 'jshop_popup_sub', 'เงื่อนไข', 'แก้ข้อความและเงื่อนไขได้ใน Customizer', 'jshop_popup' );
+		$text( 'jshop_popup_code', 'โค้ดส่วนลด', 'SAMPLE10', 'jshop_popup' );
+		$text( 'jshop_popup_minutes', 'นับถอยหลัง (นาที)', '5', 'jshop_popup' );
+		$img( 'jshop_popup_img', 'รูปประกอบ (PNG โปร่งใส)', 'jshop_popup' );
 
 		// Mobile nav.
 		$wp->add_section(
-			'dps_mnav',
+			'jshop_mnav',
 			array(
 				'title' => 'เมนูล่างบนมือถือ',
-				'panel' => 'dps',
+				'panel' => 'jshop',
 			)
 		);
-		$text( 'dps_mnav_2_t', 'ปุ่มที่ 2 ข้อความ', 'สินค้า', 'dps_mnav' );
-		$text( 'dps_mnav_2_u', 'ปุ่มที่ 2 ลิงก์ (เว้นว่าง = หน้าร้านค้า)', '', 'dps_mnav', 'url' );
-		$text( 'dps_mnav_3_t', 'ปุ่มที่ 3 ข้อความ', 'Shopee', 'dps_mnav' );
-		$text( 'dps_mnav_3_u', 'ปุ่มที่ 3 ลิงก์', 'https://shopee.co.th/', 'dps_mnav', 'url' );
+		$text( 'jshop_mnav_2_t', 'ปุ่มที่ 2 ข้อความ', 'สินค้า', 'jshop_mnav' );
+		$text( 'jshop_mnav_2_u', 'ปุ่มที่ 2 ลิงก์ (เว้นว่าง = หน้าร้านค้า)', '', 'jshop_mnav', 'url' );
+		$text( 'jshop_mnav_3_t', 'ปุ่มที่ 3 ข้อความ', 'บัญชี', 'jshop_mnav' );
+		$text( 'jshop_mnav_3_u', 'ปุ่มที่ 3 ลิงก์ (เว้นว่าง = หน้าบัญชีลูกค้า)', '', 'jshop_mnav', 'url' );
 	}
 );

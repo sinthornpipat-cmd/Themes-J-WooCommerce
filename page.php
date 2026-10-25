@@ -2,7 +2,7 @@
 /**
  * Single page template.
  *
- * @package themes-j-woocommerce
+ * @package j-shop
  */
 
 get_header();

@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
-<ruleset name="Themes J WooCommerce">
+<ruleset name="J Shop">
 	<description>WordPress Coding Standards for the theme.</description>
 
 	<file>.</file>
 	<exclude-pattern>/vendor/*</exclude-pattern>
 	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<exclude-pattern>/companion-plugin/*</exclude-pattern>
 
 	<arg name="extensions" value="php"/>
 	<arg name="colors"/>
@@ -19,7 +20,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="themes-j-woocommerce"/>
+				<element value="j-shop"/>
 			</property>
 		</properties>
 	</rule>
@@ -27,8 +28,8 @@
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="dps_"/>
-				<element value="DPS_"/>
+				<element value="jshop_"/>
+				<element value="JSHOP_"/>
 			</property>
 		</properties>
 	</rule>
