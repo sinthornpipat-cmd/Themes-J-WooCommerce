@@ -94,8 +94,6 @@ if ( jshop_has_wc() ) :
 	if ( ! is_wp_error( $jshop_cats ) && $jshop_cats ) :
 		?>
 	<section class="section"><div class="wrap">
-		<div class="section-head"><h2><?php esc_html_e( 'Shop by category', 'j-shop' ); ?></h2>
-			<a class="view-all" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"><?php esc_html_e( 'View all products', 'j-shop' ); ?></a></div>
 		<div class="cat-grid">
 		<?php
 		foreach ( $jshop_cats as $jshop_c ) :

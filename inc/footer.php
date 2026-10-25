@@ -1,7 +1,7 @@
 <?php
 /**
  * Footer: every text is editable in Customizer (click the pencil icon in the live preview),
- * plus 4 widget areas (one under each block).
+ * plus 2 widget areas (one under each block).
  *
  * @package j-shop
  */
@@ -28,25 +28,19 @@ add_action(
  */
 function jshop_ft_defaults() {
 	return array(
-		'jshop_ft_contact_title'  => __( 'Get in Touch', 'j-shop' ),
-		'jshop_ft_contact_text'   => '',
-		'jshop_ft_contact_btn'    => '',
-		'jshop_ft_contact_url'    => '',
-		'jshop_ft_address_title'  => __( 'Address', 'j-shop' ),
-		'jshop_address'           => '',
-		'jshop_ft_news_title'     => __( 'Contact us or get the latest news', 'j-shop' ),
-		'jshop_newsletter_t'      => __( 'Get news and offers from us. Enter your email.', 'j-shop' ),
-		'jshop_newsletter_action' => '',
-		'jshop_ft_news_btn'       => __( 'Sign Up', 'j-shop' ),
-		'jshop_ft_news_ph'        => __( 'Enter your email', 'j-shop' ),
-		'jshop_ft_legal_label'    => __( 'Terms of Use & Privacy Policy', 'j-shop' ),
-		'jshop_ft_legal_url'      => '',
-		'jshop_ft_menu_title'     => __( 'About us', 'j-shop' ),
-		'jshop_ft_copy'           => '© {year} {site}.',
-		'jshop_ft_credit_show'    => true,
-		'jshop_ft_credit'         => sprintf( /* translators: %s: WordPress link. */ __( 'Powered by %s', 'j-shop' ), '<a href="https://wordpress.org" rel="noopener">WordPress</a>' ),
-		'jshop_ft_bg'             => '',
-		'jshop_ft_text'           => '',
+		'jshop_ft_contact_title' => __( 'Get in Touch', 'j-shop' ),
+		'jshop_ft_contact_text'  => '',
+		'jshop_ft_contact_btn'   => '',
+		'jshop_ft_contact_url'   => '',
+		'jshop_ft_address_title' => __( 'Address', 'j-shop' ),
+		'jshop_address'          => '',
+		'jshop_ft_legal_label'   => __( 'Terms of Use & Privacy Policy', 'j-shop' ),
+		'jshop_ft_legal_url'     => '',
+		'jshop_ft_copy'          => '© {year} {site}.',
+		'jshop_ft_credit_show'   => true,
+		'jshop_ft_credit'        => sprintf( /* translators: %s: WordPress link. */ __( 'Powered by %s', 'j-shop' ), '<a href="https://wordpress.org" rel="noopener">WordPress</a>' ),
+		'jshop_ft_bg'            => '',
+		'jshop_ft_text'          => '',
 	);
 }
 /**
@@ -63,7 +57,7 @@ function jshop_ft( $key ) {
 /**
  * Render one footer element as a string (used by Customizer partial refresh).
  *
- * @param string $id Element ID, e.g. address, news_form, legal.
+ * @param string $id Element ID, e.g. address, contact_btn, legal.
  * @return string HTML.
  */
 function jshop_ft_render( $id ) {
@@ -75,7 +69,7 @@ function jshop_ft_render( $id ) {
 /**
  * Print one footer element. Every value is escaped as it is printed.
  *
- * @param string $id Element ID, e.g. address, news_form, legal.
+ * @param string $id Element ID, e.g. address, contact_btn, legal.
  * @return void
  */
 function jshop_ft_output( $id ) {
@@ -99,23 +93,6 @@ function jshop_ft_output( $id ) {
 		case 'address':
 			echo wp_kses_post( nl2br( jshop_ft( 'jshop_address' ) ) );
 			break;
-		case 'menu_title':
-			echo esc_html( jshop_ft( 'jshop_ft_menu_title' ) );
-			break;
-		case 'news_title':
-			echo esc_html( jshop_ft( 'jshop_ft_news_title' ) );
-			break;
-		case 'news_text':
-			echo esc_html( jshop_ft( 'jshop_newsletter_t' ) );
-			break;
-		case 'news_form':
-			$a = jshop_ft( 'jshop_newsletter_action' );
-			if ( $a ) {
-				echo '<form class="news-form" method="post" action="' . esc_url( $a ) . '"><label class="screen-reader-text" for="nl-email">' . esc_html__( 'Email', 'j-shop' ) . '</label>'
-					. '<input id="nl-email" type="email" name="email" placeholder="' . esc_attr( jshop_ft( 'jshop_ft_news_ph' ) ) . '" required>'
-					. '<button class="btn ft-btn" type="submit">' . esc_html( jshop_ft( 'jshop_ft_news_btn' ) ) . '</button></form>';
-			}
-			break;
 		case 'legal':
 			$l = jshop_ft( 'jshop_ft_legal_label' );
 			$u = jshop_ft( 'jshop_ft_legal_url' );
@@ -137,7 +114,7 @@ function jshop_ft_output( $id ) {
 /**
  * Output a footer widget area when it has widgets.
  *
- * @param int $n Widget area number 1-4.
+ * @param int $n Widget area number 1-2.
  * @return void
  */
 function jshop_ft_widgets( $n ) {
@@ -149,7 +126,7 @@ function jshop_ft_widgets( $n ) {
 
 /* ---------- Widget areas ---------- */
 /**
- * Register four footer widget areas, one for each footer block.
+ * Register two footer widget areas, one for each footer block.
  */
 add_action(
 	'widgets_init',
@@ -157,8 +134,6 @@ add_action(
 		$areas = array(
 			1 => array( __( 'Footer: get in touch', 'j-shop' ), __( 'Widgets added here appear below the contact text.', 'j-shop' ) ),
 			2 => array( __( 'Footer: address', 'j-shop' ), __( 'Widgets added here appear below the address.', 'j-shop' ) ),
-			3 => array( __( 'Footer: newsletter', 'j-shop' ), __( 'Add the sign-up form of a newsletter plugin here, for example with a Shortcode block. It replaces the built-in form.', 'j-shop' ) ),
-			4 => array( __( 'Footer: about us', 'j-shop' ), __( 'Widgets added here appear below the About us menu.', 'j-shop' ) ),
 		);
 		foreach ( $areas as $i => $area ) {
 			register_sidebar(
@@ -267,22 +242,12 @@ add_action(
 		$add( 'jshop_ft_address_title', __( 'Heading', 'j-shop' ), 'jshop_ft2' );
 		$add( 'jshop_address', __( 'Address', 'j-shop' ), 'jshop_ft2', 'textarea' );
 
-		$sec( 'jshop_ft3', __( 'Footer: newsletter', 'j-shop' ), __( 'To use a newsletter plugin instead, add its form to the “Footer: newsletter” widget area.', 'j-shop' ) );
-		$add( 'jshop_ft_news_title', __( 'Heading', 'j-shop' ), 'jshop_ft3' );
-		$add( 'jshop_newsletter_t', __( 'Invitation text', 'j-shop' ), 'jshop_ft3', 'textarea' );
-		$add( 'jshop_newsletter_action', __( 'Newsletter form URL (empty = hide the form)', 'j-shop' ), 'jshop_ft3', 'url' );
-		$add( 'jshop_ft_news_ph', __( 'Email field placeholder', 'j-shop' ), 'jshop_ft3' );
-		$add( 'jshop_ft_news_btn', __( 'Sign-up button text', 'j-shop' ), 'jshop_ft3' );
-		$add( 'jshop_ft_legal_label', __( 'Terms link text (empty = hide)', 'j-shop' ), 'jshop_ft3' );
-		$add( 'jshop_ft_legal_url', __( 'Terms link (empty = privacy policy page)', 'j-shop' ), 'jshop_ft3', 'url' );
-
-		$sec( 'jshop_ft4', __( 'Footer: about us menu', 'j-shop' ), __( 'Edit the menu items in Appearance → Menus (location “Footer menu”).', 'j-shop' ) );
-		$add( 'jshop_ft_menu_title', __( 'Heading', 'j-shop' ), 'jshop_ft4' );
-
-		$sec( 'jshop_ft5', __( 'Footer: copyright & credit', 'j-shop' ), __( 'Use {year} for the current year and {site} for the site name.', 'j-shop' ) );
+		$sec( 'jshop_ft5', __( 'Footer: copyright, credit & terms link', 'j-shop' ), __( 'Use {year} for the current year and {site} for the site name.', 'j-shop' ) );
 		$add( 'jshop_ft_copy', __( 'Copyright text', 'j-shop' ), 'jshop_ft5' );
 		$add( 'jshop_ft_credit_show', __( 'Show the credit text on the right', 'j-shop' ), 'jshop_ft5', 'checkbox' );
 		$add( 'jshop_ft_credit', __( 'Credit text (HTML links allowed)', 'j-shop' ), 'jshop_ft5', 'textarea' );
+		$add( 'jshop_ft_legal_label', __( 'Terms link text (empty = hide)', 'j-shop' ), 'jshop_ft5' );
+		$add( 'jshop_ft_legal_url', __( 'Terms link (empty = privacy policy page)', 'j-shop' ), 'jshop_ft5', 'url' );
 
 		$sec( 'jshop_ft6', __( 'Footer: colors', 'j-shop' ), __( 'Leave empty to use the theme colors.', 'j-shop' ) );
 		$add( 'jshop_ft_bg', __( 'Background color', 'j-shop' ), 'jshop_ft6', 'color' );
@@ -298,11 +263,7 @@ add_action(
 			'contact_btn'   => array( '.ft-contact-btn', array( 'jshop_ft_contact_btn', 'jshop_ft_contact_url' ) ),
 			'address_title' => array( '.ft-address-title', array( 'jshop_ft_address_title' ) ),
 			'address'       => array( '.ft-address', array( 'jshop_address' ) ),
-			'news_title'    => array( '.ft-news-title', array( 'jshop_ft_news_title' ) ),
-			'news_text'     => array( '.ft-news-text', array( 'jshop_newsletter_t' ) ),
-			'news_form'     => array( '.ft-news-form', array( 'jshop_newsletter_action', 'jshop_ft_news_ph', 'jshop_ft_news_btn' ) ),
 			'legal'         => array( '.ft-legal', array( 'jshop_ft_legal_label', 'jshop_ft_legal_url' ) ),
-			'menu_title'    => array( '.ft-menu-title', array( 'jshop_ft_menu_title' ) ),
 			'copy'          => array( '.ft-copy', array( 'jshop_ft_copy' ) ),
 			'credit'        => array( '.ft-credit', array( 'jshop_ft_credit_show', 'jshop_ft_credit' ) ),
 		);
