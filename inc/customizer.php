@@ -10,20 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Default title and caption for the four trust-strip boxes on the home page.
- *
- * @return array<int,array<int,string>> List of [ title, caption ].
- */
-function jshop_trust_defaults() {
-	return array(
-		array( __( 'Fast delivery', 'j-shop' ), __( 'Nationwide shipping', 'j-shop' ) ),
-		array( __( 'Secure payment', 'j-shop' ), __( 'Many payment options', 'j-shop' ) ),
-		array( __( 'Quality products', 'j-shop' ), __( 'Carefully selected', 'j-shop' ) ),
-		array( __( 'Easy to reach', 'j-shop' ), __( 'Our team is here to help', 'j-shop' ) ),
-	);
-}
-
-/**
  * Register all Customizer panels, sections and controls for the theme.
  */
 add_action(
@@ -135,15 +121,13 @@ add_action(
 		$wp->add_section(
 			'jshop_trust',
 			array(
-				'title' => __( 'Trust strip (4 boxes)', 'j-shop' ),
-				'panel' => 'jshop',
+				'title'       => __( 'Trust strip (4 boxes)', 'j-shop' ),
+				'panel'       => 'jshop',
+				'description' => __( 'Each box shows one image that fills the box, with an optional link. Leave the image empty to hide the box.', 'j-shop' ),
 			)
 		);
-		foreach ( jshop_trust_defaults() as $k => $d ) {
-			$n = $k + 1;
-			$text( "jshop_trust_t_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d title', 'j-shop' ), $n ), $d[0], 'jshop_trust' );
-			$text( "jshop_trust_s_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d caption', 'j-shop' ), $n ), $d[1], 'jshop_trust' );
-			$img( "jshop_trust_img_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d image (optional, recommended 96×96)', 'j-shop' ), $n ), 'jshop_trust' );
+		for ( $n = 1; $n <= 4; $n++ ) {
+			$img( "jshop_trust_img_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d image (recommended 600×300)', 'j-shop' ), $n ), 'jshop_trust' );
 			$text( "jshop_trust_url_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d link (optional)', 'j-shop' ), $n ), '', 'jshop_trust', 'url' );
 		}
 
@@ -175,18 +159,5 @@ add_action(
 		$text( 'jshop_popup_code', __( 'Discount code', 'j-shop' ), 'SAMPLE10', 'jshop_popup' );
 		$text( 'jshop_popup_minutes', __( 'Countdown (minutes)', 'j-shop' ), '5', 'jshop_popup' );
 		$img( 'jshop_popup_img', __( 'Image (transparent PNG)', 'j-shop' ), 'jshop_popup' );
-
-		// Mobile nav.
-		$wp->add_section(
-			'jshop_mnav',
-			array(
-				'title' => __( 'Mobile bottom menu', 'j-shop' ),
-				'panel' => 'jshop',
-			)
-		);
-		$text( 'jshop_mnav_2_t', __( 'Button 2 text', 'j-shop' ), __( 'Products', 'j-shop' ), 'jshop_mnav' );
-		$text( 'jshop_mnav_2_u', __( 'Button 2 link (empty = shop page)', 'j-shop' ), '', 'jshop_mnav', 'url' );
-		$text( 'jshop_mnav_3_t', __( 'Button 3 text', 'j-shop' ), __( 'Account', 'j-shop' ), 'jshop_mnav' );
-		$text( 'jshop_mnav_3_u', __( 'Button 3 link (empty = account page)', 'j-shop' ), '', 'jshop_mnav', 'url' );
 	}
 );

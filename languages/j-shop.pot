@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: J Shop 3.0.3\n"
+"Project-Id-Version: J Shop 3.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/themes-j-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-25T11:49:28+00:00\n"
+"POT-Creation-Date: 2026-10-25T12:20:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: j-shop\n"
@@ -63,61 +63,37 @@ msgstr[1] ""
 msgid "Comments are closed."
 msgstr ""
 
-#: footer.php:73
-msgid "Mobile menu"
-msgstr ""
-
 #: footer.php:74
-#: functions.php:155
-msgid "Home"
-msgstr ""
-
-#: footer.php:75
-#: inc/customizer.php:187
-msgid "Products"
-msgstr ""
-
-#: footer.php:76
-#: inc/customizer.php:189
-msgid "Account"
-msgstr ""
-
-#: footer.php:77
-#: header.php:54
-msgid "Cart"
-msgstr ""
-
-#: footer.php:81
-#: inc/customizer.php:175
+#: inc/customizer.php:159
 #: woocommerce/checkout/review-order.php:50
 msgid "Discount code"
 msgstr ""
 
-#: footer.php:83
+#: footer.php:76
 #: template-parts/mini-cart.php:13
 msgid "Close"
 msgstr ""
 
-#: footer.php:89
-#: inc/customizer.php:173
+#: footer.php:82
+#: inc/customizer.php:157
 msgid "Get a special discount"
 msgstr ""
 
-#: footer.php:90
-#: inc/customizer.php:174
+#: footer.php:83
+#: inc/customizer.php:158
 msgid "Edit this text and the conditions in the Customizer."
 msgstr ""
 
-#: footer.php:91
+#: footer.php:84
 msgid "Offer ends in"
 msgstr ""
 
-#: footer.php:93
+#: footer.php:86
 #: functions.php:81
 msgid "Copy code"
 msgstr ""
 
-#: footer.php:94
+#: footer.php:87
 msgid "Use the code at checkout."
 msgstr ""
 
@@ -127,28 +103,27 @@ msgstr ""
 
 #: front-page.php:42
 #: front-page.php:55
-#: inc/customizer.php:132
+#: inc/customizer.php:118
 msgid "Shop now"
 msgstr ""
 
-#: front-page.php:101
+#: front-page.php:97
 msgid "Shop by category"
 msgstr ""
 
-#: front-page.php:102
-#: inc/footer.php:47
+#: front-page.php:98
 msgid "View all products"
 msgstr ""
 
 #. translators: %d: number of products.
-#: front-page.php:115
+#: front-page.php:111
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: front-page.php:127
+#: front-page.php:123
 msgid "Install and activate the WooCommerce plugin to show products here."
 msgstr ""
 
@@ -171,6 +146,10 @@ msgstr ""
 msgid "Slide %d"
 msgstr ""
 
+#: functions.php:155
+msgid "Home"
+msgstr ""
+
 #: functions.php:157
 msgid "All products"
 msgstr ""
@@ -180,12 +159,11 @@ msgid "Skip to content"
 msgstr ""
 
 #: header.php:21
-#: inc/customizer.php:116
+#: inc/customizer.php:102
 msgid "Welcome to our store. Edit this text in the Customizer."
 msgstr ""
 
 #: header.php:30
-#: inc/footer.php:43
 msgid "Menu"
 msgstr ""
 
@@ -199,346 +177,273 @@ msgstr ""
 msgid "My account"
 msgstr ""
 
-#: inc/customizer.php:19
-msgid "Fast delivery"
+#: header.php:54
+msgid "Cart"
 msgstr ""
 
-#: inc/customizer.php:19
-msgid "Nationwide shipping"
-msgstr ""
-
-#: inc/customizer.php:20
-msgid "Secure payment"
-msgstr ""
-
-#: inc/customizer.php:20
-msgid "Many payment options"
-msgstr ""
-
-#: inc/customizer.php:21
-msgid "Quality products"
-msgstr ""
-
-#: inc/customizer.php:21
-msgid "Carefully selected"
-msgstr ""
-
-#: inc/customizer.php:22
-msgid "Easy to reach"
-msgstr ""
-
-#: inc/customizer.php:22
-msgid "Our team is here to help"
-msgstr ""
-
-#: inc/customizer.php:100
+#: inc/customizer.php:86
 msgid "Colors"
 msgstr ""
 
-#: inc/customizer.php:104
+#: inc/customizer.php:90
 msgid "Main color (brand)"
 msgstr ""
 
-#: inc/customizer.php:105
+#: inc/customizer.php:91
 msgid "Accent color (badges, sale prices)"
 msgstr ""
 
-#: inc/customizer.php:106
+#: inc/customizer.php:92
 msgid "Text / footer color"
 msgstr ""
 
-#: inc/customizer.php:112
+#: inc/customizer.php:98
 msgid "Announcement bar & product badge"
 msgstr ""
 
-#: inc/customizer.php:116
+#: inc/customizer.php:102
 msgid "Announcement text"
 msgstr ""
 
-#: inc/customizer.php:117
+#: inc/customizer.php:103
 msgid "Announcement link (optional)"
 msgstr ""
 
-#: inc/customizer.php:118
+#: inc/customizer.php:104
 msgid "Badge text on product cards, e.g. “Up to 50% off” (empty = hide)"
 msgstr ""
 
-#: inc/customizer.php:124
+#: inc/customizer.php:110
 msgid "Home page banner slider"
 msgstr ""
 
 #. translators: %d: banner number.
-#: inc/customizer.php:129
+#: inc/customizer.php:115
 #, php-format
 msgid "Banner %d (recommended 1920×700)"
 msgstr ""
 
 #. translators: %d: banner number.
-#: inc/customizer.php:130
+#: inc/customizer.php:116
 #, php-format
 msgid "Banner %d link"
 msgstr ""
 
-#: inc/customizer.php:132
+#: inc/customizer.php:118
 msgid "Banner button text (shown with your own images)"
 msgstr ""
 
-#: inc/customizer.php:138
+#: inc/customizer.php:124
 msgid "Trust strip (4 boxes)"
 msgstr ""
 
-#. translators: %d: box number.
-#: inc/customizer.php:144
-#, php-format
-msgid "Box %d title"
+#: inc/customizer.php:126
+msgid "Each box shows one image that fills the box, with an optional link. Leave the image empty to hide the box."
 msgstr ""
 
 #. translators: %d: box number.
-#: inc/customizer.php:145
+#: inc/customizer.php:130
 #, php-format
-msgid "Box %d caption"
+msgid "Box %d image (recommended 600×300)"
 msgstr ""
 
 #. translators: %d: box number.
-#: inc/customizer.php:146
-#, php-format
-msgid "Box %d image (optional, recommended 96×96)"
-msgstr ""
-
-#. translators: %d: box number.
-#: inc/customizer.php:147
+#: inc/customizer.php:131
 #, php-format
 msgid "Box %d link (optional)"
 msgstr ""
 
-#: inc/customizer.php:154
+#: inc/customizer.php:138
 msgid "Discount code popup"
 msgstr ""
 
-#: inc/customizer.php:168
+#: inc/customizer.php:152
 msgid "Enable"
 msgstr ""
 
-#: inc/customizer.php:173
+#: inc/customizer.php:157
+#: inc/footer.php:261
+#: inc/footer.php:267
+#: inc/footer.php:271
+#: inc/footer.php:280
 msgid "Heading"
 msgstr ""
 
-#: inc/customizer.php:174
+#: inc/customizer.php:158
 msgid "Conditions"
 msgstr ""
 
-#: inc/customizer.php:176
+#: inc/customizer.php:160
 msgid "Countdown (minutes)"
 msgstr ""
 
-#: inc/customizer.php:177
+#: inc/customizer.php:161
 msgid "Image (transparent PNG)"
 msgstr ""
 
-#: inc/customizer.php:183
-msgid "Mobile bottom menu"
+#: inc/footer.php:31
+msgid "Get in Touch"
 msgstr ""
 
-#: inc/customizer.php:187
-msgid "Button 2 text"
-msgstr ""
-
-#: inc/customizer.php:188
-msgid "Button 2 link (empty = shop page)"
-msgstr ""
-
-#: inc/customizer.php:189
-msgid "Button 3 text"
-msgstr ""
-
-#: inc/customizer.php:190
-msgid "Button 3 link (empty = account page)"
+#: inc/footer.php:35
+#: inc/footer.php:268
+msgid "Address"
 msgstr ""
 
 #: inc/footer.php:37
-msgid "Phone:"
+msgid "Contact us or get the latest news"
 msgstr ""
 
-#: inc/footer.php:39
-msgid "Fax:"
-msgstr ""
-
-#: inc/footer.php:41
-msgid "Email:"
-msgstr ""
-
-#: inc/footer.php:44
-msgid "Shop online"
-msgstr ""
-
-#: inc/footer.php:48
-msgid "Stay in touch"
-msgstr ""
-
-#: inc/footer.php:49
+#: inc/footer.php:38
 msgid "Get news and offers from us. Enter your email."
 msgstr ""
 
-#: inc/footer.php:51
-msgid "Subscribe"
+#: inc/footer.php:40
+msgid "Sign Up"
+msgstr ""
+
+#: inc/footer.php:41
+msgid "Enter your email"
+msgstr ""
+
+#: inc/footer.php:42
+msgid "Terms of Use & Privacy Policy"
+msgstr ""
+
+#: inc/footer.php:44
+msgid "About us"
 msgstr ""
 
 #. translators: %s: WordPress link.
-#: inc/footer.php:60
+#: inc/footer.php:47
 #, php-format
 msgid "Powered by %s"
 msgstr ""
 
-#: inc/footer.php:168
+#: inc/footer.php:114
 msgid "Email"
 msgstr ""
 
-#. translators: %d: footer column number.
-#: inc/footer.php:214
-#, php-format
-msgid "Footer column %d"
+#: inc/footer.php:158
+#: inc/footer.php:260
+msgid "Footer: get in touch"
 msgstr ""
 
-#: inc/footer.php:216
-msgid "Widgets added here appear below the content of this column."
+#: inc/footer.php:158
+msgid "Widgets added here appear below the contact text."
 msgstr ""
 
-#: inc/footer.php:258
+#: inc/footer.php:159
+#: inc/footer.php:266
+msgid "Footer: address"
+msgstr ""
+
+#: inc/footer.php:159
+msgid "Widgets added here appear below the address."
+msgstr ""
+
+#: inc/footer.php:160
+#: inc/footer.php:270
+msgid "Footer: newsletter"
+msgstr ""
+
+#: inc/footer.php:160
+msgid "Add the sign-up form of a newsletter plugin here, for example with a Shortcode block. It replaces the built-in form."
+msgstr ""
+
+#: inc/footer.php:161
+msgid "Footer: about us"
+msgstr ""
+
+#: inc/footer.php:161
+msgid "Widgets added here appear below the About us menu."
+msgstr ""
+
+#: inc/footer.php:210
 msgid "In the preview, click the pencil icon next to a text to jump to its field."
 msgstr ""
 
-#: inc/footer.php:308
-msgid "Footer: column 1 (contact)"
+#: inc/footer.php:262
+msgid "Contact text"
 msgstr ""
 
-#: inc/footer.php:309
-#: inc/footer.php:320
-#: inc/footer.php:324
-#: inc/footer.php:331
-msgid "Show this column"
+#: inc/footer.php:263
+msgid "Button text (empty = hide)"
 msgstr ""
 
-#: inc/footer.php:310
-msgid "Heading / company name (empty = site title)"
+#: inc/footer.php:264
+msgid "Button link"
 msgstr ""
 
-#: inc/footer.php:311
-msgid "Address"
+#: inc/footer.php:270
+msgid "To use a newsletter plugin instead, add its form to the “Footer: newsletter” widget area."
 msgstr ""
 
-#: inc/footer.php:312
-msgid "Label: phone"
-msgstr ""
-
-#: inc/footer.php:313
-msgid "Phone numbers (separate with commas; the first one becomes a call link)"
-msgstr ""
-
-#: inc/footer.php:314
-msgid "Label: fax"
-msgstr ""
-
-#: inc/footer.php:315
-msgid "Fax (empty = hide)"
-msgstr ""
-
-#: inc/footer.php:316
-msgid "Label: email"
-msgstr ""
-
-#: inc/footer.php:317
-msgid "Email (empty = hide)"
-msgstr ""
-
-#: inc/footer.php:319
-msgid "Footer: column 2 (menu)"
-msgstr ""
-
-#: inc/footer.php:319
-msgid "Edit the menu items in Appearance → Menus (location “Footer menu”)."
-msgstr ""
-
-#: inc/footer.php:321
-#: inc/footer.php:325
-#: inc/footer.php:332
-msgid "Column heading"
-msgstr ""
-
-#: inc/footer.php:323
-msgid "Footer: column 3 (shop online)"
-msgstr ""
-
-#: inc/footer.php:326
-msgid "Online store link text"
-msgstr ""
-
-#: inc/footer.php:327
-msgid "Online store link"
-msgstr ""
-
-#: inc/footer.php:328
-msgid "“All products” link text (empty = hide)"
-msgstr ""
-
-#: inc/footer.php:330
-msgid "Footer: column 4 (stay in touch)"
-msgstr ""
-
-#: inc/footer.php:333
+#: inc/footer.php:272
 msgid "Invitation text"
 msgstr ""
 
-#: inc/footer.php:334
+#: inc/footer.php:273
 msgid "Newsletter form URL (empty = hide the form)"
 msgstr ""
 
-#: inc/footer.php:335
+#: inc/footer.php:274
 msgid "Email field placeholder"
 msgstr ""
 
-#: inc/footer.php:336
-msgid "Subscribe button text"
+#: inc/footer.php:275
+msgid "Sign-up button text"
 msgstr ""
 
-#. translators: %s: social network name.
-#: inc/footer.php:338
-#, php-format
-msgid "%s link (empty = hide)"
+#: inc/footer.php:276
+msgid "Terms link text (empty = hide)"
 msgstr ""
 
-#: inc/footer.php:341
+#: inc/footer.php:277
+msgid "Terms link (empty = privacy policy page)"
+msgstr ""
+
+#: inc/footer.php:279
+msgid "Footer: about us menu"
+msgstr ""
+
+#: inc/footer.php:279
+msgid "Edit the menu items in Appearance → Menus (location “Footer menu”)."
+msgstr ""
+
+#: inc/footer.php:282
 msgid "Footer: copyright & credit"
 msgstr ""
 
-#: inc/footer.php:341
+#: inc/footer.php:282
 msgid "Use {year} for the current year and {site} for the site name."
 msgstr ""
 
-#: inc/footer.php:342
+#: inc/footer.php:283
 msgid "Copyright text"
 msgstr ""
 
-#: inc/footer.php:343
+#: inc/footer.php:284
 msgid "Show the credit text on the right"
 msgstr ""
 
-#: inc/footer.php:344
+#: inc/footer.php:285
 msgid "Credit text (HTML links allowed)"
 msgstr ""
 
-#: inc/footer.php:346
+#: inc/footer.php:287
 msgid "Footer: colors"
 msgstr ""
 
-#: inc/footer.php:346
+#: inc/footer.php:287
 msgid "Leave empty to use the theme colors."
 msgstr ""
 
-#: inc/footer.php:347
+#: inc/footer.php:288
 msgid "Background color"
 msgstr ""
 
-#: inc/footer.php:348
+#: inc/footer.php:289
 msgid "Text color"
 msgstr ""
 

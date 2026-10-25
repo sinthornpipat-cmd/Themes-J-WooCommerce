@@ -3,7 +3,7 @@ Contributors: sinthornpipat
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.0.3
+Stable tag: 3.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ J Shop is a clean, fast storefront theme for WooCommerce shops, designed around 
 * Slide-out mini cart with quantity buttons, live line and total updates, coupons and a free-shipping progress bar.
 * Two-column checkout with an order summary, product thumbnails and an inline coupon field. Works with the classic checkout and the Cart and Checkout blocks.
 * Shop sidebar for product filters, sale badges, sticky add-to-cart bar on product pages.
-* Footer with four editable columns, four widget areas and click-to-edit text in the Customizer preview.
+* Footer with contact and address blocks, a newsletter area with a terms link, an "About us" menu, four widget areas and click-to-edit text in the Customizer preview.
 * Compatible with WooCommerce HPOS. Translation ready, with a Thai translation included.
 
 The theme also works without WooCommerce as a simple blog theme.
@@ -40,11 +40,21 @@ The grid shows top-level product categories that have products. Add products to 
 
 Set the amount in Appearance > Customize > J Shop > Shop settings, and set up a matching Free shipping method in WooCommerce. Set it to 0 to hide the bar.
 
+= How do I add a newsletter sign-up form to the footer? =
+
+J Shop does not store email addresses. Either enter the form URL of your mailing service in Appearance > Customize > J Shop > Footer: newsletter, or add the form of a newsletter plugin to the "Footer: newsletter" widget area, which replaces the built-in form.
+
 == Privacy ==
 
 J Shop does not collect, store or send any personal data. The theme loads the Prompt and Noto Sans Thai fonts from Google Fonts, so visitors' browsers connect to fonts.googleapis.com and fonts.gstatic.com.
 
 == Changelog ==
+
+= 3.0.4 =
+* Trust strip: each box now shows one full-size image with an optional link. The title and caption fields are removed.
+* Removed the mobile bottom menu.
+* New footer layout: "Get in Touch" and "Address" blocks, a newsletter heading and form, a terms link and an "About us" menu.
+* Restored the footer, popup and content page styles that were removed by mistake in 3.0.2.
 
 = 3.0.3 =
 * Trust strip: each box can now have an image and a link, set in the Customizer.
@@ -62,7 +72,7 @@ J Shop does not collect, store or send any personal data. The theme loads the Pr
 
 == Upgrade Notice ==
 
-= 3.0.3 =
+= 3.0.4 =
 First release on WordPress.org.
 
 == Resources ==
