@@ -60,7 +60,7 @@ if ( $dps_slides ) :
 <?php if ( dps_mod( 'dps_show_trust', true ) ) : ?>
 <div class="wrap"><div class="trust">
 	<?php
-	$dps_td = array( array( 'ผู้ผลิตของใช้พลาสติกในบ้าน', 'รายใหญ่ของประเทศไทย' ), array( 'Thailand Trust Mark', 'รางวัลประจำปี 2566' ), array( 'สินค้ากว่า 240 รายการ', '10 หมวดหมู่ ครอบคลุมทุกการใช้งาน' ), array( 'สั่งซื้อผ่าน Shopee', 'petchsiam_official_store' ) );
+	$dps_td = array( array( 'ผู้ผลิตของใช้พลาสติกในบ้าน', 'รายใหญ่ของประเทศไทย' ), array( 'Thailand Trust Mark', 'รางวัลประจำปี 2566' ), array( 'สินค้ากว่า 240 รายการ', '10 หมวดหมู่ ครอบคลุมทุกการใช้งาน' ), array( 'สั่งซื้อผ่าน Shopee', 'สะดวก รวดเร็ว ปลอดภัย' ) );
 	for ( $dps_i = 1; $dps_i <= 4; $dps_i++ ) :
 		$dps_trust_title = dps_mod( "dps_trust_t_$dps_i", $dps_td[ $dps_i - 1 ][0] );
 		$dps_trust_sub   = dps_mod( "dps_trust_s_$dps_i", $dps_td[ $dps_i - 1 ][1] );

@@ -142,8 +142,8 @@ add_action(
 				'panel' => 'dps',
 			)
 		);
-		$text( 'dps_announce', 'ข้อความแถบประกาศ', '🛒 สั่งซื้อออนไลน์ได้ที่ Shopee: petchsiam_official_store', 'dps_top' );
-		$text( 'dps_announce_url', 'ลิงก์แถบประกาศ', 'https://shopee.co.th/petchsiam_official_store', 'dps_top', 'url' );
+		$text( 'dps_announce', 'ข้อความแถบประกาศ', '🛒 สั่งซื้อออนไลน์ได้ที่ Shopee', 'dps_top' );
+		$text( 'dps_announce_url', 'ลิงก์แถบประกาศ', 'https://shopee.co.th/', 'dps_top', 'url' );
 		$text( 'dps_badge', 'ข้อความป้ายบนการ์ดสินค้า เช่น “ลดสูงสุด 50%” (เว้นว่าง = ไม่แสดง)', '', 'dps_top' );
 
 		// Hero.
@@ -172,7 +172,7 @@ add_action(
 			array( 'ผู้ผลิตของใช้พลาสติกในบ้าน', 'รายใหญ่ของประเทศไทย' ),
 			array( 'Thailand Trust Mark', 'รางวัลประจำปี 2566' ),
 			array( 'สินค้ากว่า 240 รายการ', '10 หมวดหมู่ ครอบคลุมทุกการใช้งาน' ),
-			array( 'สั่งซื้อผ่าน Shopee', 'petchsiam_official_store' ),
+			array( 'สั่งซื้อผ่าน Shopee', 'สะดวก รวดเร็ว ปลอดภัย' ),
 		);
 		foreach ( $default_values as $k => $d ) {
 			$n = $k + 1;
@@ -274,6 +274,6 @@ add_action(
 		$text( 'dps_mnav_2_t', 'ปุ่มที่ 2 ข้อความ', 'สินค้า', 'dps_mnav' );
 		$text( 'dps_mnav_2_u', 'ปุ่มที่ 2 ลิงก์ (เว้นว่าง = หน้าร้านค้า)', '', 'dps_mnav', 'url' );
 		$text( 'dps_mnav_3_t', 'ปุ่มที่ 3 ข้อความ', 'Shopee', 'dps_mnav' );
-		$text( 'dps_mnav_3_u', 'ปุ่มที่ 3 ลิงก์', 'https://shopee.co.th/petchsiam_official_store', 'dps_mnav', 'url' );
+		$text( 'dps_mnav_3_u', 'ปุ่มที่ 3 ลิงก์', 'https://shopee.co.th/', 'dps_mnav', 'url' );
 	}
 );

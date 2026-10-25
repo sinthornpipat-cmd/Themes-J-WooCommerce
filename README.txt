@@ -11,8 +11,8 @@ Themes J WooCommerce — WordPress + WooCommerce theme (v2.0)
 6. ก่อนเปิดเว็บจริง: กด "ลบข้อมูลตัวอย่างทั้งหมด" แล้วใส่สินค้า/รูปจริง
 
 หมายเหตุ: โฟลเดอร์ธีมต้องชื่อ themes-j-woocommerce ให้ตรงกับ Text Domain
-ถ้าเคยใช้ธีมนี้ในชื่อเดิม (petchsiam-shop) ค่าใน Customizer จะไม่ย้ายตามอัตโนมัติ
-ย้ายได้โดยใช้ Appearance → Customize → Export/Import (ปลั๊กอิน Customizer Export/Import) หรือคัดลอก option theme_mods_petchsiam-shop ไปเป็น theme_mods_themes-j-woocommerce
+ถ้าเคยใช้ธีมนี้ในชื่อโฟลเดอร์เดิม ค่าใน Customizer จะไม่ย้ายตามอัตโนมัติ
+ย้ายได้โดยใช้ Appearance → Customize → Export/Import (ปลั๊กอิน Customizer Export/Import) หรือคัดลอก option theme_mods_<ชื่อโฟลเดอร์เดิม> ไปเป็น theme_mods_themes-j-woocommerce
 
 หน้าแรก: สไลด์แบนเนอร์ → แถบจุดขาย 4 ช่อง → ตารางหมวดหมู่ → เซกชันสินค้า 5 หมวด → ไอเดียจัดบ้าน → รีวิว → FAQ
 Slug หมวดเริ่มต้น: storage-box, drawers-cabinet, laundry, kitchen, heavy-duty (แก้ได้ใน Customizer)
@@ -115,3 +115,7 @@ v2.7.2 — เซกชันสินค้าหน้าแรกแสดง
 v2.8.0 — หน้ารายละเอียดธีม (Appearance → Themes → Theme Details)
 - เขียน Description ใหม่, ผู้สร้าง n2npay ลิงก์ไป https://n2npay.freedev.app/, เพิ่ม Tags, Tested up to, License URI
 - เพิ่ม screenshot.png (1200x900) ภาพหน้าแรกของธีม
+
+v2.8.1 — เอาชื่อร้านเดิมออกจากเนื้อหาเริ่มต้น
+- แถบประกาศ, แถบจุดขาย, ส่วนท้าย, เมนูล่างมือถือ, FAQ ตัวอย่าง: ไม่มีชื่อร้าน/บัญชี Shopee/อีเมล/Facebook ของร้านเดิมแล้ว (ลิงก์ Shopee เริ่มต้นเป็น https://shopee.co.th/, อีเมลและ Facebook เว้นว่าง = ซ่อน)
+- ไม่เปลี่ยนชื่อฟังก์ชันหรือ ID ของค่าใน Customizer ค่าที่เคยบันทึกไว้ยังอยู่เหมือนเดิม
