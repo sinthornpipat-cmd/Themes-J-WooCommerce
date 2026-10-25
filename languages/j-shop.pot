@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: J Shop 3.0.2\n"
+"Project-Id-Version: J Shop 3.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/themes-j-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-25T11:41:01+00:00\n"
+"POT-Creation-Date: 2026-10-25T11:49:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: j-shop\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the theme
 #: style.css
-msgid "J Shop is a clean, fast storefront theme for WooCommerce shops, designed around Thai typography (Prompt and Noto Sans Thai). The home page combines a banner slider, a trust strip, and a product category grid, all set up in the Customizer without code. Shoppers get a slide-out mini cart with live quantity and total updates, a free-shipping progress bar, coupons and a two-column checkout, while a shop sidebar keeps product filters close at hand. Supports HPOS and the WooCommerce Cart and Checkout blocks."
+msgid "J Shop is a clean, fast storefront theme for WooCommerce shops, designed around Thai typography (Prompt and Noto Sans Thai). The home page combines a banner slider, a trust strip and a product category grid, all set up in the Customizer without code. Shoppers get a slide-out mini cart with live quantity and total updates, a free-shipping progress bar, coupons and a two-column checkout, while a shop sidebar keeps product filters close at hand. Supports HPOS and the WooCommerce Cart and Checkout blocks."
 msgstr ""
 
 #. Author of the theme
@@ -73,12 +73,12 @@ msgid "Home"
 msgstr ""
 
 #: footer.php:75
-#: inc/customizer.php:185
+#: inc/customizer.php:187
 msgid "Products"
 msgstr ""
 
 #: footer.php:76
-#: inc/customizer.php:187
+#: inc/customizer.php:189
 msgid "Account"
 msgstr ""
 
@@ -88,7 +88,7 @@ msgid "Cart"
 msgstr ""
 
 #: footer.php:81
-#: inc/customizer.php:173
+#: inc/customizer.php:175
 #: woocommerce/checkout/review-order.php:50
 msgid "Discount code"
 msgstr ""
@@ -99,12 +99,12 @@ msgid "Close"
 msgstr ""
 
 #: footer.php:89
-#: inc/customizer.php:171
+#: inc/customizer.php:173
 msgid "Get a special discount"
 msgstr ""
 
 #: footer.php:90
-#: inc/customizer.php:172
+#: inc/customizer.php:174
 msgid "Edit this text and the conditions in the Customizer."
 msgstr ""
 
@@ -131,24 +131,24 @@ msgstr ""
 msgid "Shop now"
 msgstr ""
 
-#: front-page.php:90
+#: front-page.php:101
 msgid "Shop by category"
 msgstr ""
 
-#: front-page.php:91
+#: front-page.php:102
 #: inc/footer.php:47
 msgid "View all products"
 msgstr ""
 
 #. translators: %d: number of products.
-#: front-page.php:104
+#: front-page.php:115
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: front-page.php:116
+#: front-page.php:127
 msgid "Install and activate the WooCommerce plugin to show products here."
 msgstr ""
 
@@ -299,47 +299,59 @@ msgstr ""
 msgid "Box %d caption"
 msgstr ""
 
-#: inc/customizer.php:152
+#. translators: %d: box number.
+#: inc/customizer.php:146
+#, php-format
+msgid "Box %d image (optional, recommended 96×96)"
+msgstr ""
+
+#. translators: %d: box number.
+#: inc/customizer.php:147
+#, php-format
+msgid "Box %d link (optional)"
+msgstr ""
+
+#: inc/customizer.php:154
 msgid "Discount code popup"
 msgstr ""
 
-#: inc/customizer.php:166
+#: inc/customizer.php:168
 msgid "Enable"
 msgstr ""
 
-#: inc/customizer.php:171
+#: inc/customizer.php:173
 msgid "Heading"
 msgstr ""
 
-#: inc/customizer.php:172
+#: inc/customizer.php:174
 msgid "Conditions"
 msgstr ""
 
-#: inc/customizer.php:174
+#: inc/customizer.php:176
 msgid "Countdown (minutes)"
 msgstr ""
 
-#: inc/customizer.php:175
+#: inc/customizer.php:177
 msgid "Image (transparent PNG)"
 msgstr ""
 
-#: inc/customizer.php:181
+#: inc/customizer.php:183
 msgid "Mobile bottom menu"
 msgstr ""
 
-#: inc/customizer.php:185
+#: inc/customizer.php:187
 msgid "Button 2 text"
 msgstr ""
 
-#: inc/customizer.php:186
+#: inc/customizer.php:188
 msgid "Button 2 link (empty = shop page)"
 msgstr ""
 
-#: inc/customizer.php:187
+#: inc/customizer.php:189
 msgid "Button 3 text"
 msgstr ""
 
-#: inc/customizer.php:188
+#: inc/customizer.php:190
 msgid "Button 3 link (empty = account page)"
 msgstr ""
 

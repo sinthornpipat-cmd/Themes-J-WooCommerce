@@ -1,15 +1,16 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: J Shop 2.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/j-shop\n"
+"POT-Creation-Date: 2026-10-25T10:23:25+00:00\n"
+"PO-Revision-Date: 2026-10-25 10:30+0000\n"
 "Last-Translator: n2npay\n"
 "Language-Team: Thai\n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-25T10:23:25+00:00\n"
-"PO-Revision-Date: 2026-10-25 10:30+0000\n"
-"Language: th\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Domain: j-shop\n"
 "X-Generator: WP-CLI 2.12.0\n"
@@ -56,44 +57,36 @@ msgstr "ปิดการแสดงความคิดเห็นแล้
 msgid "Mobile menu"
 msgstr "เมนูมือถือ"
 
-#: footer.php:74
-#: functions.php:155
+#: footer.php:74 functions.php:155
 msgid "Home"
 msgstr "หน้าแรก"
 
-#: footer.php:75
-#: inc/customizer.php:185
+#: footer.php:75 inc/customizer.php:187
 msgid "Products"
 msgstr "สินค้า"
 
-#: footer.php:76
-#: inc/customizer.php:187
+#: footer.php:76 inc/customizer.php:189
 msgid "Account"
 msgstr "บัญชี"
 
-#: footer.php:77
-#: header.php:54
+#: footer.php:77 header.php:54
 msgid "Cart"
 msgstr "ตะกร้า"
 
-#: footer.php:81
-#: inc/customizer.php:173
+#: footer.php:81 inc/customizer.php:175
 #: woocommerce/checkout/review-order.php:50
 msgid "Discount code"
 msgstr "โค้ดส่วนลด"
 
-#: footer.php:83
-#: template-parts/mini-cart.php:13
+#: footer.php:83 template-parts/mini-cart.php:13
 msgid "Close"
 msgstr "ปิด"
 
-#: footer.php:89
-#: inc/customizer.php:171
+#: footer.php:89 inc/customizer.php:173
 msgid "Get a special discount"
 msgstr "รับส่วนลดพิเศษ"
 
-#: footer.php:90
-#: inc/customizer.php:172
+#: footer.php:90 inc/customizer.php:174
 msgid "Edit this text and the conditions in the Customizer."
 msgstr "แก้ข้อความและเงื่อนไขได้ใน Customizer"
 
@@ -101,8 +94,7 @@ msgstr "แก้ข้อความและเงื่อนไขได้
 msgid "Offer ends in"
 msgstr "ตัดสินใจช้อปภายใน"
 
-#: footer.php:93
-#: functions.php:81
+#: footer.php:93 functions.php:81
 msgid "Copy code"
 msgstr "คัดลอกโค้ด"
 
@@ -114,34 +106,30 @@ msgstr "นำโค้ดไปใช้ตอน Checkout ได้เลย"
 msgid "Promotional banners"
 msgstr "แบนเนอร์โปรโมชัน"
 
-#: front-page.php:42
-#: front-page.php:55
-#: inc/customizer.php:132
+#: front-page.php:42 front-page.php:55 inc/customizer.php:132
 msgid "Shop now"
 msgstr "ดูสินค้า"
 
-#: front-page.php:90
+#: front-page.php:101
 msgid "Shop by category"
 msgstr "หมวดหมู่สินค้า"
 
-#: front-page.php:91
-#: inc/footer.php:47
+#: front-page.php:102 inc/footer.php:47
 msgid "View all products"
 msgstr "ดูสินค้าทั้งหมด"
 
 #. translators: %d: number of products.
-#: front-page.php:104
+#: front-page.php:115
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
 msgstr[0] "%d รายการ"
 
-#: front-page.php:116
+#: front-page.php:127
 msgid "Install and activate the WooCommerce plugin to show products here."
 msgstr "กรุณาติดตั้งและเปิดใช้งานปลั๊กอิน WooCommerce เพื่อแสดงสินค้า"
 
-#: functions.php:46
-#: header.php:39
+#: functions.php:46 header.php:39
 msgid "Primary menu"
 msgstr "เมนูหลัก"
 
@@ -167,19 +155,15 @@ msgstr "สินค้าทั้งหมด"
 msgid "Skip to content"
 msgstr "ข้ามไปยังเนื้อหา"
 
-#: header.php:21
-#: inc/customizer.php:116
+#: header.php:21 inc/customizer.php:116
 msgid "Welcome to our store. Edit this text in the Customizer."
 msgstr "ยินดีต้อนรับสู่ร้านของเรา แก้ข้อความนี้ได้ใน Customizer"
 
-#: header.php:30
-#: inc/footer.php:43
+#: header.php:30 inc/footer.php:43
 msgid "Menu"
 msgstr "เมนู"
 
-#: header.php:51
-#: searchform.php:12
-#: searchform.php:17
+#: header.php:51 searchform.php:12 searchform.php:17
 msgid "Search"
 msgstr "ค้นหา"
 
@@ -291,47 +275,47 @@ msgstr "ช่อง %d หัวข้อ"
 msgid "Box %d caption"
 msgstr "ช่อง %d คำอธิบาย"
 
-#: inc/customizer.php:171
+#: inc/customizer.php:173
 msgid "Heading"
 msgstr "หัวข้อ"
 
-#: inc/customizer.php:152
+#: inc/customizer.php:154
 msgid "Discount code popup"
 msgstr "ป๊อปอัปโค้ดส่วนลด"
 
-#: inc/customizer.php:166
+#: inc/customizer.php:168
 msgid "Enable"
 msgstr "เปิดใช้งาน"
 
-#: inc/customizer.php:172
+#: inc/customizer.php:174
 msgid "Conditions"
 msgstr "เงื่อนไข"
 
-#: inc/customizer.php:174
+#: inc/customizer.php:176
 msgid "Countdown (minutes)"
 msgstr "นับถอยหลัง (นาที)"
 
-#: inc/customizer.php:175
+#: inc/customizer.php:177
 msgid "Image (transparent PNG)"
 msgstr "รูปประกอบ (PNG โปร่งใส)"
 
-#: inc/customizer.php:181
+#: inc/customizer.php:183
 msgid "Mobile bottom menu"
 msgstr "เมนูล่างบนมือถือ"
 
-#: inc/customizer.php:185
+#: inc/customizer.php:187
 msgid "Button 2 text"
 msgstr "ปุ่มที่ 2 ข้อความ"
 
-#: inc/customizer.php:186
+#: inc/customizer.php:188
 msgid "Button 2 link (empty = shop page)"
 msgstr "ปุ่มที่ 2 ลิงก์ (เว้นว่าง = หน้าร้านค้า)"
 
-#: inc/customizer.php:187
+#: inc/customizer.php:189
 msgid "Button 3 text"
 msgstr "ปุ่มที่ 3 ข้อความ"
 
-#: inc/customizer.php:188
+#: inc/customizer.php:190
 msgid "Button 3 link (empty = account page)"
 msgstr "ปุ่มที่ 3 ลิงก์ (เว้นว่าง = หน้าบัญชีลูกค้า)"
 
@@ -384,17 +368,16 @@ msgid "Widgets added here appear below the content of this column."
 msgstr "วิดเจ็ตที่เพิ่มจะแสดงใต้เนื้อหาของคอลัมน์นี้"
 
 #: inc/footer.php:258
-msgid "In the preview, click the pencil icon next to a text to jump to its field."
-msgstr "ในหน้าตัวอย่างด้านขวา คลิกไอคอนดินสอข้างข้อความ เพื่อกระโดดมาที่ช่องแก้ไขนี้"
+msgid ""
+"In the preview, click the pencil icon next to a text to jump to its field."
+msgstr ""
+"ในหน้าตัวอย่างด้านขวา คลิกไอคอนดินสอข้างข้อความ เพื่อกระโดดมาที่ช่องแก้ไขนี้"
 
 #: inc/footer.php:308
 msgid "Footer: column 1 (contact)"
 msgstr "ส่วนท้าย: คอลัมน์ 1 (ข้อมูลติดต่อ)"
 
-#: inc/footer.php:309
-#: inc/footer.php:320
-#: inc/footer.php:324
-#: inc/footer.php:331
+#: inc/footer.php:309 inc/footer.php:320 inc/footer.php:324 inc/footer.php:331
 msgid "Show this column"
 msgstr "แสดงคอลัมน์นี้"
 
@@ -411,7 +394,8 @@ msgid "Label: phone"
 msgstr "ป้ายกำกับ: โทรศัพท์"
 
 #: inc/footer.php:313
-msgid "Phone numbers (separate with commas; the first one becomes a call link)"
+msgid ""
+"Phone numbers (separate with commas; the first one becomes a call link)"
 msgstr "เบอร์โทรศัพท์ (คั่นหลายเบอร์ด้วย , — เบอร์แรกใช้เป็นลิงก์โทร)"
 
 #: inc/footer.php:314
@@ -438,9 +422,7 @@ msgstr "ส่วนท้าย: คอลัมน์ 2 (เมนู)"
 msgid "Edit the menu items in Appearance → Menus (location “Footer menu”)."
 msgstr "รายการเมนูแก้ที่ Appearance → Menus (ตำแหน่ง “เมนูส่วนท้าย”)"
 
-#: inc/footer.php:321
-#: inc/footer.php:325
-#: inc/footer.php:332
+#: inc/footer.php:321 inc/footer.php:325 inc/footer.php:332
 msgid "Column heading"
 msgstr "หัวข้อคอลัมน์"
 
@@ -539,8 +521,11 @@ msgid "Shop filters"
 msgstr "ตัวกรองสินค้า (Shop)"
 
 #: inc/woocommerce.php:131
-msgid "Shown on the shop and product category pages, e.g. Filter by price or Product categories."
-msgstr "แสดงในหน้าร้านค้า/หมวดหมู่สินค้า เช่น Filter by price, Product categories"
+msgid ""
+"Shown on the shop and product category pages, e.g. Filter by price or "
+"Product categories."
+msgstr ""
+"แสดงในหน้าร้านค้า/หมวดหมู่สินค้า เช่น Filter by price, Product categories"
 
 #: inc/woocommerce.php:157
 msgid "Product filters"
@@ -550,13 +535,11 @@ msgstr "ตัวกรองสินค้า"
 msgid "Sale"
 msgstr "ลดราคา"
 
-#: inc/woocommerce.php:200
-#: woocommerce/cart/mini-cart.php:58
+#: inc/woocommerce.php:200 woocommerce/cart/mini-cart.php:58
 msgid "Decrease quantity"
 msgstr "ลดจำนวน"
 
-#: inc/woocommerce.php:209
-#: woocommerce/cart/mini-cart.php:60
+#: inc/woocommerce.php:209 woocommerce/cart/mini-cart.php:60
 msgid "Increase quantity"
 msgstr "เพิ่มจำนวน"
 
@@ -631,8 +614,7 @@ msgstr "ผลการค้นหา: %s"
 msgid "Nothing found."
 msgstr "ไม่พบเนื้อหา"
 
-#: template-parts/mini-cart.php:10
-#: template-parts/mini-cart.php:12
+#: template-parts/mini-cart.php:10 template-parts/mini-cart.php:12
 msgid "Shopping cart"
 msgstr "ตะกร้าสินค้า"
 
@@ -670,13 +652,11 @@ msgstr "รหัสคูปอง"
 msgid "Enter coupon code"
 msgstr "กรอกรหัสคูปอง"
 
-#: woocommerce/cart/mini-cart.php:90
-#: woocommerce/checkout/review-order.php:51
+#: woocommerce/cart/mini-cart.php:90 woocommerce/checkout/review-order.php:51
 msgid "Apply"
 msgstr "ใช้คูปอง"
 
-#: woocommerce/cart/mini-cart.php:95
-#: woocommerce/checkout/review-order.php:58
+#: woocommerce/cart/mini-cart.php:95 woocommerce/checkout/review-order.php:58
 msgid "Subtotal"
 msgstr "ยอดรวมสินค้า"
 
@@ -712,8 +692,7 @@ msgstr "เลือกซื้อสินค้า"
 msgid "Total"
 msgstr "ยอดรวม"
 
-#: page.php:21
-#: single.php:26
+#: page.php:21 single.php:26
 msgid "Pages:"
 msgstr "หน้า:"
 
@@ -732,5 +711,24 @@ msgstr ""
 
 #. Description of the theme
 #: style.css
-msgid "J Shop is a clean, fast storefront theme for WooCommerce shops, designed around Thai typography (Prompt and Noto Sans Thai). The home page combines a banner slider, a trust strip, and a product category grid, all set up in the Customizer without code. Shoppers get a slide-out mini cart with live quantity and total updates, a free-shipping progress bar, coupons and a two-column checkout, while a shop sidebar keeps product filters close at hand. Supports HPOS and the WooCommerce Cart and Checkout blocks."
+msgid ""
+"J Shop is a clean, fast storefront theme for WooCommerce shops, designed "
+"around Thai typography (Prompt and Noto Sans Thai). The home page combines a"
+" banner slider, a trust strip and a product category grid, all set up in the"
+" Customizer without code. Shoppers get a slide-out mini cart with live "
+"quantity and total updates, a free-shipping progress bar, coupons and a two-"
+"column checkout, while a shop sidebar keeps product filters close at hand. "
+"Supports HPOS and the WooCommerce Cart and Checkout blocks."
 msgstr ""
+
+#. translators: %d: box number.
+#: inc/customizer.php:146
+#, php-format
+msgid "Box %d image (optional, recommended 96×96)"
+msgstr "รูปกล่องที่ %d (ไม่บังคับ แนะนำ 96×96)"
+
+#. translators: %d: box number.
+#: inc/customizer.php:147
+#, php-format
+msgid "Box %d link (optional)"
+msgstr "ลิงก์กล่องที่ %d (ไม่บังคับ)"
