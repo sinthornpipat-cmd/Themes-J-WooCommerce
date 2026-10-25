@@ -19,6 +19,11 @@ add_action(
 	function () {
 		load_theme_textdomain( 'j-shop', get_template_directory() . '/languages' );
 		add_theme_support( 'title-tag' );
+		add_theme_support( 'automatic-feed-links' );
+		add_theme_support( 'wp-block-styles' );
+		add_theme_support( 'align-wide' );
+		add_theme_support( 'editor-styles' );
+		add_editor_style( 'assets/css/editor-style.css' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support(
 			'custom-logo',
@@ -38,8 +43,8 @@ add_action(
 		add_image_size( 'jshop-card', 600, 600, true );
 		register_nav_menus(
 			array(
-				'primary' => __( 'เมนูหลัก', 'j-shop' ),
-				'footer'  => __( 'เมนูส่วนท้าย (About us)', 'j-shop' ),
+				'primary' => __( 'Primary menu', 'j-shop' ),
+				'footer'  => __( 'Footer menu', 'j-shop' ),
 			)
 		);
 	}
@@ -62,6 +67,9 @@ add_action(
 				esc_html( get_theme_mod( 'jshop_ink', '#14213d' ) )
 			)
 		);
+		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
 		wp_enqueue_script( 'jshop-main', get_template_directory_uri() . '/assets/js/main.js', array(), JSHOP_VER, true );
 		wp_localize_script(
 			'jshop-main',
@@ -69,8 +77,10 @@ add_action(
 			array(
 				'popupMinutes' => (int) get_theme_mod( 'jshop_popup_minutes', 5 ),
 				'popupEnabled' => (bool) get_theme_mod( 'jshop_popup_on', false ),
-				'copied'       => __( 'คัดลอกแล้ว', 'j-shop' ),
-				'copy'         => __( 'คัดลอกโค้ด', 'j-shop' ),
+				'copied'       => __( 'Copied', 'j-shop' ),
+				'copy'         => __( 'Copy code', 'j-shop' ),
+				/* translators: %d: slide number. */
+				'slide'        => __( 'Slide %d', 'j-shop' ),
 			)
 		);
 	}
@@ -142,9 +152,9 @@ function jshop_the_icon( $name ) {
  * Fallback primary menu when no menu is assigned.
  */
 function jshop_fallback_menu() {
-	echo '<ul><li><a href="' . esc_url( home_url( '/' ) ) . '">หน้าแรก</a></li>';
+	echo '<ul><li><a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__( 'Home', 'j-shop' ) . '</a></li>';
 	if ( jshop_has_wc() ) {
-		echo '<li><a href="' . esc_url( wc_get_page_permalink( 'shop' ) ) . '">สินค้าทั้งหมด</a></li>';
+		echo '<li><a href="' . esc_url( wc_get_page_permalink( 'shop' ) ) . '">' . esc_html__( 'All products', 'j-shop' ) . '</a></li>';
 	}
 	echo '</ul>';
 }

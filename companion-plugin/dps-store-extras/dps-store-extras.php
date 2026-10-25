@@ -23,6 +23,7 @@ require DPS_SE_DIR . 'includes/post-types.php';
 require DPS_SE_DIR . 'includes/demo.php';
 require DPS_SE_DIR . 'includes/checkout-labels.php';
 require DPS_SE_DIR . 'includes/performance.php';
+require DPS_SE_DIR . 'includes/migrate.php';
 
 /**
  * On activation: register the post types, seed the default FAQ once and

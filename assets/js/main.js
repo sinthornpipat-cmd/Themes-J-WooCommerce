@@ -21,7 +21,7 @@
     if (slides.length > 1 && dotsBox) {
       slides.forEach(function (_, i) {
         var b = document.createElement('button');
-        b.setAttribute('aria-label', 'สไลด์ ' + (i + 1));
+        b.setAttribute('aria-label', ((window.jshopData && jshopData.slide) || 'Slide %d').replace('%d', i + 1));
         b.addEventListener('click', function () { go(i); restart(); });
         dotsBox.appendChild(b);
       });

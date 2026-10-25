@@ -53,9 +53,9 @@ add_action(
 					'fmt'  => get_woocommerce_price_format(),
 				),
 				'i18n'      => array(
-					'max'    => 'สินค้าคงเหลือไม่พอ ปรับเป็นจำนวนสูงสุดที่สั่งได้แล้ว',
-					'err'    => 'เกิดข้อผิดพลาด กรุณาลองใหม่',
-					'coupon' => 'ใช้คูปองสำเร็จ',
+					'max'    => __( 'Not enough stock. The quantity was set to the maximum available.', 'j-shop' ),
+					'err'    => __( 'Something went wrong. Please try again.', 'j-shop' ),
+					'coupon' => __( 'Coupon applied.', 'j-shop' ),
 				),
 			)
 		);
@@ -126,9 +126,9 @@ add_action(
 	function () {
 		register_sidebar(
 			array(
-				'name'          => 'ตัวกรองสินค้า (Shop)',
+				'name'          => __( 'Shop filters', 'j-shop' ),
 				'id'            => 'shop-sidebar',
-				'description'   => 'แสดงในหน้าร้านค้า/หมวดหมู่สินค้า เช่น Filter by price, Product categories',
+				'description'   => __( 'Shown on the shop and product category pages, e.g. Filter by price or Product categories.', 'j-shop' ),
 				'before_widget' => '<section class="widget %2$s">',
 				'after_widget'  => '</section>',
 				'before_title'  => '<h3 class="widget-title">',
@@ -154,7 +154,7 @@ add_action(
 		if ( ! jshop_shop_has_sidebar() ) {
 			return;
 		}
-		echo '<div class="shop-layout"><aside class="shop-side" aria-label="ตัวกรองสินค้า">';
+		echo '<div class="shop-layout"><aside class="shop-side" aria-label="' . esc_attr__( 'Product filters', 'j-shop' ) . '">';
 		dynamic_sidebar( 'shop-sidebar' );
 		echo '</aside><div class="shop-main">';
 	},
@@ -181,7 +181,7 @@ add_filter(
 	'woocommerce_sale_flash',
 	function ( $html, $post, $product ) {
 		if ( $product->is_type( 'variable' ) || ! $product->get_regular_price() || ! (float) $product->get_regular_price() ) {
-			return '<span class="onsale">' . esc_html__( 'ลดราคา', 'j-shop' ) . '</span>';
+			return '<span class="onsale">' . esc_html__( 'Sale', 'j-shop' ) . '</span>';
 		}
 		$pct = round( ( 1 - (float) $product->get_price() / (float) $product->get_regular_price() ) * 100 );
 		return '<span class="onsale">-' . (int) $pct . '%</span>';
@@ -197,7 +197,7 @@ add_filter(
 add_action(
 	'woocommerce_before_quantity_input_field',
 	function () {
-		echo '<button type="button" class="qty-btn" data-d="-1" aria-label="ลดจำนวน">−</button>';
+		echo '<button type="button" class="qty-btn" data-d="-1" aria-label="' . esc_attr__( 'Decrease quantity', 'j-shop' ) . '">−</button>';
 	}
 );
 /**
@@ -206,7 +206,7 @@ add_action(
 add_action(
 	'woocommerce_after_quantity_input_field',
 	function () {
-		echo '<button type="button" class="qty-btn" data-d="1" aria-label="เพิ่มจำนวน">+</button>';
+		echo '<button type="button" class="qty-btn" data-d="1" aria-label="' . esc_attr__( 'Increase quantity', 'j-shop' ) . '">+</button>';
 	}
 );
 
@@ -232,8 +232,8 @@ function jshop_ship_bar_html() {
 	$sub  = (float) WC()->cart->get_displayed_subtotal();
 	$left = max( 0, $t - $sub );
 	$pct  = min( 100, $t ? ( $sub / $t ) * 100 : 100 );
-	$msg  = $sub <= 0 ? sprintf( 'ซื้อครบ %s ส่งฟรี', wc_price( $t ) )
-		: ( $left > 0 ? sprintf( 'ซื้อเพิ่มอีก %s เพื่อรับส่งฟรี', wc_price( $left ) ) : '🎉 คุณได้รับสิทธิ์ส่งฟรีแล้ว' );
+	$msg  = $sub <= 0 ? sprintf( /* translators: %s: free-shipping threshold. */ __( 'Free shipping on orders over %s', 'j-shop' ), wc_price( $t ) )
+		: ( $left > 0 ? sprintf( /* translators: %s: amount left to spend. */ __( 'Spend %s more for free shipping', 'j-shop' ), wc_price( $left ) ) : __( '🎉 You get free shipping!', 'j-shop' ) );
 	return '<div class="dps-ship-bar"><p>' . wp_kses_post( $msg ) . '</p><div class="bar"><span style="width:' . esc_attr( round( $pct ) ) . '%"></span></div></div>';
 }
 /**
@@ -275,7 +275,7 @@ add_action(
 	<div class="sticky-atc" aria-hidden="true">
 		<div class="wrap">
 			<div class="sa-info"><strong><?php echo esc_html( $product->get_name() ); ?></strong><span><?php echo wp_kses_post( $product->get_price_html() ); ?></span></div>
-			<button type="button" class="btn sa-btn"><?php echo esc_html( $product->is_type( 'simple' ) ? __( 'หยิบใส่ตะกร้า', 'j-shop' ) : __( 'เลือกตัวเลือก', 'j-shop' ) ); ?></button>
+			<button type="button" class="btn sa-btn"><?php echo esc_html( $product->is_type( 'simple' ) ? __( 'Add to cart', 'j-shop' ) : __( 'Select options', 'j-shop' ) ); ?></button>
 		</div>
 	</div>
 		<?php
@@ -307,7 +307,7 @@ add_action(
 		$wp->add_section(
 			'jshop_woo',
 			array(
-				'title' => 'WooCommerce (ร้านค้า)',
+				'title' => __( 'Shop settings', 'j-shop' ),
 				'panel' => 'jshop',
 			)
 		);
@@ -321,7 +321,7 @@ add_action(
 		$wp->add_control(
 			'jshop_free_ship',
 			array(
-				'label'   => 'ยอดขั้นต่ำส่งฟรี (บาท) สำหรับแถบความคืบหน้า — 0 = ซ่อน',
+				'label'   => __( 'Free-shipping amount for the progress bar (0 = hide)', 'j-shop' ),
 				'section' => 'jshop_woo',
 				'type'    => 'number',
 			)
@@ -336,7 +336,7 @@ add_action(
 		$wp->add_control(
 			'jshop_per_page',
 			array(
-				'label'   => 'จำนวนสินค้าต่อหน้า (หน้าร้านค้า)',
+				'label'   => __( 'Products per page (shop)', 'j-shop' ),
 				'section' => 'jshop_woo',
 				'type'    => 'number',
 			)
@@ -351,7 +351,7 @@ add_action(
 		$wp->add_control(
 			'jshop_open_mini_cart',
 			array(
-				'label'   => 'เปิดมินิคาร์ททันทีเมื่อเพิ่มสินค้า',
+				'label'   => __( 'Open the mini cart when a product is added', 'j-shop' ),
 				'section' => 'jshop_woo',
 				'type'    => 'checkbox',
 			)
@@ -380,7 +380,7 @@ add_filter(
  */
 function jshop_ajax_guard() {
 	if ( ! check_ajax_referer( 'jshop_cart', 'nonce', false ) ) {
-		wp_send_json_error( array( 'message' => 'หมดเวลา กรุณารีเฟรชหน้าแล้วลองใหม่' ) );
+		wp_send_json_error( array( 'message' => __( 'Your session expired. Please refresh the page and try again.', 'j-shop' ) ) );
 	}
 	if ( ! WC()->cart ) {
 		wc_load_cart();
@@ -461,7 +461,7 @@ function jshop_ajax_cart_coupon() {
 	$op   = isset( $_POST['op'] ) ? sanitize_key( wp_unslash( $_POST['op'] ) ) : 'apply';
 	// phpcs:enable WordPress.Security.NonceVerification.Missing
 	if ( '' === $code ) {
-		wp_send_json_error( array( 'message' => 'กรุณากรอกรหัสคูปอง' ) );
+		wp_send_json_error( array( 'message' => __( 'Please enter a coupon code.', 'j-shop' ) ) );
 	}
 	if ( 'remove' === $op ) {
 		WC()->cart->remove_coupon( $code );
@@ -480,7 +480,7 @@ function jshop_ajax_cart_coupon() {
 		wc_get_notices( 'error' )
 	);
 	wc_clear_notices();
-	wp_send_json_error( array( 'message' => $errors ? implode( ' ', $errors ) : 'ไม่สามารถใช้คูปองนี้ได้' ) );
+	wp_send_json_error( array( 'message' => $errors ? implode( ' ', $errors ) : __( 'This coupon cannot be used.', 'j-shop' ) ) );
 }
 
 
@@ -536,7 +536,7 @@ function jshop_wc_ajax_add_to_cart() {
 
 	$product = $product_id ? wc_get_product( $product_id ) : false;
 	if ( ! $product ) {
-		wp_send_json_error( array( 'message' => 'ไม่พบสินค้า' ) );
+		wp_send_json_error( array( 'message' => __( 'Product not found.', 'j-shop' ) ) );
 	}
 
 	wc_clear_notices();
@@ -551,7 +551,7 @@ function jshop_wc_ajax_add_to_cart() {
 		wc_clear_notices();
 		wp_send_json_error(
 			array(
-				'message'     => $errors ? implode( ' ', $errors ) : 'ไม่สามารถเพิ่มสินค้าได้',
+				'message'     => $errors ? implode( ' ', $errors ) : __( 'The product could not be added.', 'j-shop' ),
 				'product_url' => get_permalink( $product_id ),
 			)
 		);

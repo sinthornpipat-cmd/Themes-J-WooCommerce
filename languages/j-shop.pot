@@ -1,0 +1,874 @@
+# Copyright (C) 2026 n2npay
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: J Shop 3.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/j-shop\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-25T10:29:10+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: j-shop\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "J Shop"
+msgstr ""
+
+#. Theme URI of the theme
+#. Author URI of the theme
+#: style.css
+msgid "https://n2npay.freedev.app/"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "J Shop is a clean, fast storefront theme for WooCommerce shops, designed around Thai typography (Prompt and Noto Sans Thai). The home page combines a banner slider, a trust strip, a product category grid and up to five product sections by category, all set up in the Customizer without code. Shoppers get a slide-out mini cart with live quantity and total updates, a free-shipping progress bar, coupons and a two-column checkout, while a shop sidebar keeps product filters close at hand. Supports HPOS and the WooCommerce Cart and Checkout blocks."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "n2npay"
+msgstr ""
+
+#: 404.php:11
+msgid "Page not found"
+msgstr ""
+
+#: 404.php:12
+msgid "Try searching for a product, or go back to the home page."
+msgstr ""
+
+#: 404.php:13
+msgid "Back to home"
+msgstr ""
+
+#. translators: %s: number of comments.
+#: comments.php:18
+#, php-format
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:35
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:73
+msgid "Mobile menu"
+msgstr ""
+
+#: footer.php:74
+#: functions.php:155
+msgid "Home"
+msgstr ""
+
+#: footer.php:75
+#: inc/customizer.php:282
+msgid "Products"
+msgstr ""
+
+#: footer.php:76
+#: inc/customizer.php:284
+msgid "Account"
+msgstr ""
+
+#: footer.php:77
+#: header.php:54
+msgid "Cart"
+msgstr ""
+
+#: footer.php:81
+#: inc/customizer.php:270
+#: woocommerce/checkout/review-order.php:50
+msgid "Discount code"
+msgstr ""
+
+#: footer.php:83
+#: template-parts/mini-cart.php:13
+msgid "Close"
+msgstr ""
+
+#: footer.php:89
+#: inc/customizer.php:268
+msgid "Get a special discount"
+msgstr ""
+
+#: footer.php:90
+#: inc/customizer.php:269
+msgid "Edit this text and the conditions in the Customizer."
+msgstr ""
+
+#: footer.php:91
+msgid "Offer ends in"
+msgstr ""
+
+#: footer.php:93
+#: functions.php:81
+msgid "Copy code"
+msgstr ""
+
+#: footer.php:94
+msgid "Use the code at checkout."
+msgstr ""
+
+#: front-page.php:22
+msgid "Promotional banners"
+msgstr ""
+
+#: front-page.php:42
+#: front-page.php:55
+#: inc/customizer.php:175
+msgid "Shop now"
+msgstr ""
+
+#: front-page.php:92
+#: inc/customizer.php:240
+msgid "Shop by category"
+msgstr ""
+
+#: front-page.php:93
+#: inc/footer.php:47
+msgid "View all products"
+msgstr ""
+
+#. translators: %d: number of products.
+#: front-page.php:106
+#, php-format
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: front-page.php:118
+msgid "Install and activate the WooCommerce plugin to show products here."
+msgstr ""
+
+#: front-page.php:140
+#: inc/customizer.php:220
+#: inc/customizer.php:242
+msgid "Home ideas"
+msgstr ""
+
+#: front-page.php:187
+#: inc/customizer.php:241
+msgid "What our customers say"
+msgstr ""
+
+#. translators: %d: star rating 1-5.
+#: front-page.php:206
+#, php-format
+msgid "%d star"
+msgid_plural "%d stars"
+msgstr[0] ""
+msgstr[1] ""
+
+#: front-page.php:238
+#: inc/customizer.php:243
+msgid "Frequently asked questions"
+msgstr ""
+
+#: functions.php:46
+#: header.php:39
+msgid "Primary menu"
+msgstr ""
+
+#: functions.php:47
+msgid "Footer menu"
+msgstr ""
+
+#: functions.php:80
+msgid "Copied"
+msgstr ""
+
+#. translators: %d: slide number.
+#: functions.php:83
+#, php-format
+msgid "Slide %d"
+msgstr ""
+
+#: functions.php:157
+msgid "All products"
+msgstr ""
+
+#: header.php:18
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:21
+#: inc/customizer.php:159
+msgid "Welcome to our store. Edit this text in the Customizer."
+msgstr ""
+
+#: header.php:30
+#: inc/footer.php:43
+msgid "Menu"
+msgstr ""
+
+#: header.php:51
+#: searchform.php:12
+#: searchform.php:17
+msgid "Search"
+msgstr ""
+
+#: header.php:53
+msgid "My account"
+msgstr ""
+
+#: inc/customizer.php:19
+msgid "Fast delivery"
+msgstr ""
+
+#: inc/customizer.php:19
+msgid "Nationwide shipping"
+msgstr ""
+
+#: inc/customizer.php:20
+msgid "Secure payment"
+msgstr ""
+
+#: inc/customizer.php:20
+msgid "Many payment options"
+msgstr ""
+
+#: inc/customizer.php:21
+msgid "Quality products"
+msgstr ""
+
+#: inc/customizer.php:21
+msgid "Carefully selected"
+msgstr ""
+
+#: inc/customizer.php:22
+msgid "Easy to reach"
+msgstr ""
+
+#: inc/customizer.php:22
+msgid "Our team is here to help"
+msgstr ""
+
+#: inc/customizer.php:37
+msgid "Storage boxes"
+msgstr ""
+
+#: inc/customizer.php:40
+msgid "Boxes in many styles and sizes for every need"
+msgstr ""
+
+#: inc/customizer.php:43
+msgid "Drawers & shelves"
+msgstr ""
+
+#: inc/customizer.php:46
+msgid "For home and office, easy to organise"
+msgstr ""
+
+#: inc/customizer.php:49
+msgid "Laundry"
+msgstr ""
+
+#: inc/customizer.php:52
+msgid "Many styles and sizes for everyday use"
+msgstr ""
+
+#: inc/customizer.php:55
+msgid "Kitchen"
+msgstr ""
+
+#: inc/customizer.php:58
+msgid "Keep household items easy to reach"
+msgstr ""
+
+#: inc/customizer.php:61
+msgid "Heavy duty"
+msgstr ""
+
+#: inc/customizer.php:64
+msgid "Strong, durable products for heavy use"
+msgstr ""
+
+#: inc/customizer.php:143
+msgid "Colors"
+msgstr ""
+
+#: inc/customizer.php:147
+msgid "Main color (brand)"
+msgstr ""
+
+#: inc/customizer.php:148
+msgid "Accent color (badges, sale prices)"
+msgstr ""
+
+#: inc/customizer.php:149
+msgid "Text / footer color"
+msgstr ""
+
+#: inc/customizer.php:155
+msgid "Announcement bar & product badge"
+msgstr ""
+
+#: inc/customizer.php:159
+msgid "Announcement text"
+msgstr ""
+
+#: inc/customizer.php:160
+msgid "Announcement link (optional)"
+msgstr ""
+
+#: inc/customizer.php:161
+msgid "Badge text on product cards, e.g. “Up to 50% off” (empty = hide)"
+msgstr ""
+
+#: inc/customizer.php:167
+msgid "Home page banner slider"
+msgstr ""
+
+#. translators: %d: banner number.
+#: inc/customizer.php:172
+#, php-format
+msgid "Banner %d (recommended 1920×700)"
+msgstr ""
+
+#. translators: %d: banner number.
+#: inc/customizer.php:173
+#, php-format
+msgid "Banner %d link"
+msgstr ""
+
+#: inc/customizer.php:175
+msgid "Banner button text (shown with your own images)"
+msgstr ""
+
+#: inc/customizer.php:181
+msgid "Trust strip (4 boxes)"
+msgstr ""
+
+#. translators: %d: box number.
+#: inc/customizer.php:187
+#, php-format
+msgid "Box %d title"
+msgstr ""
+
+#. translators: %d: box number.
+#: inc/customizer.php:188
+#, php-format
+msgid "Box %d caption"
+msgstr ""
+
+#. translators: %d: section number.
+#: inc/customizer.php:197
+#, php-format
+msgid "Product section %d"
+msgstr ""
+
+#: inc/customizer.php:199
+msgid "Enter a WooCommerce product category slug (Products → Categories). Leave empty to hide the section."
+msgstr ""
+
+#: inc/customizer.php:202
+#: inc/customizer.php:268
+msgid "Heading"
+msgstr ""
+
+#: inc/customizer.php:203
+msgid "Subtitle (optional)"
+msgstr ""
+
+#: inc/customizer.php:204
+msgid "Product category slug"
+msgstr ""
+
+#: inc/customizer.php:205
+msgid "Number of products"
+msgstr ""
+
+#: inc/customizer.php:206
+msgid "Banner above the products (optional)"
+msgstr ""
+
+#: inc/customizer.php:213
+msgid "Home page blocks"
+msgstr ""
+
+#: inc/customizer.php:218
+msgid "Trust strip"
+msgstr ""
+
+#: inc/customizer.php:219
+msgid "Category grid"
+msgstr ""
+
+#: inc/customizer.php:221
+msgid "Customer reviews"
+msgstr ""
+
+#. translators: %s: home page block name.
+#: inc/customizer.php:234
+#, php-format
+msgid "Show: %s"
+msgstr ""
+
+#: inc/customizer.php:240
+msgid "Category grid heading"
+msgstr ""
+
+#: inc/customizer.php:241
+msgid "Reviews heading"
+msgstr ""
+
+#: inc/customizer.php:242
+msgid "Home ideas heading"
+msgstr ""
+
+#: inc/customizer.php:243
+msgid "FAQ heading"
+msgstr ""
+
+#: inc/customizer.php:249
+msgid "Discount code popup"
+msgstr ""
+
+#: inc/customizer.php:263
+msgid "Enable"
+msgstr ""
+
+#: inc/customizer.php:269
+msgid "Conditions"
+msgstr ""
+
+#: inc/customizer.php:271
+msgid "Countdown (minutes)"
+msgstr ""
+
+#: inc/customizer.php:272
+msgid "Image (transparent PNG)"
+msgstr ""
+
+#: inc/customizer.php:278
+msgid "Mobile bottom menu"
+msgstr ""
+
+#: inc/customizer.php:282
+msgid "Button 2 text"
+msgstr ""
+
+#: inc/customizer.php:283
+msgid "Button 2 link (empty = shop page)"
+msgstr ""
+
+#: inc/customizer.php:284
+msgid "Button 3 text"
+msgstr ""
+
+#: inc/customizer.php:285
+msgid "Button 3 link (empty = account page)"
+msgstr ""
+
+#: inc/footer.php:37
+msgid "Phone:"
+msgstr ""
+
+#: inc/footer.php:39
+msgid "Fax:"
+msgstr ""
+
+#: inc/footer.php:41
+msgid "Email:"
+msgstr ""
+
+#: inc/footer.php:44
+msgid "Shop online"
+msgstr ""
+
+#: inc/footer.php:48
+msgid "Stay in touch"
+msgstr ""
+
+#: inc/footer.php:49
+msgid "Get news and offers from us. Enter your email."
+msgstr ""
+
+#: inc/footer.php:51
+msgid "Subscribe"
+msgstr ""
+
+#. translators: %s: WordPress link.
+#: inc/footer.php:60
+#, php-format
+msgid "Powered by %s"
+msgstr ""
+
+#: inc/footer.php:168
+msgid "Email"
+msgstr ""
+
+#. translators: %d: footer column number.
+#: inc/footer.php:214
+#, php-format
+msgid "Footer column %d"
+msgstr ""
+
+#: inc/footer.php:216
+msgid "Widgets added here appear below the content of this column."
+msgstr ""
+
+#: inc/footer.php:258
+msgid "In the preview, click the pencil icon next to a text to jump to its field."
+msgstr ""
+
+#: inc/footer.php:308
+msgid "Footer: column 1 (contact)"
+msgstr ""
+
+#: inc/footer.php:309
+#: inc/footer.php:320
+#: inc/footer.php:324
+#: inc/footer.php:331
+msgid "Show this column"
+msgstr ""
+
+#: inc/footer.php:310
+msgid "Heading / company name (empty = site title)"
+msgstr ""
+
+#: inc/footer.php:311
+msgid "Address"
+msgstr ""
+
+#: inc/footer.php:312
+msgid "Label: phone"
+msgstr ""
+
+#: inc/footer.php:313
+msgid "Phone numbers (separate with commas; the first one becomes a call link)"
+msgstr ""
+
+#: inc/footer.php:314
+msgid "Label: fax"
+msgstr ""
+
+#: inc/footer.php:315
+msgid "Fax (empty = hide)"
+msgstr ""
+
+#: inc/footer.php:316
+msgid "Label: email"
+msgstr ""
+
+#: inc/footer.php:317
+msgid "Email (empty = hide)"
+msgstr ""
+
+#: inc/footer.php:319
+msgid "Footer: column 2 (menu)"
+msgstr ""
+
+#: inc/footer.php:319
+msgid "Edit the menu items in Appearance → Menus (location “Footer menu”)."
+msgstr ""
+
+#: inc/footer.php:321
+#: inc/footer.php:325
+#: inc/footer.php:332
+msgid "Column heading"
+msgstr ""
+
+#: inc/footer.php:323
+msgid "Footer: column 3 (shop online)"
+msgstr ""
+
+#: inc/footer.php:326
+msgid "Online store link text"
+msgstr ""
+
+#: inc/footer.php:327
+msgid "Online store link"
+msgstr ""
+
+#: inc/footer.php:328
+msgid "“All products” link text (empty = hide)"
+msgstr ""
+
+#: inc/footer.php:330
+msgid "Footer: column 4 (stay in touch)"
+msgstr ""
+
+#: inc/footer.php:333
+msgid "Invitation text"
+msgstr ""
+
+#: inc/footer.php:334
+msgid "Newsletter form URL (empty = hide the form)"
+msgstr ""
+
+#: inc/footer.php:335
+msgid "Email field placeholder"
+msgstr ""
+
+#: inc/footer.php:336
+msgid "Subscribe button text"
+msgstr ""
+
+#. translators: %s: social network name.
+#: inc/footer.php:338
+#, php-format
+msgid "%s link (empty = hide)"
+msgstr ""
+
+#: inc/footer.php:341
+msgid "Footer: copyright & credit"
+msgstr ""
+
+#: inc/footer.php:341
+msgid "Use {year} for the current year and {site} for the site name."
+msgstr ""
+
+#: inc/footer.php:342
+msgid "Copyright text"
+msgstr ""
+
+#: inc/footer.php:343
+msgid "Show the credit text on the right"
+msgstr ""
+
+#: inc/footer.php:344
+msgid "Credit text (HTML links allowed)"
+msgstr ""
+
+#: inc/footer.php:346
+msgid "Footer: colors"
+msgstr ""
+
+#: inc/footer.php:346
+msgid "Leave empty to use the theme colors."
+msgstr ""
+
+#: inc/footer.php:347
+msgid "Background color"
+msgstr ""
+
+#: inc/footer.php:348
+msgid "Text color"
+msgstr ""
+
+#: inc/woocommerce.php:56
+msgid "Not enough stock. The quantity was set to the maximum available."
+msgstr ""
+
+#: inc/woocommerce.php:57
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: inc/woocommerce.php:58
+msgid "Coupon applied."
+msgstr ""
+
+#: inc/woocommerce.php:129
+msgid "Shop filters"
+msgstr ""
+
+#: inc/woocommerce.php:131
+msgid "Shown on the shop and product category pages, e.g. Filter by price or Product categories."
+msgstr ""
+
+#: inc/woocommerce.php:157
+msgid "Product filters"
+msgstr ""
+
+#: inc/woocommerce.php:184
+msgid "Sale"
+msgstr ""
+
+#: inc/woocommerce.php:200
+#: woocommerce/cart/mini-cart.php:58
+msgid "Decrease quantity"
+msgstr ""
+
+#: inc/woocommerce.php:209
+#: woocommerce/cart/mini-cart.php:60
+msgid "Increase quantity"
+msgstr ""
+
+#. translators: %s: free-shipping threshold.
+#: inc/woocommerce.php:235
+#, php-format
+msgid "Free shipping on orders over %s"
+msgstr ""
+
+#. translators: %s: amount left to spend.
+#: inc/woocommerce.php:236
+#, php-format
+msgid "Spend %s more for free shipping"
+msgstr ""
+
+#. translators: %s: amount left to spend.
+#: inc/woocommerce.php:236
+msgid "🎉 You get free shipping!"
+msgstr ""
+
+#: inc/woocommerce.php:278
+msgid "Add to cart"
+msgstr ""
+
+#: inc/woocommerce.php:278
+msgid "Select options"
+msgstr ""
+
+#: inc/woocommerce.php:310
+msgid "Shop settings"
+msgstr ""
+
+#: inc/woocommerce.php:324
+msgid "Free-shipping amount for the progress bar (0 = hide)"
+msgstr ""
+
+#: inc/woocommerce.php:339
+msgid "Products per page (shop)"
+msgstr ""
+
+#: inc/woocommerce.php:354
+msgid "Open the mini cart when a product is added"
+msgstr ""
+
+#: inc/woocommerce.php:383
+msgid "Your session expired. Please refresh the page and try again."
+msgstr ""
+
+#: inc/woocommerce.php:464
+msgid "Please enter a coupon code."
+msgstr ""
+
+#: inc/woocommerce.php:483
+msgid "This coupon cannot be used."
+msgstr ""
+
+#: inc/woocommerce.php:539
+msgid "Product not found."
+msgstr ""
+
+#: inc/woocommerce.php:554
+msgid "The product could not be added."
+msgstr ""
+
+#. translators: %s: search query.
+#: index.php:16
+#, php-format
+msgid "Search results for: %s"
+msgstr ""
+
+#: index.php:45
+msgid "Nothing found."
+msgstr ""
+
+#: page.php:21
+#: single.php:26
+msgid "Pages:"
+msgstr ""
+
+#: searchform.php:13
+msgid "Search products…"
+msgstr ""
+
+#: searchform.php:13
+msgid "Search…"
+msgstr ""
+
+#: single.php:31
+msgid "Tags:"
+msgstr ""
+
+#: template-parts/mini-cart.php:10
+#: template-parts/mini-cart.php:12
+msgid "Shopping cart"
+msgstr ""
+
+#. translators: 1: section title, 2: product category slug.
+#: template-parts/product-section.php:42
+#, php-format
+msgid "[Admin] Section “%1$s”: no products found in the category with slug %2$s"
+msgstr ""
+
+#: template-parts/product-section.php:76
+msgid "View all"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:57
+msgid "Quantity"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:59
+msgid "Product quantity"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:63
+msgid "Limit 1 per order"
+msgstr ""
+
+#. translators: %s: product name.
+#: woocommerce/cart/mini-cart.php:67
+#, php-format
+msgid "Remove %s from cart"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:83
+msgid "Remove coupon"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:85
+msgid "Have a coupon?"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:88
+msgid "Coupon code"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:89
+msgid "Enter coupon code"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:90
+#: woocommerce/checkout/review-order.php:51
+msgid "Apply"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:95
+#: woocommerce/checkout/review-order.php:58
+msgid "Subtotal"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:97
+msgid "Discount"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:99
+msgid "Estimated total"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:101
+msgid "Shipping and taxes (if any) are calculated at checkout."
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:104
+msgid "View cart"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:105
+msgid "Checkout"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:112
+msgid "Your cart is empty."
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:113
+msgid "Start shopping"
+msgstr ""
+
+#: woocommerce/checkout/review-order.php:101
+msgid "Total"
+msgstr ""

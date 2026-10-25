@@ -34,21 +34,21 @@ function jshop_ft_defaults() {
 		'jshop_ft_show_4'         => true,
 		'jshop_ft_company'        => '',
 		'jshop_address'           => '',
-		'jshop_ft_phone_label'    => 'โทร:',
+		'jshop_ft_phone_label'    => __( 'Phone:', 'j-shop' ),
 		'jshop_phone'             => '',
-		'jshop_ft_fax_label'      => 'แฟกซ์:',
+		'jshop_ft_fax_label'      => __( 'Fax:', 'j-shop' ),
 		'jshop_fax'               => '',
-		'jshop_ft_email_label'    => 'อีเมล:',
+		'jshop_ft_email_label'    => __( 'Email:', 'j-shop' ),
 		'jshop_email'             => '',
-		'jshop_ft_menu_title'     => 'เมนู',
-		'jshop_ft_shop_title'     => 'สั่งซื้อออนไลน์',
+		'jshop_ft_menu_title'     => __( 'Menu', 'j-shop' ),
+		'jshop_ft_shop_title'     => __( 'Shop online', 'j-shop' ),
 		'jshop_shop_label'        => '',
 		'jshop_shop_url'          => '',
-		'jshop_ft_all_label'      => 'ดูสินค้าทั้งหมดในเว็บไซต์',
-		'jshop_ft_follow_title'   => 'ติดตามข่าวสาร',
-		'jshop_newsletter_t'      => 'รับข่าวสารและโปรโมชันจากเรา กรอกอีเมลของคุณ',
+		'jshop_ft_all_label'      => __( 'View all products', 'j-shop' ),
+		'jshop_ft_follow_title'   => __( 'Stay in touch', 'j-shop' ),
+		'jshop_newsletter_t'      => __( 'Get news and offers from us. Enter your email.', 'j-shop' ),
 		'jshop_newsletter_action' => '',
-		'jshop_ft_news_btn'       => 'สมัคร',
+		'jshop_ft_news_btn'       => __( 'Subscribe', 'j-shop' ),
 		'jshop_ft_news_ph'        => 'Email',
 		'jshop_soc_facebook'      => '',
 		'jshop_soc_x'             => '',
@@ -57,7 +57,7 @@ function jshop_ft_defaults() {
 		'jshop_soc_youtube'       => '',
 		'jshop_ft_copy'           => '© {year} {site}.',
 		'jshop_ft_credit_show'    => true,
-		'jshop_ft_credit'         => 'ขับเคลื่อนโดย <a href="https://wordpress.org" rel="noopener">WordPress</a>',
+		'jshop_ft_credit'         => sprintf( /* translators: %s: WordPress link. */ __( 'Powered by %s', 'j-shop' ), '<a href="https://wordpress.org" rel="noopener">WordPress</a>' ),
 		'jshop_ft_bg'             => '',
 		'jshop_ft_text'           => '',
 	);
@@ -165,7 +165,7 @@ function jshop_ft_output( $id ) {
 		case 'news_form':
 			$a = jshop_ft( 'jshop_newsletter_action' );
 			if ( $a ) {
-				echo '<form class="news-form" method="post" action="' . esc_url( $a ) . '"><label class="screen-reader-text" for="nl-email">อีเมล</label>'
+				echo '<form class="news-form" method="post" action="' . esc_url( $a ) . '"><label class="screen-reader-text" for="nl-email">' . esc_html__( 'Email', 'j-shop' ) . '</label>'
 					. '<input id="nl-email" type="email" name="email" placeholder="' . esc_attr( jshop_ft( 'jshop_ft_news_ph' ) ) . '" required>'
 					. '<button class="btn" type="submit">' . esc_html( jshop_ft( 'jshop_ft_news_btn' ) ) . '</button></form>';
 			}
@@ -211,9 +211,9 @@ add_action(
 		for ( $i = 1; $i <= 4; $i++ ) {
 			register_sidebar(
 				array(
-					'name'          => "ส่วนท้าย: คอลัมน์ $i",
+					'name'          => sprintf( /* translators: %d: footer column number. */ __( 'Footer column %d', 'j-shop' ), $i ),
 					'id'            => "footer-$i",
-					'description'   => 'วิดเจ็ตที่เพิ่มจะแสดงใต้เนื้อหาของคอลัมน์นี้',
+					'description'   => __( 'Widgets added here appear below the content of this column.', 'j-shop' ),
 					'before_widget' => '<section class="widget %2$s">',
 					'after_widget'  => '</section>',
 					'before_title'  => '<h4 class="widget-title">',
@@ -255,7 +255,7 @@ add_action(
 	'customize_register',
 	function ( $wp ) {
 		$d    = jshop_ft_defaults();
-		$hint = 'ในหน้าตัวอย่างด้านขวา คลิกไอคอนดินสอข้างข้อความ เพื่อกระโดดมาที่ช่องแก้ไขนี้';
+		$hint = __( 'In the preview, click the pencil icon next to a text to jump to its field.', 'j-shop' );
 
 		$add = function ( $id, $label, $section, $type = 'text' ) use ( $wp, $d ) {
 			$cb = array(
@@ -305,47 +305,47 @@ add_action(
 			);
 		};
 
-		$sec( 'jshop_ft1', 'ส่วนท้าย: คอลัมน์ 1 (ข้อมูลติดต่อ)' );
-		$add( 'jshop_ft_show_1', 'แสดงคอลัมน์นี้', 'jshop_ft1', 'checkbox' );
-		$add( 'jshop_ft_company', 'หัวข้อ / ชื่อบริษัท (เว้นว่าง = ใช้ชื่อเว็บไซต์)', 'jshop_ft1' );
-		$add( 'jshop_address', 'ที่อยู่', 'jshop_ft1', 'textarea' );
-		$add( 'jshop_ft_phone_label', 'ป้ายกำกับ: โทรศัพท์', 'jshop_ft1' );
-		$add( 'jshop_phone', 'เบอร์โทรศัพท์ (คั่นหลายเบอร์ด้วย , — เบอร์แรกใช้เป็นลิงก์โทร)', 'jshop_ft1' );
-		$add( 'jshop_ft_fax_label', 'ป้ายกำกับ: แฟกซ์', 'jshop_ft1' );
-		$add( 'jshop_fax', 'เบอร์แฟกซ์ (เว้นว่าง = ซ่อน)', 'jshop_ft1' );
-		$add( 'jshop_ft_email_label', 'ป้ายกำกับ: อีเมล', 'jshop_ft1' );
-		$add( 'jshop_email', 'อีเมล (เว้นว่าง = ซ่อน)', 'jshop_ft1' );
+		$sec( 'jshop_ft1', __( 'Footer: column 1 (contact)', 'j-shop' ) );
+		$add( 'jshop_ft_show_1', __( 'Show this column', 'j-shop' ), 'jshop_ft1', 'checkbox' );
+		$add( 'jshop_ft_company', __( 'Heading / company name (empty = site title)', 'j-shop' ), 'jshop_ft1' );
+		$add( 'jshop_address', __( 'Address', 'j-shop' ), 'jshop_ft1', 'textarea' );
+		$add( 'jshop_ft_phone_label', __( 'Label: phone', 'j-shop' ), 'jshop_ft1' );
+		$add( 'jshop_phone', __( 'Phone numbers (separate with commas; the first one becomes a call link)', 'j-shop' ), 'jshop_ft1' );
+		$add( 'jshop_ft_fax_label', __( 'Label: fax', 'j-shop' ), 'jshop_ft1' );
+		$add( 'jshop_fax', __( 'Fax (empty = hide)', 'j-shop' ), 'jshop_ft1' );
+		$add( 'jshop_ft_email_label', __( 'Label: email', 'j-shop' ), 'jshop_ft1' );
+		$add( 'jshop_email', __( 'Email (empty = hide)', 'j-shop' ), 'jshop_ft1' );
 
-		$sec( 'jshop_ft2', 'ส่วนท้าย: คอลัมน์ 2 (เมนู)', 'รายการเมนูแก้ที่ Appearance → Menus (ตำแหน่ง "เมนูส่วนท้าย")' );
-		$add( 'jshop_ft_show_2', 'แสดงคอลัมน์นี้', 'jshop_ft2', 'checkbox' );
-		$add( 'jshop_ft_menu_title', 'หัวข้อคอลัมน์', 'jshop_ft2' );
+		$sec( 'jshop_ft2', __( 'Footer: column 2 (menu)', 'j-shop' ), __( 'Edit the menu items in Appearance → Menus (location “Footer menu”).', 'j-shop' ) );
+		$add( 'jshop_ft_show_2', __( 'Show this column', 'j-shop' ), 'jshop_ft2', 'checkbox' );
+		$add( 'jshop_ft_menu_title', __( 'Column heading', 'j-shop' ), 'jshop_ft2' );
 
-		$sec( 'jshop_ft3', 'ส่วนท้าย: คอลัมน์ 3 (สั่งซื้อออนไลน์)' );
-		$add( 'jshop_ft_show_3', 'แสดงคอลัมน์นี้', 'jshop_ft3', 'checkbox' );
-		$add( 'jshop_ft_shop_title', 'หัวข้อคอลัมน์', 'jshop_ft3' );
-		$add( 'jshop_shop_label', 'ข้อความลิงก์ช่องทางสั่งซื้อ', 'jshop_ft3' );
-		$add( 'jshop_shop_url', 'ลิงก์ช่องทางสั่งซื้อ', 'jshop_ft3', 'url' );
-		$add( 'jshop_ft_all_label', 'ข้อความลิงก์ไปหน้าสินค้าทั้งหมด (เว้นว่าง = ซ่อน)', 'jshop_ft3' );
+		$sec( 'jshop_ft3', __( 'Footer: column 3 (shop online)', 'j-shop' ) );
+		$add( 'jshop_ft_show_3', __( 'Show this column', 'j-shop' ), 'jshop_ft3', 'checkbox' );
+		$add( 'jshop_ft_shop_title', __( 'Column heading', 'j-shop' ), 'jshop_ft3' );
+		$add( 'jshop_shop_label', __( 'Online store link text', 'j-shop' ), 'jshop_ft3' );
+		$add( 'jshop_shop_url', __( 'Online store link', 'j-shop' ), 'jshop_ft3', 'url' );
+		$add( 'jshop_ft_all_label', __( '“All products” link text (empty = hide)', 'j-shop' ), 'jshop_ft3' );
 
-		$sec( 'jshop_ft4', 'ส่วนท้าย: คอลัมน์ 4 (ติดตามข่าวสาร)' );
-		$add( 'jshop_ft_show_4', 'แสดงคอลัมน์นี้', 'jshop_ft4', 'checkbox' );
-		$add( 'jshop_ft_follow_title', 'หัวข้อคอลัมน์', 'jshop_ft4' );
-		$add( 'jshop_newsletter_t', 'ข้อความเชิญชวน', 'jshop_ft4', 'textarea' );
-		$add( 'jshop_newsletter_action', 'URL รับฟอร์มอีเมล (เว้นว่าง = ซ่อนฟอร์ม)', 'jshop_ft4', 'url' );
-		$add( 'jshop_ft_news_ph', 'ข้อความในช่องกรอกอีเมล', 'jshop_ft4' );
-		$add( 'jshop_ft_news_btn', 'ข้อความปุ่มสมัคร', 'jshop_ft4' );
+		$sec( 'jshop_ft4', __( 'Footer: column 4 (stay in touch)', 'j-shop' ) );
+		$add( 'jshop_ft_show_4', __( 'Show this column', 'j-shop' ), 'jshop_ft4', 'checkbox' );
+		$add( 'jshop_ft_follow_title', __( 'Column heading', 'j-shop' ), 'jshop_ft4' );
+		$add( 'jshop_newsletter_t', __( 'Invitation text', 'j-shop' ), 'jshop_ft4', 'textarea' );
+		$add( 'jshop_newsletter_action', __( 'Newsletter form URL (empty = hide the form)', 'j-shop' ), 'jshop_ft4', 'url' );
+		$add( 'jshop_ft_news_ph', __( 'Email field placeholder', 'j-shop' ), 'jshop_ft4' );
+		$add( 'jshop_ft_news_btn', __( 'Subscribe button text', 'j-shop' ), 'jshop_ft4' );
 		foreach ( jshop_ft_socials() as $k => $label ) {
-			$add( $k, "ลิงก์ $label (เว้นว่าง = ซ่อน)", 'jshop_ft4', 'url' );
+			$add( $k, sprintf( /* translators: %s: social network name. */ __( '%s link (empty = hide)', 'j-shop' ), $label ), 'jshop_ft4', 'url' );
 		}
 
-		$sec( 'jshop_ft5', 'ส่วนท้าย: ลิขสิทธิ์ & เครดิต', 'ใช้ {year} แทนปีปัจจุบัน และ {site} แทนชื่อเว็บไซต์ได้' );
-		$add( 'jshop_ft_copy', 'ข้อความลิขสิทธิ์', 'jshop_ft5' );
-		$add( 'jshop_ft_credit_show', 'แสดงข้อความเครดิตด้านขวา', 'jshop_ft5', 'checkbox' );
-		$add( 'jshop_ft_credit', 'ข้อความเครดิต (ใส่ลิงก์ HTML ได้)', 'jshop_ft5', 'textarea' );
+		$sec( 'jshop_ft5', __( 'Footer: copyright & credit', 'j-shop' ), __( 'Use {year} for the current year and {site} for the site name.', 'j-shop' ) );
+		$add( 'jshop_ft_copy', __( 'Copyright text', 'j-shop' ), 'jshop_ft5' );
+		$add( 'jshop_ft_credit_show', __( 'Show the credit text on the right', 'j-shop' ), 'jshop_ft5', 'checkbox' );
+		$add( 'jshop_ft_credit', __( 'Credit text (HTML links allowed)', 'j-shop' ), 'jshop_ft5', 'textarea' );
 
-		$sec( 'jshop_ft6', 'ส่วนท้าย: สี', 'เว้นว่างเพื่อใช้สีเริ่มต้นของธีม' );
-		$add( 'jshop_ft_bg', 'สีพื้นหลัง', 'jshop_ft6', 'color' );
-		$add( 'jshop_ft_text', 'สีตัวอักษร', 'jshop_ft6', 'color' );
+		$sec( 'jshop_ft6', __( 'Footer: colors', 'j-shop' ), __( 'Leave empty to use the theme colors.', 'j-shop' ) );
+		$add( 'jshop_ft_bg', __( 'Background color', 'j-shop' ), 'jshop_ft6', 'color' );
+		$add( 'jshop_ft_text', __( 'Text color', 'j-shop' ), 'jshop_ft6', 'color' );
 
 		// Click-to-edit partials (pencil icon in preview).
 		if ( ! isset( $wp->selective_refresh ) ) {

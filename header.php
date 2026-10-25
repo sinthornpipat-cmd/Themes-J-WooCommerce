@@ -15,10 +15,10 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<a class="skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
+<a class="skip-link" href="#main"><?php esc_html_e( 'Skip to content', 'j-shop' ); ?></a>
 
 <?php
-$jshop_a  = jshop_mod( 'jshop_announce', 'ยินดีต้อนรับสู่ร้านของเรา แก้ข้อความนี้ได้ใน Customizer' );
+$jshop_a  = jshop_mod( 'jshop_announce', __( 'Welcome to our store. Edit this text in the Customizer.', 'j-shop' ) );
 $jshop_au = jshop_mod( 'jshop_announce_url', '' );
 if ( $jshop_a ) :
 	?>
@@ -27,7 +27,7 @@ if ( $jshop_a ) :
 
 <header class="site-header">
 	<div class="wrap header-in">
-		<button class="icon-btn menu-toggle" aria-expanded="false" aria-label="เมนู"><?php jshop_the_icon( 'menu' ); ?></button>
+		<button class="icon-btn menu-toggle" aria-expanded="false" aria-label="<?php esc_attr_e( 'Menu', 'j-shop' ); ?>"><?php jshop_the_icon( 'menu' ); ?></button>
 		<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php bloginfo( 'name' ); ?>">
 			<?php
 			if ( has_custom_logo() ) {
@@ -36,7 +36,7 @@ if ( $jshop_a ) :
 				bloginfo( 'name' ); }
 			?>
 		</a>
-		<nav class="main-nav" aria-label="เมนูหลัก">
+		<nav class="main-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'j-shop' ); ?>">
 			<?php
 			wp_nav_menu(
 				array(
@@ -48,24 +48,16 @@ if ( $jshop_a ) :
 			?>
 		</nav>
 		<div class="header-tools">
-			<button class="icon-btn search-toggle" aria-expanded="false" aria-label="ค้นหา"><?php jshop_the_icon( 'search' ); ?></button>
+			<button class="icon-btn search-toggle" aria-expanded="false" aria-label="<?php esc_attr_e( 'Search', 'j-shop' ); ?>"><?php jshop_the_icon( 'search' ); ?></button>
 			<?php if ( jshop_has_wc() ) : ?>
-				<a class="icon-btn" href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" aria-label="บัญชี"><?php jshop_the_icon( 'user' ); ?></a>
-				<a class="icon-btn cart-toggle" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-label="ตะกร้า" aria-controls="mini-cart">
+				<a class="icon-btn" href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" aria-label="<?php esc_attr_e( 'My account', 'j-shop' ); ?>"><?php jshop_the_icon( 'user' ); ?></a>
+				<a class="icon-btn cart-toggle" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-label="<?php esc_attr_e( 'Cart', 'j-shop' ); ?>" aria-controls="mini-cart">
 					<?php jshop_the_icon( 'cart' ); ?><span class="cart-count"><?php echo (int) WC()->cart->get_cart_contents_count(); ?></span>
 				</a>
 			<?php endif; ?>
 		</div>
 	</div>
 	<div class="search-panel"><div class="wrap">
-		<form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-			<label class="screen-reader-text" for="s">ค้นหา</label>
-			<input type="search" id="s" name="s" placeholder="ค้นหาสินค้า…" value="<?php echo esc_attr( get_search_query() ); ?>">
-			<?php
-			if ( jshop_has_wc() ) :
-				?>
-				<input type="hidden" name="post_type" value="product"><?php endif; ?>
-			<button type="submit">ค้นหา</button>
-		</form>
+		<?php get_search_form( array( 'jshop_products' => true ) ); ?>
 	</div></div>
 </header>

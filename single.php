@@ -20,6 +20,15 @@ while ( have_posts() ) :
 			the_post_thumbnail( 'large' );}
 		?>
 		<?php the_content(); ?>
+		<?php
+		wp_link_pages(
+			array(
+				'before' => '<nav class="page-links">' . esc_html__( 'Pages:', 'j-shop' ),
+				'after'  => '</nav>',
+			)
+		);
+		?>
+		<?php the_tags( '<p class="tags-links">' . esc_html__( 'Tags:', 'j-shop' ) . ' ', ', ', '</p>' ); ?>
 		<?php comments_template(); ?>
 	</article>
 <?php endwhile; ?>

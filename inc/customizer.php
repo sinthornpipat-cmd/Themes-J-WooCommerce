@@ -16,10 +16,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function jshop_trust_defaults() {
 	return array(
-		array( 'จัดส่งรวดเร็ว', 'ส่งทั่วประเทศ' ),
-		array( 'ชำระเงินปลอดภัย', 'รองรับหลายช่องทาง' ),
-		array( 'สินค้าคุณภาพ', 'คัดสรรมาอย่างดี' ),
-		array( 'ติดต่อง่าย', 'ทีมงานพร้อมช่วยเหลือ' ),
+		array( __( 'Fast delivery', 'j-shop' ), __( 'Nationwide shipping', 'j-shop' ) ),
+		array( __( 'Secure payment', 'j-shop' ), __( 'Many payment options', 'j-shop' ) ),
+		array( __( 'Quality products', 'j-shop' ), __( 'Carefully selected', 'j-shop' ) ),
+		array( __( 'Easy to reach', 'j-shop' ), __( 'Our team is here to help', 'j-shop' ) ),
 	);
 }
 
@@ -34,34 +34,34 @@ function jshop_trust_defaults() {
 function jshop_section_defaults() {
 	return array(
 		1 => array(
-			'title' => 'กล่องเก็บของ',
+			'title' => __( 'Storage boxes', 'j-shop' ),
 			'cat'   => 'storage-box',
 			'count' => '8',
-			'sub'   => 'กล่องเก็บของหลายแบบ หลายขนาด เลือกใช้ได้ตามต้องการ',
+			'sub'   => __( 'Boxes in many styles and sizes for every need', 'j-shop' ),
 		),
 		2 => array(
-			'title' => 'ตู้ลิ้นชัก & ชั้นวาง',
+			'title' => __( 'Drawers & shelves', 'j-shop' ),
 			'cat'   => 'drawers-cabinet',
 			'count' => '4',
-			'sub'   => 'ใช้ได้ทั้งบ้านและออฟฟิศ จัดเก็บง่าย สะดวก',
+			'sub'   => __( 'For home and office, easy to organise', 'j-shop' ),
 		),
 		3 => array(
-			'title' => 'ตะกร้าผ้า & ซักรีด',
+			'title' => __( 'Laundry', 'j-shop' ),
 			'cat'   => 'laundry',
 			'count' => '4',
-			'sub'   => 'หลายแบบ หลายขนาด สำหรับใช้งานในชีวิตประจำวัน',
+			'sub'   => __( 'Many styles and sizes for everyday use', 'j-shop' ),
 		),
 		4 => array(
-			'title' => 'ครัว',
+			'title' => __( 'Kitchen', 'j-shop' ),
 			'cat'   => 'kitchen',
 			'count' => '4',
-			'sub'   => 'จัดเก็บของใช้ในบ้านให้หยิบใช้ง่ายและสะดวก',
+			'sub'   => __( 'Keep household items easy to reach', 'j-shop' ),
 		),
 		5 => array(
-			'title' => 'Heavy Duty',
+			'title' => __( 'Heavy duty', 'j-shop' ),
 			'cat'   => 'heavy-duty',
 			'count' => '4',
-			'sub'   => 'สินค้าสำหรับงานหนัก แข็งแรง ทนทาน',
+			'sub'   => __( 'Strong, durable products for heavy use', 'j-shop' ),
 		),
 	);
 }
@@ -140,52 +140,52 @@ add_action(
 		$wp->add_section(
 			'jshop_style',
 			array(
-				'title' => 'สีธีม',
+				'title' => __( 'Colors', 'j-shop' ),
 				'panel' => 'jshop',
 			)
 		);
-		$color( 'jshop_brand', 'สีหลัก (Brand)', '#1456c8' );
-		$color( 'jshop_accent', 'สีเน้น (ป้าย/ราคาลดราคา)', '#d9480f' );
-		$color( 'jshop_ink', 'สีตัวอักษร/ส่วนท้าย', '#14213d' );
+		$color( 'jshop_brand', __( 'Main color (brand)', 'j-shop' ), '#1456c8' );
+		$color( 'jshop_accent', __( 'Accent color (badges, sale prices)', 'j-shop' ), '#d9480f' );
+		$color( 'jshop_ink', __( 'Text / footer color', 'j-shop' ), '#14213d' );
 
 		// Announcement + badge.
 		$wp->add_section(
 			'jshop_top',
 			array(
-				'title' => 'แถบประกาศ & ป้ายสินค้า',
+				'title' => __( 'Announcement bar & product badge', 'j-shop' ),
 				'panel' => 'jshop',
 			)
 		);
-		$text( 'jshop_announce', 'ข้อความแถบประกาศ', 'ยินดีต้อนรับสู่ร้านของเรา แก้ข้อความนี้ได้ใน Customizer', 'jshop_top' );
-		$text( 'jshop_announce_url', 'ลิงก์แถบประกาศ (ไม่บังคับ)', '', 'jshop_top', 'url' );
-		$text( 'jshop_badge', 'ข้อความป้ายบนการ์ดสินค้า เช่น “ลดสูงสุด 50%” (เว้นว่าง = ไม่แสดง)', '', 'jshop_top' );
+		$text( 'jshop_announce', __( 'Announcement text', 'j-shop' ), __( 'Welcome to our store. Edit this text in the Customizer.', 'j-shop' ), 'jshop_top' );
+		$text( 'jshop_announce_url', __( 'Announcement link (optional)', 'j-shop' ), '', 'jshop_top', 'url' );
+		$text( 'jshop_badge', __( 'Badge text on product cards, e.g. “Up to 50% off” (empty = hide)', 'j-shop' ), '', 'jshop_top' );
 
 		// Hero.
 		$wp->add_section(
 			'jshop_hero',
 			array(
-				'title' => 'สไลด์แบนเนอร์หน้าแรก',
+				'title' => __( 'Home page banner slider', 'j-shop' ),
 				'panel' => 'jshop',
 			)
 		);
 		for ( $i = 1; $i <= 5; $i++ ) {
-			$img( "jshop_hero_$i", "แบนเนอร์ $i (แนะนำ 1920×700)", 'jshop_hero' );
-			$text( "jshop_hero_url_$i", "ลิงก์แบนเนอร์ $i", '', 'jshop_hero', 'url' );
+			$img( "jshop_hero_$i", sprintf( /* translators: %d: banner number. */ __( 'Banner %d (recommended 1920×700)', 'j-shop' ), $i ), 'jshop_hero' );
+			$text( "jshop_hero_url_$i", sprintf( /* translators: %d: banner number. */ __( 'Banner %d link', 'j-shop' ), $i ), '', 'jshop_hero', 'url' );
 		}
-		$text( 'jshop_hero_cta', 'ข้อความปุ่มบนแบนเนอร์ (แสดงเมื่อใช้รูปของคุณเอง)', 'ดูสินค้า', 'jshop_hero' );
+		$text( 'jshop_hero_cta', __( 'Banner button text (shown with your own images)', 'j-shop' ), __( 'Shop now', 'j-shop' ), 'jshop_hero' );
 
 		// Trust strip.
 		$wp->add_section(
 			'jshop_trust',
 			array(
-				'title' => 'แถบจุดขาย 4 ช่อง',
+				'title' => __( 'Trust strip (4 boxes)', 'j-shop' ),
 				'panel' => 'jshop',
 			)
 		);
 		foreach ( jshop_trust_defaults() as $k => $d ) {
 			$n = $k + 1;
-			$text( "jshop_trust_t_$n", "ช่อง $n หัวข้อ", $d[0], 'jshop_trust' );
-			$text( "jshop_trust_s_$n", "ช่อง $n คำอธิบาย", $d[1], 'jshop_trust' );
+			$text( "jshop_trust_t_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d title', 'j-shop' ), $n ), $d[0], 'jshop_trust' );
+			$text( "jshop_trust_s_$n", sprintf( /* translators: %d: box number. */ __( 'Box %d caption', 'j-shop' ), $n ), $d[1], 'jshop_trust' );
 		}
 
 		// Product sections.
@@ -194,31 +194,31 @@ add_action(
 			$wp->add_section(
 				$sec,
 				array(
-					'title'       => "เซกชันสินค้า $n",
+					'title'       => sprintf( /* translators: %d: section number. */ __( 'Product section %d', 'j-shop' ), $n ),
 					'panel'       => 'jshop',
-					'description' => 'ใส่ slug ของหมวดหมู่สินค้า WooCommerce (Products → Categories) เว้นว่างเพื่อซ่อนเซกชัน',
+					'description' => __( 'Enter a WooCommerce product category slug (Products → Categories). Leave empty to hide the section.', 'j-shop' ),
 				)
 			);
-			$text( "{$sec}_title", 'หัวข้อ', $d['title'], $sec );
-			$text( "{$sec}_sub", 'คำโปรย (ไม่บังคับ)', $d['sub'], $sec );
-			$text( "{$sec}_cat", 'Slug หมวดหมู่สินค้า', $d['cat'], $sec );
-			$text( "{$sec}_count", 'จำนวนสินค้าที่แสดง', $d['count'], $sec );
-			$img( "{$sec}_banner", 'รูปแบนเนอร์เหนือสินค้า (ไม่บังคับ)', $sec );
+			$text( "{$sec}_title", __( 'Heading', 'j-shop' ), $d['title'], $sec );
+			$text( "{$sec}_sub", __( 'Subtitle (optional)', 'j-shop' ), $d['sub'], $sec );
+			$text( "{$sec}_cat", __( 'Product category slug', 'j-shop' ), $d['cat'], $sec );
+			$text( "{$sec}_count", __( 'Number of products', 'j-shop' ), $d['count'], $sec );
+			$img( "{$sec}_banner", __( 'Banner above the products (optional)', 'j-shop' ), $sec );
 		}
 
 		// Sections toggle.
 		$wp->add_section(
 			'jshop_blocks',
 			array(
-				'title' => 'เปิด/ปิดบล็อกหน้าแรก',
+				'title' => __( 'Home page blocks', 'j-shop' ),
 				'panel' => 'jshop',
 			)
 		);
 		foreach ( array(
-			'trust'   => 'แถบจุดขาย',
-			'cats'    => 'ตารางหมวดหมู่สินค้า',
-			'feed'    => 'ไอเดียจัดบ้าน',
-			'reviews' => 'รีวิวลูกค้า',
+			'trust'   => __( 'Trust strip', 'j-shop' ),
+			'cats'    => __( 'Category grid', 'j-shop' ),
+			'feed'    => __( 'Home ideas', 'j-shop' ),
+			'reviews' => __( 'Customer reviews', 'j-shop' ),
 			'faq'     => 'FAQ',
 		) as $k => $l ) {
 			$wp->add_setting(
@@ -231,22 +231,22 @@ add_action(
 			$wp->add_control(
 				"jshop_show_$k",
 				array(
-					'label'   => "แสดง: $l",
+					'label'   => sprintf( /* translators: %s: home page block name. */ __( 'Show: %s', 'j-shop' ), $l ),
 					'section' => 'jshop_blocks',
 					'type'    => 'checkbox',
 				)
 			);
 		}
-		$text( 'jshop_cats_title', 'หัวข้อหมวดหมู่สินค้า', 'หมวดหมู่สินค้า', 'jshop_blocks' );
-		$text( 'dps_reviews_title', 'หัวข้อรีวิว', 'เสียงจากลูกค้า', 'jshop_blocks' );
-		$text( 'dps_feed_title', 'หัวข้อไอเดียจัดบ้าน', 'ไอเดียจัดบ้าน', 'jshop_blocks' );
-		$text( 'dps_faq_title', 'หัวข้อ FAQ', 'คำถามที่พบบ่อย', 'jshop_blocks' );
+		$text( 'jshop_cats_title', __( 'Category grid heading', 'j-shop' ), __( 'Shop by category', 'j-shop' ), 'jshop_blocks' );
+		$text( 'jshop_reviews_title', __( 'Reviews heading', 'j-shop' ), __( 'What our customers say', 'j-shop' ), 'jshop_blocks' );
+		$text( 'jshop_feed_title', __( 'Home ideas heading', 'j-shop' ), __( 'Home ideas', 'j-shop' ), 'jshop_blocks' );
+		$text( 'jshop_faq_title', __( 'FAQ heading', 'j-shop' ), __( 'Frequently asked questions', 'j-shop' ), 'jshop_blocks' );
 
 		// Popup.
 		$wp->add_section(
 			'jshop_popup',
 			array(
-				'title' => 'ป๊อปอัปโค้ดส่วนลด',
+				'title' => __( 'Discount code popup', 'j-shop' ),
 				'panel' => 'jshop',
 			)
 		);
@@ -260,28 +260,28 @@ add_action(
 		$wp->add_control(
 			'jshop_popup_on',
 			array(
-				'label'   => 'เปิดใช้งาน',
+				'label'   => __( 'Enable', 'j-shop' ),
 				'section' => 'jshop_popup',
 				'type'    => 'checkbox',
 			)
 		);
-		$text( 'jshop_popup_title', 'หัวข้อ', 'รับส่วนลดพิเศษ', 'jshop_popup' );
-		$text( 'jshop_popup_sub', 'เงื่อนไข', 'แก้ข้อความและเงื่อนไขได้ใน Customizer', 'jshop_popup' );
-		$text( 'jshop_popup_code', 'โค้ดส่วนลด', 'SAMPLE10', 'jshop_popup' );
-		$text( 'jshop_popup_minutes', 'นับถอยหลัง (นาที)', '5', 'jshop_popup' );
-		$img( 'jshop_popup_img', 'รูปประกอบ (PNG โปร่งใส)', 'jshop_popup' );
+		$text( 'jshop_popup_title', __( 'Heading', 'j-shop' ), __( 'Get a special discount', 'j-shop' ), 'jshop_popup' );
+		$text( 'jshop_popup_sub', __( 'Conditions', 'j-shop' ), __( 'Edit this text and the conditions in the Customizer.', 'j-shop' ), 'jshop_popup' );
+		$text( 'jshop_popup_code', __( 'Discount code', 'j-shop' ), 'SAMPLE10', 'jshop_popup' );
+		$text( 'jshop_popup_minutes', __( 'Countdown (minutes)', 'j-shop' ), '5', 'jshop_popup' );
+		$img( 'jshop_popup_img', __( 'Image (transparent PNG)', 'j-shop' ), 'jshop_popup' );
 
 		// Mobile nav.
 		$wp->add_section(
 			'jshop_mnav',
 			array(
-				'title' => 'เมนูล่างบนมือถือ',
+				'title' => __( 'Mobile bottom menu', 'j-shop' ),
 				'panel' => 'jshop',
 			)
 		);
-		$text( 'jshop_mnav_2_t', 'ปุ่มที่ 2 ข้อความ', 'สินค้า', 'jshop_mnav' );
-		$text( 'jshop_mnav_2_u', 'ปุ่มที่ 2 ลิงก์ (เว้นว่าง = หน้าร้านค้า)', '', 'jshop_mnav', 'url' );
-		$text( 'jshop_mnav_3_t', 'ปุ่มที่ 3 ข้อความ', 'บัญชี', 'jshop_mnav' );
-		$text( 'jshop_mnav_3_u', 'ปุ่มที่ 3 ลิงก์ (เว้นว่าง = หน้าบัญชีลูกค้า)', '', 'jshop_mnav', 'url' );
+		$text( 'jshop_mnav_2_t', __( 'Button 2 text', 'j-shop' ), __( 'Products', 'j-shop' ), 'jshop_mnav' );
+		$text( 'jshop_mnav_2_u', __( 'Button 2 link (empty = shop page)', 'j-shop' ), '', 'jshop_mnav', 'url' );
+		$text( 'jshop_mnav_3_t', __( 'Button 3 text', 'j-shop' ), __( 'Account', 'j-shop' ), 'jshop_mnav' );
+		$text( 'jshop_mnav_3_u', __( 'Button 3 link (empty = account page)', 'j-shop' ), '', 'jshop_mnav', 'url' );
 	}
 );

@@ -47,15 +47,15 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php if ( wc_coupons_enabled() ) : ?>
 		<div class="dps-co-coupon">
-			<input type="text" id="dps-co-coupon-code" class="input-text" placeholder="<?php esc_attr_e( 'รหัสส่วนลด', 'j-shop' ); ?>" autocomplete="off" />
-			<button type="button" class="dps-co-coupon-btn"><?php esc_html_e( 'นำไปใช้', 'j-shop' ); ?></button>
+			<input type="text" id="dps-co-coupon-code" class="input-text" placeholder="<?php esc_attr_e( 'Discount code', 'j-shop' ); ?>" autocomplete="off" />
+			<button type="button" class="dps-co-coupon-btn"><?php esc_html_e( 'Apply', 'j-shop' ); ?></button>
 		</div>
 	<?php endif; ?>
 
 	<table class="dps-co-totals">
 		<tbody>
 			<tr class="cart-subtotal">
-				<th><?php esc_html_e( 'ยอดรวมย่อย', 'j-shop' ); ?></th>
+				<th><?php esc_html_e( 'Subtotal', 'j-shop' ); ?></th>
 				<td><?php wc_cart_totals_subtotal_html(); ?></td>
 			</tr>
 
@@ -98,7 +98,7 @@ defined( 'ABSPATH' ) || exit;
 			<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
 			<tr class="order-total">
-				<th><?php esc_html_e( 'ยอดรวม', 'j-shop' ); ?></th>
+				<th><?php esc_html_e( 'Total', 'j-shop' ); ?></th>
 				<td><?php wc_cart_totals_order_total_html(); ?></td>
 			</tr>
 

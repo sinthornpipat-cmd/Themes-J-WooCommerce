@@ -1,0 +1,79 @@
+=== J Shop ===
+Contributors: WPORG_USERNAME
+Requires at least: 6.0
+Tested up to: 7.1
+Requires PHP: 7.4
+Stable tag: 3.0.0
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+A clean, fast WooCommerce storefront with Thai typography, a slide-out mini cart and a two-column checkout.
+
+== Description ==
+
+J Shop is a clean, fast storefront theme for WooCommerce shops, designed around Thai typography (Prompt and Noto Sans Thai).
+
+* Home page with a banner slider, a trust strip, a product category grid and up to five product sections by category. Every block is set up in the Customizer and can be turned off.
+* Slide-out mini cart with quantity buttons, live line and total updates, coupons and a free-shipping progress bar.
+* Two-column checkout with an order summary, product thumbnails and an inline coupon field. Works with the classic checkout and the Cart and Checkout blocks.
+* Shop sidebar for product filters, sale badges, sticky add-to-cart bar on product pages.
+* Footer with four editable columns, four widget areas and click-to-edit text in the Customizer preview.
+* Compatible with WooCommerce HPOS. Translation ready, with a Thai translation included.
+
+The theme also works without WooCommerce as a simple blog theme.
+
+The home page can also show customer reviews, an FAQ and a "home ideas" feed when a plugin registers the `dps_review`, `dps_faq` and `dps_feed` post types.
+
+== Installation ==
+
+1. In your admin, go to Appearance > Themes and click Add New.
+2. Search for "J Shop", then click Install and Activate.
+3. Install and activate WooCommerce.
+4. Go to Appearance > Customize > J Shop to set up the banners, product sections, footer and colors.
+5. Go to Appearance > Menus and assign menus to "Primary menu" and "Footer menu".
+
+== Frequently Asked Questions ==
+
+= The product sections on the home page are empty =
+
+Each section shows products from one product category. In Appearance > Customize > J Shop > Product section, enter the slug of a category that has products, or leave the slug empty to hide the section.
+
+= How do I show the free-shipping bar? =
+
+Set the amount in Appearance > Customize > J Shop > Shop settings, and set up a matching Free shipping method in WooCommerce. Set it to 0 to hide the bar.
+
+== Privacy ==
+
+J Shop does not collect, store or send any personal data. The theme loads the Prompt and Noto Sans Thai fonts from Google Fonts, so visitors' browsers connect to fonts.googleapis.com and fonts.gstatic.com.
+
+== Changelog ==
+
+= 3.0.0 =
+* First release on WordPress.org.
+* Renamed to J Shop, all strings translatable with English source text and a Thai translation.
+* Store-specific features (post types, demo content, checkout label editor) moved out of the theme.
+
+== Upgrade Notice ==
+
+= 3.0.0 =
+First release on WordPress.org.
+
+== Resources ==
+
+* Prompt and Noto Sans Thai fonts, loaded from Google Fonts. License: SIL Open Font License 1.1, https://openfontlicense.org
+* Images in assets/img (hero-1.jpg to hero-3.jpg, banner-2.jpg to banner-5.jpg, popup.png, placeholder.jpg) and screenshot.png. IMAGE_SOURCE_PENDING
+
+== Copyright ==
+
+J Shop WordPress Theme, (C) 2026 n2npay.
+J Shop is distributed under the terms of the GNU GPL.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.

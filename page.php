@@ -15,6 +15,14 @@ while ( have_posts() ) :
 	<article <?php post_class(); ?>>
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		<?php the_content(); ?>
+		<?php
+		wp_link_pages(
+			array(
+				'before' => '<nav class="page-links">' . esc_html__( 'Pages:', 'j-shop' ),
+				'after'  => '</nav>',
+			)
+		);
+		?>
 	</article>
 <?php endwhile; ?>
 </main>

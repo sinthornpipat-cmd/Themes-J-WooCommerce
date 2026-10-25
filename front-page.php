@@ -19,7 +19,7 @@ for ( $jshop_i = 1; $jshop_i <= 5; $jshop_i++ ) {
 	}
 }
 ?>
-<section class="hero" aria-roledescription="carousel" aria-label="แบนเนอร์โปรโมชัน">
+<section class="hero" aria-roledescription="carousel" aria-label="<?php esc_attr_e( 'Promotional banners', 'j-shop' ); ?>">
 <?php
 if ( $jshop_slides ) :
 	$jshop_shop_url = jshop_has_wc() ? wc_get_page_permalink( 'shop' ) : '';
@@ -39,7 +39,7 @@ if ( $jshop_slides ) :
 					</a>
 				<?php endif; ?>
 				<?php if ( $jshop_slide_link && ! $jshop_sample ) : ?>
-					<a class="btn hero-cta" href="<?php echo esc_url( $jshop_slide_link ); ?>"><?php echo esc_html( jshop_mod( 'jshop_hero_cta', 'ดูสินค้า' ) ); ?></a>
+					<a class="btn hero-cta" href="<?php echo esc_url( $jshop_slide_link ); ?>"><?php echo esc_html( jshop_mod( 'jshop_hero_cta', __( 'Shop now', 'j-shop' ) ) ); ?></a>
 				<?php endif; ?>
 			</div>
 		<?php endforeach; ?>
@@ -52,7 +52,7 @@ if ( $jshop_slides ) :
 		<?php
 		if ( jshop_has_wc() ) :
 			?>
-			<a class="btn" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">ดูสินค้า</a><?php endif; ?>
+			<a class="btn" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"><?php esc_html_e( 'Shop now', 'j-shop' ); ?></a><?php endif; ?>
 	</div>
 <?php endif; ?>
 </section>
@@ -89,8 +89,8 @@ if ( jshop_has_wc() && jshop_mod( 'jshop_show_cats', true ) ) :
 	if ( ! is_wp_error( $jshop_cats ) && $jshop_cats ) :
 		?>
 	<section class="section"><div class="wrap">
-		<div class="section-head"><h2><?php echo esc_html( jshop_mod( 'jshop_cats_title', 'หมวดหมู่สินค้า' ) ); ?></h2>
-			<a class="view-all" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">ดูสินค้าทั้งหมด</a></div>
+		<div class="section-head"><h2><?php echo esc_html( jshop_mod( 'jshop_cats_title', __( 'Shop by category', 'j-shop' ) ) ); ?></h2>
+			<a class="view-all" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"><?php esc_html_e( 'View all products', 'j-shop' ); ?></a></div>
 		<div class="cat-grid">
 		<?php
 		foreach ( $jshop_cats as $jshop_c ) :
@@ -103,7 +103,7 @@ if ( jshop_has_wc() && jshop_mod( 'jshop_show_cats', true ) ) :
 					<img src="<?php echo esc_url( jshop_img_url( 'placeholder.jpg' ) ); ?>" alt="" loading="lazy">
 				<?php endif; ?>
 				<span class="cat-name"><?php echo esc_html( $jshop_c->name ); ?></span>
-				<small><?php echo esc_html( sprintf( '%d รายการ', $jshop_c->count ) ); ?></small>
+				<small><?php echo esc_html( sprintf( /* translators: %d: number of products. */ _n( '%d item', '%d items', $jshop_c->count, 'j-shop' ), $jshop_c->count ) ); ?></small>
 			</a>
 		<?php endforeach; ?>
 		</div>
@@ -115,7 +115,7 @@ endif;
 
 <?php
 if ( ! jshop_has_wc() ) {
-	echo '<div class="wrap section"><p>กรุณาติดตั้งและเปิดใช้งานปลั๊กอิน WooCommerce เพื่อแสดงสินค้า</p></div>';
+	echo '<div class="wrap section"><p>' . esc_html__( 'Install and activate the WooCommerce plugin to show products here.', 'j-shop' ) . '</p></div>';
 } else {
 	for ( $jshop_n = 1; $jshop_n <= 5; $jshop_n++ ) {
 		get_template_part( 'template-parts/product-section', null, array( 'n' => $jshop_n ) );
@@ -137,7 +137,7 @@ if ( jshop_mod( 'jshop_show_feed', true ) ) :
 	if ( $jshop_feed->have_posts() ) :
 		?>
 	<section class="section"><div class="wrap">
-		<div class="section-head"><h2><?php echo esc_html( jshop_mod( 'dps_feed_title', 'ไอเดียจัดบ้าน' ) ); ?></h2></div>
+		<div class="section-head"><h2><?php echo esc_html( jshop_mod( 'jshop_feed_title', __( 'Home ideas', 'j-shop' ) ) ); ?></h2></div>
 		<div class="feed">
 		<?php
 		while ( $jshop_feed->have_posts() ) :
@@ -184,7 +184,7 @@ if ( jshop_mod( 'jshop_show_reviews', true ) ) :
 	if ( $jshop_rev->have_posts() ) :
 		?>
 	<section class="section reviews"><div class="wrap">
-		<div class="section-head"><h2><?php echo esc_html( jshop_mod( 'dps_reviews_title', 'เสียงจากลูกค้า' ) ); ?></h2></div>
+		<div class="section-head"><h2><?php echo esc_html( jshop_mod( 'jshop_reviews_title', __( 'What our customers say', 'j-shop' ) ) ); ?></h2></div>
 		<div class="review-track">
 		<?php
 		while ( $jshop_rev->have_posts() ) :
@@ -203,7 +203,7 @@ if ( jshop_mod( 'jshop_show_reviews', true ) ) :
 					?>
 					<div><strong><?php the_title(); ?></strong><small>Verified Buyer</small></div>
 				</div>
-				<div class="stars" aria-label="<?php echo esc_attr( $jshop_stars ); ?> ดาว"><?php echo esc_html( str_repeat( '★', $jshop_stars ) . str_repeat( '☆', 5 - $jshop_stars ) ); ?></div>
+				<div class="stars" aria-label="<?php echo esc_attr( sprintf( /* translators: %d: star rating 1-5. */ _n( '%d star', '%d stars', $jshop_stars, 'j-shop' ), $jshop_stars ) ); ?>"><?php echo esc_html( str_repeat( '★', $jshop_stars ) . str_repeat( '☆', 5 - $jshop_stars ) ); ?></div>
 				<p><?php echo esc_html( wp_strip_all_tags( get_the_content() ) ); ?></p>
 				<?php
 				if ( $jshop_pid ) :
@@ -235,7 +235,7 @@ if ( jshop_mod( 'jshop_show_faq', true ) ) :
 	if ( $jshop_faq->have_posts() ) :
 		?>
 	<section class="section"><div class="wrap">
-		<div class="section-head" style="justify-content:center"><h2><?php echo esc_html( jshop_mod( 'dps_faq_title', 'คำถามที่พบบ่อย' ) ); ?></h2></div>
+		<div class="section-head" style="justify-content:center"><h2><?php echo esc_html( jshop_mod( 'jshop_faq_title', __( 'Frequently asked questions', 'j-shop' ) ) ); ?></h2></div>
 		<div class="faq">
 		<?php
 		while ( $jshop_faq->have_posts() ) :

@@ -70,28 +70,28 @@ $jshop_m3u  = $jshop_m3u ? $jshop_m3u : $jshop_acct;
 	</div>
 </footer>
 
-<nav class="m-nav" aria-label="เมนูมือถือ">
-	<a href="<?php echo esc_url( home_url( '/' ) ); ?>">หน้าแรก</a>
-	<a href="<?php echo esc_url( $jshop_m2u ); ?>"><?php echo esc_html( jshop_mod( 'jshop_mnav_2_t', 'สินค้า' ) ); ?></a>
-	<a href="<?php echo esc_url( $jshop_m3u ); ?>"><?php echo esc_html( jshop_mod( 'jshop_mnav_3_t', 'บัญชี' ) ); ?></a>
-	<a class="cart-toggle" href="<?php echo esc_url( jshop_has_wc() ? wc_get_cart_url() : home_url( '/' ) ); ?>">ตะกร้า</a>
+<nav class="m-nav" aria-label="<?php esc_attr_e( 'Mobile menu', 'j-shop' ); ?>">
+	<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'j-shop' ); ?></a>
+	<a href="<?php echo esc_url( $jshop_m2u ); ?>"><?php echo esc_html( jshop_mod( 'jshop_mnav_2_t', __( 'Products', 'j-shop' ) ) ); ?></a>
+	<a href="<?php echo esc_url( $jshop_m3u ); ?>"><?php echo esc_html( jshop_mod( 'jshop_mnav_3_t', __( 'Account', 'j-shop' ) ) ); ?></a>
+	<a class="cart-toggle" href="<?php echo esc_url( jshop_has_wc() ? wc_get_cart_url() : home_url( '/' ) ); ?>"><?php esc_html_e( 'Cart', 'j-shop' ); ?></a>
 </nav>
 
 <?php if ( jshop_mod( 'jshop_popup_on', false ) ) : ?>
-<div class="promo" role="dialog" aria-modal="true" aria-label="โค้ดส่วนลด">
+<div class="promo" role="dialog" aria-modal="true" aria-label="<?php esc_attr_e( 'Discount code', 'j-shop' ); ?>">
 	<div class="promo-box">
-		<button class="promo-close" aria-label="ปิด">&times;</button>
+		<button class="promo-close" aria-label="<?php esc_attr_e( 'Close', 'j-shop' ); ?>">&times;</button>
 		<?php $jshop_pi = jshop_mod( 'jshop_popup_img' ); ?>
 		<?php
 		if ( $jshop_pi ) :
 			?>
 			<img src="<?php echo esc_url( $jshop_pi ); ?>" alt="" loading="lazy" decoding="async"><?php endif; ?>
-		<h3><?php echo esc_html( jshop_mod( 'jshop_popup_title', 'รับส่วนลดพิเศษ' ) ); ?></h3>
-		<p><?php echo esc_html( jshop_mod( 'jshop_popup_sub', 'แก้ข้อความและเงื่อนไขได้ใน Customizer' ) ); ?></p>
-		<p style="margin:0">ตัดสินใจช้อปภายใน</p>
+		<h3><?php echo esc_html( jshop_mod( 'jshop_popup_title', __( 'Get a special discount', 'j-shop' ) ) ); ?></h3>
+		<p><?php echo esc_html( jshop_mod( 'jshop_popup_sub', __( 'Edit this text and the conditions in the Customizer.', 'j-shop' ) ) ); ?></p>
+		<p style="margin:0"><?php esc_html_e( 'Offer ends in', 'j-shop' ); ?></p>
 		<div class="promo-time" aria-live="off">05:00</div>
-		<div class="promo-code"><span><?php echo esc_html( jshop_mod( 'jshop_popup_code', 'SAMPLE10' ) ); ?></span><button type="button">คัดลอกโค้ด</button></div>
-		<small>นำโค้ดไปใช้ตอน Checkout ได้เลย</small>
+		<div class="promo-code"><span><?php echo esc_html( jshop_mod( 'jshop_popup_code', 'SAMPLE10' ) ); ?></span><button type="button"><?php esc_html_e( 'Copy code', 'j-shop' ); ?></button></div>
+		<small><?php esc_html_e( 'Use the code at checkout.', 'j-shop' ); ?></small>
 	</div>
 </div>
 <?php endif; ?>

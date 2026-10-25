@@ -1,0 +1,4 @@
+/companion-plugin export-ignore
+/phpcs.xml.dist export-ignore
+/.gitignore export-ignore
+/.gitattributes export-ignore

@@ -15,7 +15,7 @@ if ( post_password_required() ) {
 			<?php
 			printf(
 				/* translators: %s: number of comments. */
-				esc_html( _n( '%s ความคิดเห็น', '%s ความคิดเห็น', get_comments_number(), 'j-shop' ) ),
+				esc_html( _n( '%s comment', '%s comments', get_comments_number(), 'j-shop' ) ),
 				esc_html( number_format_i18n( get_comments_number() ) )
 			);
 			?>
@@ -32,7 +32,7 @@ if ( post_password_required() ) {
 		</ol>
 		<?php the_comments_navigation(); ?>
 		<?php if ( ! comments_open() ) : ?>
-			<p class="no-comments"><?php esc_html_e( 'ปิดการแสดงความคิดเห็นแล้ว', 'j-shop' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'j-shop' ); ?></p>
 		<?php endif; ?>
 	<?php endif; ?>
 	<?php comment_form(); ?>

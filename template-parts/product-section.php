@@ -39,7 +39,7 @@ if ( empty( $jshop_ids ) ) {
 		echo '<section class="section"><div class="wrap"><p style="background:var(--mint);padding:14px;border-radius:12px">';
 		printf(
 			/* translators: 1: section title, 2: product category slug. */
-			esc_html__( '[ผู้ดูแล] เซกชัน “%1$s”: ไม่พบสินค้าในหมวดหมู่ slug %2$s', 'j-shop' ),
+			esc_html__( '[Admin] Section “%1$s”: no products found in the category with slug %2$s', 'j-shop' ),
 			esc_html( $jshop_title ),
 			'<code>' . esc_html( $jshop_cat ) . '</code>'
 		);
@@ -73,7 +73,7 @@ $jshop_products = new WP_Query(
 				<?php endif; ?>
 			</div>
 			<?php if ( ! is_wp_error( $jshop_link ) ) : ?>
-				<a class="view-all" href="<?php echo esc_url( $jshop_link ); ?>"><?php esc_html_e( 'ดูทั้งหมด', 'j-shop' ); ?></a>
+				<a class="view-all" href="<?php echo esc_url( $jshop_link ); ?>"><?php esc_html_e( 'View all', 'j-shop' ); ?></a>
 			<?php endif; ?>
 		</div>
 		<ul class="p-grid">
