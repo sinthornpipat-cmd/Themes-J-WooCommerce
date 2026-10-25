@@ -12,6 +12,6 @@
 		<h2>ตะกร้าสินค้า <span class="mc-count">(<?php echo (int) WC()->cart->get_cart_contents_count(); ?>)</span></h2>
 		<button type="button" class="mc-close" aria-label="ปิด">&times;</button>
 	</header>
-	<?php echo dps_ship_bar_html(); // phpcs:ignore ?>
+	<?php echo wp_kses_post( dps_ship_bar_html() ); ?>
 	<div class="widget_shopping_cart_content"><?php woocommerce_mini_cart(); ?></div>
 </aside>

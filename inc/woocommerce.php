@@ -1,5 +1,10 @@
 <?php
-/** WooCommerce integration for Themes J WooCommerce */
+/**
+ * WooCommerce integration.
+ *
+ * @package themes-j-woocommerce
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -11,77 +16,136 @@ if ( ! class_exists( 'WooCommerce' ) ) {
 /**
  * Declare HPOS and Cart/Checkout Blocks compatibility.
  */
-add_action( 'before_woocommerce_init', function () {
-	if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
-		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', get_template_directory() . '/style.css', true );
-		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', get_template_directory() . '/style.css', true );
+add_action(
+	'before_woocommerce_init',
+	function () {
+		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', get_template_directory() . '/style.css', true );
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', get_template_directory() . '/style.css', true );
+		}
 	}
-} );
+);
 
 /* ---- Assets ---- */
 /**
  * Enqueue WooCommerce styles/scripts and pass cart settings to JS.
  */
-add_action( 'wp_enqueue_scripts', function () {
-	wp_enqueue_style( 'dps-woo', get_template_directory_uri() . '/assets/css/woocommerce.css', [ 'dps-style' ], DPS_VER );
-	wp_enqueue_script( 'dps-woo', get_template_directory_uri() . '/assets/js/woo.js', [ 'jquery' ], DPS_VER, true );
-	wp_localize_script( 'dps-woo', 'DPSW', [
-		'openOnAdd' => (bool) get_theme_mod( 'dps_open_mini_cart', true ),
-		'isCart'    => is_cart() || is_checkout(),
-		'ajax'      => admin_url( 'admin-ajax.php' ),
-		'wcAjax'    => class_exists( 'WC_AJAX' ) ? WC_AJAX::get_endpoint( 'dps_add_to_cart' ) : '',
-		'wcBase'    => class_exists( 'WC_AJAX' ) ? WC_AJAX::get_endpoint( '%%endpoint%%' ) : '',
-		'nonce'     => wp_create_nonce( 'dps_cart' ),
-		'cur'       => [
-			'sym'  => html_entity_decode( get_woocommerce_currency_symbol(), ENT_QUOTES, 'UTF-8' ),
-			'dec'  => wc_get_price_decimals(),
-			'dsep' => wc_get_price_decimal_separator(),
-			'tsep' => wc_get_price_thousand_separator(),
-			'fmt'  => get_woocommerce_price_format(),
-		],
-		'i18n'      => [ 'max' => 'สินค้าคงเหลือไม่พอ ปรับเป็นจำนวนสูงสุดที่สั่งได้แล้ว', 'err' => 'เกิดข้อผิดพลาด กรุณาลองใหม่', 'coupon' => 'ใช้คูปองสำเร็จ' ],
-	] );
-}, 20 );
+add_action(
+	'wp_enqueue_scripts',
+	function () {
+		wp_enqueue_style( 'dps-woo', get_template_directory_uri() . '/assets/css/woocommerce.css', array( 'dps-style' ), DPS_VER );
+		wp_enqueue_script( 'dps-woo', get_template_directory_uri() . '/assets/js/woo.js', array( 'jquery' ), DPS_VER, true );
+		wp_localize_script(
+			'dps-woo',
+			'DPSW',
+			array(
+				'openOnAdd' => (bool) get_theme_mod( 'dps_open_mini_cart', true ),
+				'isCart'    => is_cart() || is_checkout(),
+				'ajax'      => admin_url( 'admin-ajax.php' ),
+				'wcAjax'    => class_exists( 'WC_AJAX' ) ? WC_AJAX::get_endpoint( 'dps_add_to_cart' ) : '',
+				'wcBase'    => class_exists( 'WC_AJAX' ) ? WC_AJAX::get_endpoint( '%%endpoint%%' ) : '',
+				'nonce'     => wp_create_nonce( 'dps_cart' ),
+				'cur'       => array(
+					'sym'  => html_entity_decode( get_woocommerce_currency_symbol(), ENT_QUOTES, 'UTF-8' ),
+					'dec'  => wc_get_price_decimals(),
+					'dsep' => wc_get_price_decimal_separator(),
+					'tsep' => wc_get_price_thousand_separator(),
+					'fmt'  => get_woocommerce_price_format(),
+				),
+				'i18n'      => array(
+					'max'    => 'สินค้าคงเหลือไม่พอ ปรับเป็นจำนวนสูงสุดที่สั่งได้แล้ว',
+					'err'    => 'เกิดข้อผิดพลาด กรุณาลองใหม่',
+					'coupon' => 'ใช้คูปองสำเร็จ',
+				),
+			)
+		);
+	},
+	20
+);
 
 /* ---- Shop behaviour ---- */
 /**
  * Force AJAX add-to-cart on shop loops.
  */
-add_filter( 'pre_option_woocommerce_enable_ajax_add_to_cart', function () { return 'yes'; } );
+add_filter(
+	'pre_option_woocommerce_enable_ajax_add_to_cart',
+	function () {
+		return 'yes';
+	}
+);
 /**
  * Set products per page on shop archives.
  */
-add_filter( 'loop_shop_per_page', function () { return (int) get_theme_mod( 'dps_per_page', 12 ); } );
+add_filter(
+	'loop_shop_per_page',
+	function () {
+		return (int) get_theme_mod( 'dps_per_page', 12 );
+	}
+);
 /**
  * Set cross-sell columns.
  */
-add_filter( 'woocommerce_cross_sells_columns', function () { return 4; } );
+add_filter(
+	'woocommerce_cross_sells_columns',
+	function () {
+		return 4;
+	}
+);
 /**
  * Set up-sell columns and count.
  */
-add_filter( 'woocommerce_upsell_display_args', function ( $a ) { $a['columns'] = 4; $a['posts_per_page'] = 4; return $a; } );
+add_filter(
+	'woocommerce_upsell_display_args',
+	function ( $a ) {
+		$a['columns']        = 4;
+		$a['posts_per_page'] = 4;
+		return $a;
+	}
+);
 /**
  * Customise breadcrumb markup and delimiter.
  */
-add_filter( 'woocommerce_breadcrumb_defaults', function ( $d ) {
-	$d['delimiter'] = ' / '; $d['wrap_before'] = '<nav class="woocommerce-breadcrumb" aria-label="breadcrumb">'; return $d;
-} );
+add_filter(
+	'woocommerce_breadcrumb_defaults',
+	function ( $d ) {
+		$d['delimiter']   = ' / ';
+		$d['wrap_before'] = '<nav class="woocommerce-breadcrumb" aria-label="breadcrumb">';
+		return $d;
+	}
+);
 /**
  * Use simple arrows for pagination.
  */
-add_filter( 'woocommerce_pagination_args', function ( $a ) { $a['prev_text'] = '‹'; $a['next_text'] = '›'; return $a; } );
+add_filter(
+	'woocommerce_pagination_args',
+	function ( $a ) {
+		$a['prev_text'] = '‹';
+		$a['next_text'] = '›';
+		return $a;
+	}
+);
 
 /* Sidebar: remove default get_sidebar() and use our own layout */
 remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 /**
  * Register the shop filter sidebar.
  */
-add_action( 'widgets_init', function () {
-	register_sidebar( [
-		'name' => 'ตัวกรองสินค้า (Shop)', 'id' => 'shop-sidebar', 'description' => 'แสดงในหน้าร้านค้า/หมวดหมู่สินค้า เช่น Filter by price, Product categories',
-		'before_widget' => '<section class="widget %2$s">', 'after_widget' => '</section>', 'before_title' => '<h3 class="widget-title">', 'after_title' => '</h3>',
-	] );
-} );
+add_action(
+	'widgets_init',
+	function () {
+		register_sidebar(
+			array(
+				'name'          => 'ตัวกรองสินค้า (Shop)',
+				'id'            => 'shop-sidebar',
+				'description'   => 'แสดงในหน้าร้านค้า/หมวดหมู่สินค้า เช่น Filter by price, Product categories',
+				'before_widget' => '<section class="widget %2$s">',
+				'after_widget'  => '</section>',
+				'before_title'  => '<h3 class="widget-title">',
+				'after_title'   => '</h3>',
+			)
+		);
+	}
+);
 /**
  * Whether the shop sidebar should be displayed on this request.
  *
@@ -93,48 +157,67 @@ function dps_shop_has_sidebar() {
 /**
  * Open the shop layout (sidebar + main) before archive content.
  */
-add_action( 'woocommerce_before_main_content', function () {
-	if ( ! dps_shop_has_sidebar() ) {
-		return;
-	}
-	echo '<div class="shop-layout"><aside class="shop-side" aria-label="ตัวกรองสินค้า">';
-	dynamic_sidebar( 'shop-sidebar' );
-	echo '</aside><div class="shop-main">';
-}, 25 );
+add_action(
+	'woocommerce_before_main_content',
+	function () {
+		if ( ! dps_shop_has_sidebar() ) {
+			return;
+		}
+		echo '<div class="shop-layout"><aside class="shop-side" aria-label="ตัวกรองสินค้า">';
+		dynamic_sidebar( 'shop-sidebar' );
+		echo '</aside><div class="shop-main">';
+	},
+	25
+);
 /**
  * Close the shop layout after archive content.
  */
-add_action( 'woocommerce_after_main_content', function () {
-	if ( dps_shop_has_sidebar() ) {
-		echo '</div></div>';
-	}
-}, 5 );
+add_action(
+	'woocommerce_after_main_content',
+	function () {
+		if ( dps_shop_has_sidebar() ) {
+			echo '</div></div>';
+		}
+	},
+	5
+);
 
 /* Category banner / title spacing handled in CSS. Hide the default sale flash text swap -> keep % off */
 /**
  * Show a percentage on the sale badge.
  */
-add_filter( 'woocommerce_sale_flash', function ( $html, $post, $product ) {
-	if ( $product->is_type( 'variable' ) || ! $product->get_regular_price() || ! (float) $product->get_regular_price() ) {
-		return '<span class="onsale">' . esc_html__( 'ลดราคา', 'themes-j-woocommerce' ) . '</span>';
-	}
-	$pct = round( ( 1 - (float) $product->get_price() / (float) $product->get_regular_price() ) * 100 );
-	return '<span class="onsale">-' . (int) $pct . '%</span>';
-}, 10, 3 );
+add_filter(
+	'woocommerce_sale_flash',
+	function ( $html, $post, $product ) {
+		if ( $product->is_type( 'variable' ) || ! $product->get_regular_price() || ! (float) $product->get_regular_price() ) {
+			return '<span class="onsale">' . esc_html__( 'ลดราคา', 'themes-j-woocommerce' ) . '</span>';
+		}
+		$pct = round( ( 1 - (float) $product->get_price() / (float) $product->get_regular_price() ) * 100 );
+		return '<span class="onsale">-' . (int) $pct . '%</span>';
+	},
+	10,
+	3
+);
 
 /* ---- Quantity +/- buttons ---- */
 /**
  * Print the minus button before the quantity input.
  */
-add_action( 'woocommerce_before_quantity_input_field', function () {
-	echo '<button type="button" class="qty-btn" data-d="-1" aria-label="ลดจำนวน">−</button>';
-} );
+add_action(
+	'woocommerce_before_quantity_input_field',
+	function () {
+		echo '<button type="button" class="qty-btn" data-d="-1" aria-label="ลดจำนวน">−</button>';
+	}
+);
 /**
  * Print the plus button after the quantity input.
  */
-add_action( 'woocommerce_after_quantity_input_field', function () {
-	echo '<button type="button" class="qty-btn" data-d="1" aria-label="เพิ่มจำนวน">+</button>';
-} );
+add_action(
+	'woocommerce_after_quantity_input_field',
+	function () {
+		echo '<button type="button" class="qty-btn" data-d="1" aria-label="เพิ่มจำนวน">+</button>';
+	}
+);
 
 /* ---- Free shipping progress ---- */
 /**
@@ -165,72 +248,138 @@ function dps_ship_bar_html() {
 /**
  * Refresh the free-shipping bar via cart fragments.
  */
-add_filter( 'woocommerce_add_to_cart_fragments', function ( $f ) {
-	$f['div.dps-ship-bar'] = dps_ship_bar_html();
-	return $f;
-} );
-// Also show the bar on the cart page
+add_filter(
+	'woocommerce_add_to_cart_fragments',
+	function ( $f ) {
+		$f['div.dps-ship-bar'] = dps_ship_bar_html();
+		return $f;
+	}
+);
+// Also show the bar on the cart page.
 /**
  * Show the free-shipping bar above the cart table.
  */
-add_action( 'woocommerce_before_cart_table', function () { echo dps_ship_bar_html(); } ); // phpcs:ignore
+add_action(
+	'woocommerce_before_cart_table',
+	function () {
+		echo wp_kses_post( dps_ship_bar_html() );
+	}
+);
 
 /* ---- Sticky add-to-cart bar on single product ---- */
 /**
  * Print the sticky add-to-cart bar on single products.
  */
-add_action( 'wp_footer', function () {
-	if ( ! is_product() ) {
-		return;
-	}
-	global $product;
-	if ( ! $product instanceof WC_Product || ! $product->is_purchasable() ) {
-		return;
-	}
-	?>
+add_action(
+	'wp_footer',
+	function () {
+		if ( ! is_product() ) {
+			return;
+		}
+		global $product;
+		if ( ! $product instanceof WC_Product || ! $product->is_purchasable() ) {
+			return;
+		}
+		?>
 	<div class="sticky-atc" aria-hidden="true">
 		<div class="wrap">
 			<div class="sa-info"><strong><?php echo esc_html( $product->get_name() ); ?></strong><span><?php echo wp_kses_post( $product->get_price_html() ); ?></span></div>
 			<button type="button" class="btn sa-btn"><?php echo esc_html( $product->is_type( 'simple' ) ? __( 'หยิบใส่ตะกร้า', 'themes-j-woocommerce' ) : __( 'เลือกตัวเลือก', 'themes-j-woocommerce' ) ); ?></button>
 		</div>
 	</div>
-	<?php
-} );
+		<?php
+	}
+);
 
 /* ---- Mini cart drawer (printed in footer.php) ---- */
 /**
  * Print the mini-cart drawer in the footer.
  */
-add_action( 'wp_footer', function () {
-	if ( is_cart() || is_checkout() ) {
-		return;
-	}
-	get_template_part( 'template-parts/mini-cart' );
-}, 5 );
+add_action(
+	'wp_footer',
+	function () {
+		if ( is_cart() || is_checkout() ) {
+			return;
+		}
+		get_template_part( 'template-parts/mini-cart' );
+	},
+	5
+);
 
 /* ---- Customizer: WooCommerce options ---- */
 /**
  * Register WooCommerce-related Customizer controls.
  */
-add_action( 'customize_register', function ( $wp ) {
-	$wp->add_section( 'dps_woo', [ 'title' => 'WooCommerce (ร้านค้า)', 'panel' => 'dps' ] );
-	$wp->add_setting( 'dps_free_ship', [ 'default' => 0, 'sanitize_callback' => 'absint' ] );
-	$wp->add_control( 'dps_free_ship', [ 'label' => 'ยอดขั้นต่ำส่งฟรี (บาท) สำหรับแถบความคืบหน้า — 0 = ซ่อน', 'section' => 'dps_woo', 'type' => 'number' ] );
-	$wp->add_setting( 'dps_per_page', [ 'default' => 12, 'sanitize_callback' => 'absint' ] );
-	$wp->add_control( 'dps_per_page', [ 'label' => 'จำนวนสินค้าต่อหน้า (หน้าร้านค้า)', 'section' => 'dps_woo', 'type' => 'number' ] );
-	$wp->add_setting( 'dps_open_mini_cart', [ 'default' => true, 'sanitize_callback' => 'wp_validate_boolean' ] );
-	$wp->add_control( 'dps_open_mini_cart', [ 'label' => 'เปิดมินิคาร์ททันทีเมื่อเพิ่มสินค้า', 'section' => 'dps_woo', 'type' => 'checkbox' ] );
-} );
+add_action(
+	'customize_register',
+	function ( $wp ) {
+		$wp->add_section(
+			'dps_woo',
+			array(
+				'title' => 'WooCommerce (ร้านค้า)',
+				'panel' => 'dps',
+			)
+		);
+		$wp->add_setting(
+			'dps_free_ship',
+			array(
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
+			)
+		);
+		$wp->add_control(
+			'dps_free_ship',
+			array(
+				'label'   => 'ยอดขั้นต่ำส่งฟรี (บาท) สำหรับแถบความคืบหน้า — 0 = ซ่อน',
+				'section' => 'dps_woo',
+				'type'    => 'number',
+			)
+		);
+		$wp->add_setting(
+			'dps_per_page',
+			array(
+				'default'           => 12,
+				'sanitize_callback' => 'absint',
+			)
+		);
+		$wp->add_control(
+			'dps_per_page',
+			array(
+				'label'   => 'จำนวนสินค้าต่อหน้า (หน้าร้านค้า)',
+				'section' => 'dps_woo',
+				'type'    => 'number',
+			)
+		);
+		$wp->add_setting(
+			'dps_open_mini_cart',
+			array(
+				'default'           => true,
+				'sanitize_callback' => 'wp_validate_boolean',
+			)
+		);
+		$wp->add_control(
+			'dps_open_mini_cart',
+			array(
+				'label'   => 'เปิดมินิคาร์ททันทีเมื่อเพิ่มสินค้า',
+				'section' => 'dps_woo',
+				'type'    => 'checkbox',
+			)
+		);
+	}
+);
 
 
 /* ---- Mini-cart: item count in drawer title (fragment) ---- */
 /**
  * Refresh the mini-cart item count via cart fragments.
  */
-add_filter( 'woocommerce_add_to_cart_fragments', function ( $f ) {
-	$f['span.mc-count'] = '<span class="mc-count">(' . (int) WC()->cart->get_cart_contents_count() . ')</span>';
-	return $f;
-} );
+add_filter(
+	'woocommerce_add_to_cart_fragments',
+	function ( $f ) {
+		$f['span.mc-count'] = '<span class="mc-count">(' . (int) WC()->cart->get_cart_contents_count() . ')</span>';
+		return $f;
+	}
+);
 
 /* ---- Mini-cart AJAX: change quantity / remove / coupons ---- */
 /**
@@ -240,7 +389,7 @@ add_filter( 'woocommerce_add_to_cart_fragments', function ( $f ) {
  */
 function dps_ajax_guard() {
 	if ( ! check_ajax_referer( 'dps_cart', 'nonce', false ) ) {
-		wp_send_json_error( [ 'message' => 'หมดเวลา กรุณารีเฟรชหน้าแล้วลองใหม่' ] );
+		wp_send_json_error( array( 'message' => 'หมดเวลา กรุณารีเฟรชหน้าแล้วลองใหม่' ) );
 	}
 	if ( ! WC()->cart ) {
 		wc_load_cart();
@@ -252,15 +401,26 @@ function dps_ajax_guard() {
  * @param array $extra Extra data to merge into the response.
  * @return void
  */
-function dps_ajax_cart_response( $extra = [] ) {
+function dps_ajax_cart_response( $extra = array() ) {
 	WC()->cart->calculate_totals();
 	ob_start();
 	woocommerce_mini_cart();
-	$mini = ob_get_clean();
-	$fragments = apply_filters( 'woocommerce_add_to_cart_fragments', [
-		'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini . '</div>',
-	] );
-	wp_send_json_success( array_merge( [ 'fragments' => $fragments, 'cart_hash' => WC()->cart->get_cart_hash() ], $extra ) );
+	$mini      = ob_get_clean();
+	$fragments = apply_filters(
+		'woocommerce_add_to_cart_fragments', // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core hook.
+		array(
+			'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini . '</div>',
+		)
+	);
+	wp_send_json_success(
+		array_merge(
+			array(
+				'fragments' => $fragments,
+				'cart_hash' => WC()->cart->get_cart_hash(),
+			),
+			$extra
+		)
+	);
 }
 
 add_action( 'wp_ajax_dps_cart_qty', 'dps_ajax_cart_qty' );
@@ -273,19 +433,21 @@ add_action( 'wc_ajax_dps_cart_qty', 'dps_ajax_cart_qty' ); // Lighter than admin
  */
 function dps_ajax_cart_qty() {
 	dps_ajax_guard();
-	$key  = isset( $_POST['key'] ) ? wc_clean( wp_unslash( $_POST['key'] ) ) : '';
-	$qty  = isset( $_POST['qty'] ) ? wc_stock_amount( wp_unslash( $_POST['qty'] ) ) : 0;
+	// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce checked in dps_ajax_guard().
+	$key = isset( $_POST['key'] ) ? sanitize_text_field( wp_unslash( $_POST['key'] ) ) : '';
+	$qty = isset( $_POST['qty'] ) ? wc_stock_amount( sanitize_text_field( wp_unslash( $_POST['qty'] ) ) ) : 0;
+	// phpcs:enable WordPress.Security.NonceVerification.Missing
 	$item = WC()->cart->get_cart_item( $key );
 	if ( ! $item ) {
 		dps_ajax_cart_response();
 	}
-	$extra = [];
+	$extra = array();
 	if ( $qty <= 0 ) {
 		WC()->cart->remove_cart_item( $key );
 	} else {
 		$max = (int) $item['data']->get_max_purchase_quantity();
 		if ( $max > 0 && $qty > $max ) {
-			$qty = $max;
+			$qty             = $max;
 			$extra['capped'] = true;
 		}
 		WC()->cart->set_quantity( $key, $qty, true );
@@ -303,10 +465,12 @@ add_action( 'wc_ajax_dps_cart_coupon', 'dps_ajax_cart_coupon' ); // Lighter than
  */
 function dps_ajax_cart_coupon() {
 	dps_ajax_guard();
-	$code = isset( $_POST['code'] ) ? wc_format_coupon_code( wp_unslash( $_POST['code'] ) ) : '';
+	// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce checked in dps_ajax_guard().
+	$code = isset( $_POST['code'] ) ? wc_format_coupon_code( sanitize_text_field( wp_unslash( $_POST['code'] ) ) ) : '';
 	$op   = isset( $_POST['op'] ) ? sanitize_key( wp_unslash( $_POST['op'] ) ) : 'apply';
+	// phpcs:enable WordPress.Security.NonceVerification.Missing
 	if ( '' === $code ) {
-		wp_send_json_error( [ 'message' => 'กรุณากรอกรหัสคูปอง' ] );
+		wp_send_json_error( array( 'message' => 'กรุณากรอกรหัสคูปอง' ) );
 	}
 	if ( 'remove' === $op ) {
 		WC()->cart->remove_coupon( $code );
@@ -316,11 +480,16 @@ function dps_ajax_cart_coupon() {
 	wc_clear_notices();
 	if ( WC()->cart->apply_coupon( $code ) ) {
 		wc_clear_notices();
-		dps_ajax_cart_response( [ 'applied' => true ] );
+		dps_ajax_cart_response( array( 'applied' => true ) );
 	}
-	$errors = array_map( function ( $n ) { return wp_strip_all_tags( is_array( $n ) ? $n['notice'] : $n ); }, wc_get_notices( 'error' ) );
+	$errors = array_map(
+		function ( $n ) {
+			return wp_strip_all_tags( is_array( $n ) ? $n['notice'] : $n );
+		},
+		wc_get_notices( 'error' )
+	);
 	wc_clear_notices();
-	wp_send_json_error( [ 'message' => $errors ? implode( ' ', $errors ) : 'ไม่สามารถใช้คูปองนี้ได้' ] );
+	wp_send_json_error( array( 'message' => $errors ? implode( ' ', $errors ) : 'ไม่สามารถใช้คูปองนี้ได้' ) );
 }
 
 
@@ -328,11 +497,23 @@ function dps_ajax_cart_coupon() {
 /**
  * Open the shop toolbar wrapper (result count + ordering).
  */
-add_action( 'woocommerce_before_shop_loop', function () { echo '<div class="shop-toolbar">'; }, 19 );
+add_action(
+	'woocommerce_before_shop_loop',
+	function () {
+		echo '<div class="shop-toolbar">';
+	},
+	19
+);
 /**
  * Close the shop toolbar wrapper.
  */
-add_action( 'woocommerce_before_shop_loop', function () { echo '</div>'; }, 31 );
+add_action(
+	'woocommerce_before_shop_loop',
+	function () {
+		echo '</div>';
+	},
+	31
+);
 
 
 /**
@@ -349,9 +530,9 @@ function dps_wc_ajax_add_to_cart() {
 	if ( ! WC()->cart ) {
 		wc_load_cart();
 	}
-	$raw_id     = isset( $_POST['add-to-cart'] ) ? wp_unslash( $_POST['add-to-cart'] ) : ( isset( $_POST['product_id'] ) ? wp_unslash( $_POST['product_id'] ) : 0 );
-	$product_id = apply_filters( 'woocommerce_add_to_cart_product_id', absint( $raw_id ) );
-	$quantity   = isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : 1;
+	$raw_id     = isset( $_POST['add-to-cart'] ) ? absint( wp_unslash( $_POST['add-to-cart'] ) ) : ( isset( $_POST['product_id'] ) ? absint( wp_unslash( $_POST['product_id'] ) ) : 0 );
+	$product_id = apply_filters( 'woocommerce_add_to_cart_product_id', $raw_id ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core hook.
+	$quantity   = isset( $_POST['quantity'] ) ? wc_stock_amount( sanitize_text_field( wp_unslash( $_POST['quantity'] ) ) ) : 1;
 	$quantity   = $quantity > 0 ? $quantity : 1;
 	$variation  = array();
 	foreach ( $_POST as $key => $value ) {

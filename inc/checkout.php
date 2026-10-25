@@ -39,7 +39,7 @@ add_filter( 'body_class', 'dps_checkout_body_class' );
  * @return array Field key (without billing_/shipping_ prefix) => default label.
  */
 function dps_checkout_label_defaults() {
-	return [
+	return array(
 		'email'      => 'อีเมล',
 		'first_name' => 'ชื่อ',
 		'last_name'  => 'นามสกุล',
@@ -51,7 +51,7 @@ function dps_checkout_label_defaults() {
 		'state'      => 'จังหวัด',
 		'postcode'   => 'รหัสไปรษณีย์',
 		'phone'      => 'เบอร์โทรศัพท์',
-	];
+	);
 }
 
 /**
@@ -64,53 +64,53 @@ function dps_checkout_label_defaults() {
 function dps_checkout_customize( $wp ) {
 	$wp->add_section(
 		'dps_checkout',
-		[
+		array(
 			'title'       => 'ข้อความหน้า Checkout',
 			'description' => 'แก้ไขชื่อช่องกรอก (label) ในหน้าชำระเงิน เว้นว่าง = ใช้ค่าเดิมของ WooCommerce (ใช้กับ Checkout แบบคลาสสิก)',
 			'panel'       => 'dps',
-		]
+		)
 	);
-	$items = dps_checkout_label_defaults();
+	$items                   = dps_checkout_label_defaults();
 	$items['order_comments'] = 'หมายเหตุคำสั่งซื้อ';
 	foreach ( $items as $key => $default ) {
 		$id = 'dps_co_' . $key;
 		$wp->add_setting(
 			$id,
-			[
+			array(
 				'default'           => '',
 				'sanitize_callback' => 'sanitize_text_field',
-			]
+			)
 		);
 		$wp->add_control(
 			$id,
-			[
+			array(
 				'section'     => 'dps_checkout',
 				'type'        => 'text',
 				'label'       => $default,
 				'description' => 'ค่าเริ่มต้นของธีม: ' . $default,
-			]
+			)
 		);
 	}
-	$headings = [
+	$headings = array(
 		'dps_co_h_billing'  => 'หัวข้อ: รายละเอียดการเรียกเก็บเงิน',
 		'dps_co_h_shipping' => 'หัวข้อ: จัดส่งไปยังที่อยู่อื่น',
 		'dps_co_h_summary'  => 'หัวข้อ: สรุปคำสั่งซื้อ',
-	];
+	);
 	foreach ( $headings as $id => $label ) {
 		$wp->add_setting(
 			$id,
-			[
+			array(
 				'default'           => '',
 				'sanitize_callback' => 'sanitize_text_field',
-			]
+			)
 		);
 		$wp->add_control(
 			$id,
-			[
+			array(
 				'section' => 'dps_checkout',
 				'type'    => 'text',
 				'label'   => $label,
-			]
+			)
 		);
 	}
 }
@@ -126,21 +126,21 @@ add_action( 'customize_register', 'dps_checkout_customize' );
 function dps_checkout_fields( $fields ) {
 	if ( isset( $fields['billing']['billing_email'] ) ) {
 		$fields['billing']['billing_email']['priority'] = 5;
-		$fields['billing']['billing_email']['class']    = [ 'form-row-wide' ];
+		$fields['billing']['billing_email']['class']    = array( 'form-row-wide' );
 	}
 	foreach ( array_keys( dps_checkout_label_defaults() ) as $key ) {
 		$label = trim( (string) get_theme_mod( 'dps_co_' . $key, '' ) );
 		if ( '' === $label ) {
 			continue;
 		}
-		foreach ( [ 'billing', 'shipping' ] as $group ) {
+		foreach ( array( 'billing', 'shipping' ) as $group ) {
 			$id = $group . '_' . $key;
 			if ( ! isset( $fields[ $group ][ $id ] ) ) {
 				continue;
 			}
 			$fields[ $group ][ $id ]['label'] = $label;
 			$type                             = isset( $fields[ $group ][ $id ]['type'] ) ? $fields[ $group ][ $id ]['type'] : 'text';
-			if ( in_array( $type, [ 'text', 'email', 'tel' ], true ) ) {
+			if ( in_array( $type, array( 'text', 'email', 'tel' ), true ) ) {
 				$fields[ $group ][ $id ]['placeholder'] = $label;
 			}
 		}
@@ -166,11 +166,11 @@ function dps_checkout_headings( $text, $source, $domain ) {
 	if ( 'woocommerce' !== $domain || ! function_exists( 'is_checkout' ) || ! is_checkout() ) {
 		return $text;
 	}
-	$map = [
-		'Billing details'          => 'dps_co_h_billing',
+	$map = array(
+		'Billing details'              => 'dps_co_h_billing',
 		'Ship to a different address?' => 'dps_co_h_shipping',
-		'Your order'               => 'dps_co_h_summary',
-	];
+		'Your order'                   => 'dps_co_h_summary',
+	);
 	if ( isset( $map[ $source ] ) ) {
 		$custom = trim( (string) get_theme_mod( $map[ $source ], '' ) );
 		if ( '' !== $custom ) {

@@ -17,10 +17,10 @@ defined( 'ABSPATH' ) || exit;
 function dps_resource_hints( $urls, $relation_type ) {
 	if ( 'preconnect' === $relation_type ) {
 		$urls[] = 'https://fonts.googleapis.com';
-		$urls[] = [
+		$urls[] = array(
 			'href'        => 'https://fonts.gstatic.com',
 			'crossorigin' => 'anonymous',
-		];
+		);
 	}
 	return $urls;
 }
@@ -49,7 +49,7 @@ add_filter( 'style_loader_tag', 'dps_async_fonts', 10, 2 );
  * @return void
  */
 function dps_defer_scripts() {
-	foreach ( [ 'dps-main', 'dps-woo' ] as $handle ) {
+	foreach ( array( 'dps-main', 'dps-woo' ) as $handle ) {
 		if ( wp_script_is( $handle, 'registered' ) ) {
 			wp_script_add_data( $handle, 'strategy', 'defer' );
 		}
@@ -118,19 +118,19 @@ add_action( 'wp_enqueue_scripts', 'dps_dequeue_cart_fragments', 99 );
 function dps_performance_customize( $wp ) {
 	$wp->add_setting(
 		'dps_fast_cart',
-		[
+		array(
 			'default'           => true,
 			'sanitize_callback' => 'wp_validate_boolean',
-		]
+		)
 	);
 	$wp->add_control(
 		'dps_fast_cart',
-		[
+		array(
 			'label'       => 'โหมดเร็ว: ไม่โหลดข้อมูลตะกร้าซ้ำทุกหน้า',
 			'description' => 'ลดคำขอเซิร์ฟเวอร์ 1 ครั้งต่อหน้า ถ้าใช้แคชทั้งหน้าแล้วเลขตะกร้าไม่ตรง ให้ปิดข้อนี้',
 			'section'     => 'dps_woo',
 			'type'        => 'checkbox',
-		]
+		)
 	);
 }
 add_action( 'customize_register', 'dps_performance_customize', 20 );

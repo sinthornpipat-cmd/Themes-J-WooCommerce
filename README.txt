@@ -97,3 +97,12 @@ v2.7.0 — Checkout + ความเร็ว
 - เปลี่ยนจำนวน/คูปองในลิ้นชักตะกร้าใช้ ?wc-ajax= (เบากว่า admin-ajax.php)
 - ตัด emoji/embed/meta ที่ไม่ใช้ออกจาก head; WP_Query หน้าแรกไม่นับหน้า (no_found_rows)
 - ไฟล์ใหม่: inc/performance.php
+
+v2.7.1 — ผ่าน WordPress Coding Standards (PHPCS: WordPress + PHPCompatibilityWP) 0 error / 0 warning
+- จัดรูปแบบโค้ดทั้งหมดตาม WPCS 3 (array(), ช่องว่าง, หนึ่งคำสั่งต่อบรรทัด, วงเล็บปีกกา)
+- escape ตอนพิมพ์ออกทุกจุด แทน // phpcs:ignore แบบเหมารวม: ส่วนท้ายใช้ dps_ft_output(), ไอคอนใช้ dps_the_icon() (wp_kses เฉพาะ SVG), มินิคาร์ท/แถบส่งฟรีใช้ wp_kses_post
+- ตัวแปรในเทมเพลตขึ้นต้นด้วย dps_ ไม่ทับตัวแปร global ของ WordPress, เซกชันสินค้าหน้าแรกใช้ WP_Query แทนการเขียน $GLOBALS เอง
+- sanitize ค่า $_POST ใน AJAX ตะกร้า/คูปองทุกตัว
+- เพิ่ม comments.php (เดิม WordPress แจ้ง deprecated เมื่อเปิดหน้าโพสต์)
+- เพิ่ม phpcs.xml.dist สำหรับตรวจโค้ด: composer global require wp-coding-standards/wpcs phpcompatibility/phpcompatibility-wp แล้วรัน phpcs ในโฟลเดอร์ธีม
+- หน้าเว็บแสดงผลเหมือนเดิมทุกหน้า (ทดสอบเทียบ HTML ก่อน/หลังบน WordPress 6.8 + WooCommerce 10.2)

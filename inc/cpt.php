@@ -13,28 +13,64 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Register Review, FAQ and Home Ideas post types.
  */
 function dps_register_cpts() {
-	$common = [ 'public' => false, 'show_ui' => true, 'show_in_rest' => true, 'menu_position' => 25, 'has_archive' => false ];
-	register_post_type( 'dps_review', $common + [
-		'labels' => [ 'name' => 'รีวิวลูกค้า', 'singular_name' => 'รีวิว', 'add_new_item' => 'เพิ่มรีวิว', 'menu_name' => 'รีวิวลูกค้า' ],
-		'menu_icon' => 'dashicons-star-filled', 'supports' => [ 'title', 'editor', 'thumbnail', 'page-attributes' ],
-	] );
-	register_post_type( 'dps_faq', $common + [
-		'labels' => [ 'name' => 'คำถามที่พบบ่อย', 'singular_name' => 'FAQ', 'add_new_item' => 'เพิ่มคำถาม', 'menu_name' => 'FAQ' ],
-		'menu_icon' => 'dashicons-editor-help', 'supports' => [ 'title', 'editor', 'page-attributes' ],
-	] );
-	register_post_type( 'dps_feed', $common + [
-		'labels' => [ 'name' => 'ไอเดียจัดบ้าน', 'singular_name' => 'Feed', 'add_new_item' => 'เพิ่มไอเดียจัดบ้าน', 'menu_name' => 'ไอเดียจัดบ้าน' ],
-		'menu_icon' => 'dashicons-instagram', 'supports' => [ 'title', 'thumbnail', 'page-attributes' ],
-	] );
+	$common = array(
+		'public'        => false,
+		'show_ui'       => true,
+		'show_in_rest'  => true,
+		'menu_position' => 25,
+		'has_archive'   => false,
+	);
+	register_post_type(
+		'dps_review',
+		$common + array(
+			'labels'    => array(
+				'name'          => 'รีวิวลูกค้า',
+				'singular_name' => 'รีวิว',
+				'add_new_item'  => 'เพิ่มรีวิว',
+				'menu_name'     => 'รีวิวลูกค้า',
+			),
+			'menu_icon' => 'dashicons-star-filled',
+			'supports'  => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
+		)
+	);
+	register_post_type(
+		'dps_faq',
+		$common + array(
+			'labels'    => array(
+				'name'          => 'คำถามที่พบบ่อย',
+				'singular_name' => 'FAQ',
+				'add_new_item'  => 'เพิ่มคำถาม',
+				'menu_name'     => 'FAQ',
+			),
+			'menu_icon' => 'dashicons-editor-help',
+			'supports'  => array( 'title', 'editor', 'page-attributes' ),
+		)
+	);
+	register_post_type(
+		'dps_feed',
+		$common + array(
+			'labels'    => array(
+				'name'          => 'ไอเดียจัดบ้าน',
+				'singular_name' => 'Feed',
+				'add_new_item'  => 'เพิ่มไอเดียจัดบ้าน',
+				'menu_name'     => 'ไอเดียจัดบ้าน',
+			),
+			'menu_icon' => 'dashicons-instagram',
+			'supports'  => array( 'title', 'thumbnail', 'page-attributes' ),
+		)
+	);
 }
 add_action( 'init', 'dps_register_cpts' );
 
 /**
  * Add the extra-details meta box to Review and Home Ideas editors.
  */
-add_action( 'add_meta_boxes', function () {
-	add_meta_box( 'dps_meta', 'รายละเอียดเพิ่มเติม', 'dps_meta_box', [ 'dps_review', 'dps_feed' ], 'side' );
-} );
+add_action(
+	'add_meta_boxes',
+	function () {
+		add_meta_box( 'dps_meta', 'รายละเอียดเพิ่มเติม', 'dps_meta_box', array( 'dps_review', 'dps_feed' ), 'side' );
+	}
+);
 /**
  * Render the extra-details meta box.
  *
@@ -57,19 +93,26 @@ function dps_meta_box( $post ) {
 /**
  * Save meta box fields (product ID, caption, star rating).
  */
-add_action( 'save_post', function ( $id ) {
-	if ( ! isset( $_POST['dps_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['dps_nonce'] ) ), 'dps_meta' ) ) {
-		return;
-	}
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
-	}
-	if ( ! current_user_can( 'edit_post', $id ) ) {
-		return;
-	}
-	foreach ( [ 'dps_product' => '_dps_product', 'dps_handle' => '_dps_handle', 'dps_stars' => '_dps_stars' ] as $f => $m ) {
-		if ( isset( $_POST[ $f ] ) ) {
-			update_post_meta( $id, $m, sanitize_text_field( wp_unslash( $_POST[ $f ] ) ) );
+add_action(
+	'save_post',
+	function ( $id ) {
+		if ( ! isset( $_POST['dps_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['dps_nonce'] ) ), 'dps_meta' ) ) {
+			return;
+		}
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+		if ( ! current_user_can( 'edit_post', $id ) ) {
+			return;
+		}
+		foreach ( array(
+			'dps_product' => '_dps_product',
+			'dps_handle'  => '_dps_handle',
+			'dps_stars'   => '_dps_stars',
+		) as $f => $m ) {
+			if ( isset( $_POST[ $f ] ) ) {
+				update_post_meta( $id, $m, sanitize_text_field( wp_unslash( $_POST[ $f ] ) ) );
+			}
 		}
 	}
-} );
+);

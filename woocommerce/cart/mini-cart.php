@@ -5,7 +5,10 @@
  *
  * @package themes-j-woocommerce
  */
+
 defined( 'ABSPATH' ) || exit;
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals -- WooCommerce template override: core hook names and template-scoped variables.
 
 do_action( 'woocommerce_before_mini_cart' );
 
@@ -21,7 +24,7 @@ if ( ! WC()->cart->is_empty() ) :
 			do_action( 'woocommerce_before_mini_cart_contents' );
 
 			foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-				$_product   = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+				$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 				if ( ! $_product || ! $_product->exists() || $cart_item['quantity'] <= 0 || ! apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
 					continue;
 				}
@@ -37,10 +40,18 @@ if ( ! WC()->cart->is_empty() ) :
 				?>
 				<li class="mc-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>"
 					data-key="<?php echo esc_attr( $cart_item_key ); ?>" data-unit="<?php echo esc_attr( $unit_raw ); ?>">
-					<?php echo $permalink ? '<a class="mc-thumb" href="' . esc_url( $permalink ) . '" tabindex="-1">' . $thumb . '</a>' : '<span class="mc-thumb">' . $thumb . '</span>'; // phpcs:ignore ?>
+					<?php if ( $permalink ) : ?>
+						<a class="mc-thumb" href="<?php echo esc_url( $permalink ); ?>" tabindex="-1"><?php echo wp_kses_post( $thumb ); ?></a>
+					<?php else : ?>
+						<span class="mc-thumb"><?php echo wp_kses_post( $thumb ); ?></span>
+					<?php endif; ?>
 					<div class="mc-info">
-						<?php echo $permalink ? '<a class="mc-name" href="' . esc_url( $permalink ) . '">' . wp_kses_post( $name ) . '</a>' : '<span class="mc-name">' . wp_kses_post( $name ) . '</span>'; // phpcs:ignore ?>
-						<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore ?>
+						<?php if ( $permalink ) : ?>
+							<a class="mc-name" href="<?php echo esc_url( $permalink ); ?>"><?php echo wp_kses_post( $name ); ?></a>
+						<?php else : ?>
+							<span class="mc-name"><?php echo wp_kses_post( $name ); ?></span>
+						<?php endif; ?>
+						<?php echo wp_kses_post( wc_get_formatted_cart_item_data( $cart_item ) ); ?>
 						<span class="mc-unit"><?php echo wp_kses_post( $unit_html ); ?></span>
 						<?php if ( ! $single ) : ?>
 						<div class="mc-qty" role="group" aria-label="จำนวน">
