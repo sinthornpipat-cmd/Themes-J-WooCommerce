@@ -3,7 +3,7 @@ Contributors: sinthornpipat
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,9 @@ J Shop does not collect, store or send any personal data. The theme loads the Pr
 
 == Changelog ==
 
+= 3.0.1 =
+* Removed Theme URI from style.css (it duplicated the Author URI).
+
 = 3.0.0 =
 * First release on WordPress.org.
 * Renamed to J Shop, all strings translatable with English source text and a Thai translation.
@@ -55,7 +58,7 @@ J Shop does not collect, store or send any personal data. The theme loads the Pr
 
 == Upgrade Notice ==
 
-= 3.0.0 =
+= 3.0.1 =
 First release on WordPress.org.
 
 == Resources ==
