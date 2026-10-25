@@ -62,7 +62,7 @@ add_action( 'admin_notices', function () {
 		return;
 	}
 	if ( get_option( 'dps_demo_imported' ) ) { delete_transient( 'dps_demo_notice' ); return; }
-	echo '<div class="notice notice-info is-dismissible"><p><strong>Petchsiam Shop:</strong> ต้องการสินค้า/รีวิว/ไอเดียจัดบ้านตัวอย่างหรือไม่? ไปที่ <a href="' . esc_url( admin_url( 'themes.php?page=dps-demo' ) ) . '">Appearance → ข้อมูลตัวอย่าง (Demo)</a> (รูปแบนเนอร์ตัวอย่างแสดงให้อัตโนมัติแล้ว)</p></div>';
+	echo '<div class="notice notice-info is-dismissible"><p><strong>Themes J WooCommerce:</strong> ต้องการสินค้า/รีวิว/ไอเดียจัดบ้านตัวอย่างหรือไม่? ไปที่ <a href="' . esc_url( admin_url( 'themes.php?page=dps-demo' ) ) . '">Appearance → ข้อมูลตัวอย่าง (Demo)</a> (รูปแบนเนอร์ตัวอย่างแสดงให้อัตโนมัติแล้ว)</p></div>';
 } );
 
 /**

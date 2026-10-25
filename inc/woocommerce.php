@@ -1,5 +1,5 @@
 <?php
-/** WooCommerce integration for Petchsiam Shop */
+/** WooCommerce integration for Themes J WooCommerce */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
